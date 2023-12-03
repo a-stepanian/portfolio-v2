@@ -5,11 +5,6 @@ import { useEffect, useState } from "react";
 
 export const App = () => {
   const [btnClicked, setBtnClicked] = useState("");
-  const [colorScheme, setColorScheme] = useState({
-    name: "dark",
-    bgColor: "#111",
-    hexBorderColor: "#555",
-  });
 
   useEffect(() => {
     const otherTwoBtns = ["Background", "Contact", "Portfolio"].filter(
@@ -26,7 +21,6 @@ export const App = () => {
       document
         .querySelector(`.${btnClicked}-line`)
         .classList.toggle("clicked-line");
-    } else {
     }
     // remove styles from other buttons
     otherTwoBtns.forEach((x) => {
@@ -41,7 +35,6 @@ export const App = () => {
   }, [btnClicked]);
   return (
     <Wrapper>
-      <button>Dark/Light Mode</button>
       <div className="left-column">
         <div className="top-hexagon">
           <Hexagon
@@ -68,7 +61,6 @@ export const App = () => {
 };
 
 const Wrapper = styled.div`
-  position: relative;
   background-color: #111;
   display: flex;
   justify-content: start;
