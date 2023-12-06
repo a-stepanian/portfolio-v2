@@ -3,40 +3,58 @@ import { FaLaptopCode } from "react-icons/fa";
 import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
 import styled from "styled-components";
-import { useAppContext } from "./AppContext";
+import { TButtonText, useAppContext } from "./AppContext";
+import InfoPanelNew from "./InfoPanelNew";
 
 interface IHexagonProps {
-  text: "Portfolio" | "Background" | "Contact";
+  text: TButtonText;
+  lightColor: string;
 }
 
 export const Hexagon = (props: IHexagonProps) => {
-  const { text } = props;
+  const { text, lightColor } = props;
   const { btnClicked, updateBtnClicked } = useAppContext();
   return (
     <Wrapper>
       <div className="hexagon-wrapper">
         <button
-          className="clip-border"
+          className={`clip-border ${text}-clip-border`}
           onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}>
           <div className={`blue-overlay ${text}-blue-overlay`}></div>
-          <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
-          {text === "Portfolio" && (
+          <h2 className={`clip-caption ${text}-clip-caption`}>
+            {/* {text.charAt(0).toUpperCase() + text.slice(1)} */}
+            {text}
+          </h2>
+          {text === "portfolio" && (
             <FaLaptopCode className={`icon ${text}-icon`} />
           )}
-          {text === "Background" && (
+          {text === "background" && (
             <BiBriefcase className={`icon ${text}-icon`} />
           )}
-          {text === "Contact" && (
+          {text === "contact" && (
             <MdMailOutline className={`icon ${text}-icon`} />
           )}
         </button>
         <div className={`line ${text}-line`}>
-          <InfoPanel text={text} btnClicked={btnClicked} />
+          <InfoPanel
+            leftOffset={
+              text === "background"
+                ? "48.5px"
+                : text === "portfolio"
+                ? "98.5px"
+                : text === "contact"
+                ? "148.5px"
+                : "198.5px"
+            }
+            text={text}
+          />
+          {/* <InfoPanelNew text={text} /> */}
         </div>
         <svg className="clip-svg">
           <defs>
             <clipPath id="hexagon-clip" clipPathUnits="objectBoundingBox">
-              <polygon points="0.25 0.05, 0.75 0.05, 1 0.5, 0.75 0.95, 0.25 0.95, 0 0.5" />
+              {/* <polygon points="0.25 0.05, 0.75 0.05, 1 0.5, 0.75 0.95, 0.25 0.95, 0 0.5" /> */}
+              <polygon points="0.05 0.25, 0.5 0.05, 0.95 0.25, 0.95 0.75, .5 0.95, 0.05 0.75" />
             </clipPath>
           </defs>
         </svg>
@@ -49,58 +67,83 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    transition: linear 0.3s 0.2s;
     .clip-border {
       border: none;
       display: block;
       position: relative;
       clip-path: url("#hexagon-clip");
-      margin: 1rem auto 0;
       background: #555;
       width: 100px;
       height: 100px;
       color: #555;
+      /* button outline un-selected */
       .blue-overlay {
+        transition: 0.4s linear;
         position: absolute;
-        top: 0;
-        width: 0px;
-        height: 100%;
-        background: aquamarine;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 0;
+        background: ${(props) => props.theme.textColor};
         z-index: 1;
-        transition: linear 0.3s 0.5s;
       }
+      /* button outline selected */
       .clicked-blue-overlay {
-        width: 100px;
-        transition: linear 0.3s 0.2s;
+        transition: 0.4s linear 0.2s;
+        height: 100px;
       }
       .blue-text {
-        color: aquamarine;
+        color: ${(props) => props.theme.textColor};
       }
       .icon {
         z-index: 3;
         position: relative;
         font-size: 1.4rem;
       }
+
       &::after {
         content: "";
         position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
+        top: 4px;
+        left: 4px;
+        right: 4px;
+        bottom: 4px;
         margin: 0 auto;
-        background: #111;
-        transition: linear 0.1s;
+        background-color: ${(props) => props.theme.bgColor};
         clip-path: url("#hexagon-clip");
         z-index: 2;
       }
       &:hover {
         background: #555;
-        color: aquamarine;
+        color: ${(props) => props.theme.textColor};
         cursor: pointer;
         &::after {
-          background: #122;
+          background: ${(props) => props.theme.hoverColor};
         }
+      }
+    }
+    .blink-light::after {
+      animation: blink-light 0.2s ease-in-out; /* Apply the blink animation on click */
+    }
+    .blink-dark::after {
+      animation: blink-dark 0.2s ease-in-out; /* Apply the blink animation on click */
+    }
+    @keyframes blink-light {
+      0%,
+      100% {
+        background-color: transparent;
+      }
+      50% {
+        background-color: #e6a662;
+      }
+    }
+    @keyframes blink-dark {
+      0%,
+      100% {
+        background-color: transparent;
+      }
+      50% {
+        background-color: #122;
       }
     }
     .clip-caption {
@@ -110,7 +153,7 @@ const Wrapper = styled.div`
       width: 100%;
       font-size: 0.8rem;
       text-align: center;
-      font-weight: 300;
+      font-weight: 500;
     }
     .clip-svg {
       width: 0;
@@ -119,17 +162,22 @@ const Wrapper = styled.div`
     .line {
       z-index: 3;
       position: absolute;
-      top: calc(50% - 1px);
-      right: 0;
-      width: 0;
-      height: 2px;
-      background-color: aquamarine;
-      transition: linear 0.3s 0.2s;
+      bottom: 7px;
+      left: calc(50% - 2px);
+      width: 4px;
+      height: 0;
+      transition: 0.2s 0.2s linear;
+      background-color: ${(props) => props.theme.textColor};
     }
-    .clicked-line {
-      right: calc(-30vw + 2px);
-      width: calc(30vw - 1px);
-      transition: linear 0.3s 0.5s;
+    .clicked-line-top-row {
+      bottom: -100px;
+      height: 108px;
+      transition: 0.2s linear 0.4s;
+    }
+    .clicked-line-bottom-row {
+      bottom: -20px;
+      height: 26px;
+      transition: 0.2s linear 0.4s;
     }
   }
 `;

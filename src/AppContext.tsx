@@ -4,13 +4,22 @@ export interface IColorScheme {
   isDarkMode: boolean;
   bgColor: string;
   hexBorderColor: string;
+  hoverColor: string;
   textColor: string;
+  textColorMuted: string;
 }
 
+export type TButtonText =
+  | "portfolio"
+  | "background"
+  | "contact"
+  | "another"
+  | "";
+
 interface IAppState {
-  btnClicked: "Portfolio" | "Background" | "Contact" | "";
+  btnClicked: TButtonText;
   colorScheme: IColorScheme;
-  updateBtnClicked: (info: "Portfolio" | "Background" | "Contact" | "") => void;
+  updateBtnClicked: (info: TButtonText) => void;
   updateColorScheme: (info: IColorScheme) => void;
 }
 
@@ -29,19 +38,17 @@ const useAppContext = () => {
 };
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
-  const [btnClicked, setBtnClicked] = useState<
-    "Portfolio" | "Background" | "Contact" | ""
-  >("");
+  const [btnClicked, setBtnClicked] = useState<TButtonText>("");
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     isDarkMode: true,
     bgColor: "#111",
     hexBorderColor: "#555",
-    textColor: "7ffff2",
+    hoverColor: "#122",
+    textColor: "#7ffff2",
+    textColorMuted: "#7ffff244",
   });
 
-  const updateBtnClicked = (
-    info: "Portfolio" | "Background" | "Contact" | ""
-  ) => setBtnClicked(info);
+  const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);
   const updateColorScheme = (info: IColorScheme) => setColorScheme(info);
 
   const contextValue: IAppState = {
