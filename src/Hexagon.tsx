@@ -4,7 +4,6 @@ import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
 import styled from "styled-components";
 import { TButtonText, useAppContext } from "./AppContext";
-import InfoPanelNew from "./InfoPanelNew";
 
 interface IHexagonProps {
   text: TButtonText;
