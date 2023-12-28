@@ -16,28 +16,14 @@ const InfoPanelNew = (props: IInfoPanelNewProps) => {
 
   return (
     <Wrapper>
-      <div
-        className={`panel ${isOpen ? "open" : ""}`}
-        style={{ left: leftOffset }}>
+      <div className={`panel ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
         <div className="panel-header">
-          <h1>{text}</h1>
-          <button type="button" onClick={() => updateBtnClicked("")}>
+          {/* <h1>{text}</h1> */}
+          {/* <button type="button" onClick={() => updateBtnClicked("")}>
             <FaRegWindowClose className="icon" />
-          </button>
+          </button> */}
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-          accusamus est exercitationem explicabo officia, aut aliquid ullam
-          impedit doloremque dignissimos quam laudantium nostrum harum omnis
-          deserunt voluptate rem rerum delectus? Eligendi esse, doloribus
-          repellendus quia eos minima enim quo facilis sunt, saepe iusto ipsa
-          vel ut asperiores perspiciatis itaque unde quos cumque porro sit
-          veniam aspernatur velit quam aliquam. Molestias placeat dignissimos
-          minus, possimus nihil et culpa pariatur! Expedita et dolor sequi enim
-          voluptatum ea eum illum quos nobis, quis molestias eius at ipsa
-          recusandae laudantium culpa reiciendis amet dolorum explicabo. Tempore
-          quis suscipit quod hic expedita, incidunt consectetur nulla.
-        </p>
+        <ThreeDimensions />
       </div>
     </Wrapper>
   );
@@ -45,6 +31,9 @@ const InfoPanelNew = (props: IInfoPanelNewProps) => {
 
 const Wrapper = styled.section`
   .panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     z-index: 4;
     transition: 0.2s linear;
@@ -52,12 +41,10 @@ const Wrapper = styled.section`
     top: 220px;
     width: 0;
     height: 0;
-    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear,
-      left 0.2s linear, opacity 0.1s linear 0.1s;
+    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.1s;
     border: 4px solid ${(props) => props.theme.textColor};
     background-color: ${(props) => props.theme.hoverColor};
     overflow-y: scroll;
-
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
@@ -98,9 +85,16 @@ const Wrapper = styled.section`
       }
     }
     h1,
-    p,
-    .icon {
+    p {
       color: ${(props) => props.theme.textColor};
+    }
+    .icon {
+      font-size: 9rem;
+      color: #274e4b;
+    }
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 4rem;
     }
   }
   .open {
@@ -111,16 +105,15 @@ const Wrapper = styled.section`
     bottom: 0;
     height: calc(100vh - 220px);
     padding: 1rem;
-    transition: height 0.4s linear 0.7s, width 0.2s linear 0.6s,
-      padding 0.2s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
+    transition: height 0.4s linear 0.7s, width 0.2s linear 0.6s, padding 0.2s linear 0.6s, left 0.2s linear 0.6s,
+      opacity 0.01s linear 0.6s;
     & * {
       opacity: 1;
     }
   }
   @media (min-width: 990px) {
     .open {
-      transition: height 0.4s linear 0.8s, width 0.4s linear 0.6s,
-        padding 0.3s linear 0.6s, left 0.3s linear 0.6s,
+      transition: height 0.4s linear 0.8s, width 0.4s linear 0.6s, padding 0.3s linear 0.6s, left 0.3s linear 0.6s,
         opacity 0.01s linear 0.6s;
     }
   }

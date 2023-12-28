@@ -10,70 +10,38 @@ export const App = () => {
   const { btnClicked, colorScheme } = useAppContext();
 
   useEffect(() => {
-    const otherBtns = ["background", "contact", "portfolio", "another"].filter(
-      (x) => x !== btnClicked
-    );
+    const otherBtns = ["background", "contact", "portfolio", "another"].filter((x) => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {
-      document
-        ?.querySelector(`.${text}-blue-overlay`)
-        ?.classList.remove("clicked-blue-overlay");
-      document
-        ?.querySelector(`.${text}-clip-caption`)
-        ?.classList.remove("blue-text");
+      document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
+      document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text");
       document?.querySelector(`.${text}-icon`)?.classList.remove("blue-text");
       document
         ?.querySelector(`.${text}-line`)
-        ?.classList.remove(
-          `clicked-line-${
-            ["portfolio", "another"].includes(text) ? "bottom" : "top"
-          }-row`
-        );
+        ?.classList.remove(`clicked-line-${["portfolio", "another"].includes(text) ? "bottom" : "top"}-row`);
     });
     // style button clicked
     if (btnClicked.length > 0) {
-      document
-        ?.querySelector(".information-panel")
-        ?.classList.add("information-panel-open");
-      document
-        ?.querySelector(`.${btnClicked}-blue-overlay`)
-        ?.classList.add("clicked-blue-overlay");
-      document
-        ?.querySelector(`.${btnClicked}-clip-caption`)
-        ?.classList.add("blue-text");
-      document
-        ?.querySelector(`.${btnClicked}-icon`)
-        ?.classList.add("blue-text");
+      document?.querySelector(".information-panel")?.classList.add("information-panel-open");
+      document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
+      document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
+      document?.querySelector(`.${btnClicked}-icon`)?.classList.add("blue-text");
       document
         ?.querySelector(`.${btnClicked}-line`)
-        ?.classList.add(
-          `clicked-line-${
-            ["portfolio", "another"].includes(btnClicked) ? "bottom" : "top"
-          }-row`
-        );
+        ?.classList.add(`clicked-line-${["portfolio", "another"].includes(btnClicked) ? "bottom" : "top"}-row`);
       if (colorScheme.isDarkMode) {
-        document
-          ?.querySelector(`.${btnClicked}-clip-border`)
-          ?.classList.add("blink-dark");
+        document?.querySelector(`.${btnClicked}-clip-border`)?.classList.add("blink-dark");
         setTimeout(() => {
-          document
-            ?.querySelector(`.${btnClicked}-clip-border`)
-            ?.classList.remove("blink-dark");
+          document?.querySelector(`.${btnClicked}-clip-border`)?.classList.remove("blink-dark");
         }, 500);
       } else {
-        document
-          ?.querySelector(`.${btnClicked}-clip-border`)
-          ?.classList.add("blink-light");
+        document?.querySelector(`.${btnClicked}-clip-border`)?.classList.add("blink-light");
         setTimeout(() => {
-          document
-            ?.querySelector(`.${btnClicked}-clip-border`)
-            ?.classList.remove("blink-light");
+          document?.querySelector(`.${btnClicked}-clip-border`)?.classList.remove("blink-light");
         }, 500);
       }
     } else {
-      document
-        ?.querySelector(".information-panel")
-        ?.classList.remove("information-panel-open");
+      document?.querySelector(".information-panel")?.classList.remove("information-panel-open");
     }
   }, [btnClicked]);
 
