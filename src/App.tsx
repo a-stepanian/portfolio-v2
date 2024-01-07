@@ -67,46 +67,53 @@ export const App = () => {
 };
 
 const Wrapper = styled.div`
-  & * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Chakra Petch", sans-serif;
-  }
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: start;
   height: 100vh;
   overflow: hidden;
-  color: ${(props) => props.theme.textColor};
   background-color: ${(props) => props.theme.bgColor};
-  nav {
-    position: relative;
-    width: 276px;
-    height: 200px;
-    .top-row {
-      display: flex;
-    }
-    .bottom-hexagon {
-      position: absolute;
-      bottom: 20px;
-      left: 51px;
-    }
-    .another-hexagon {
-      position: absolute;
-      bottom: 20px;
-      left: 149px;
+  & * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Chakra Petch", sans-serif;
+  }
+  #site-wrapper {
+    animation: appear 1s forwards;
+    nav {
+      position: relative;
+      width: 276px;
+      height: 200px;
+      .top-row {
+        display: flex;
+      }
+      .bottom-hexagon {
+        position: absolute;
+        bottom: 20px;
+        left: 51px;
+      }
+      .another-hexagon {
+        position: absolute;
+        bottom: 20px;
+        left: 149px;
+      }
     }
   }
   /* Used for dark/light mode transition speed */
   .fast-transition * {
     transition: 0.2s linear 0s !important;
+  }
+  /* Animations */
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1 !important;
+    }
   }
 `;
