@@ -74,7 +74,7 @@ const Wrapper = styled.div`
     .icon {
       z-index: 3;
       position: relative;
-      color: ${(props) => props.theme.textColor};
+      color: ${props => props.theme.textColor};
       font-size: 1.4rem;
     }
     .clip-border {
@@ -108,7 +108,7 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background: ${(props) => props.theme.bgColor};
+        background: ${props => props.theme.bgColor};
         clip-path: url("#inner-trapezoid");
         z-index: 2;
       }
@@ -117,7 +117,7 @@ const Wrapper = styled.div`
         color: aquamarine;
         cursor: pointer;
         &::after {
-          background: ${(props) => props.theme.hoverColor};
+          background: ${props => props.theme.hoverColor};
         }
       }
     }

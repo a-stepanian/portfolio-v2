@@ -48,7 +48,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     panelBg: "#10170b",
     hexagonOutline: "#A3EA71",
     glowColor: "#A3EA71",
-    iconGlow: "#fa64b470",
+    iconGlow: "#fa64b470"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);
@@ -58,7 +58,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     btnClicked,
     colorScheme,
     updateBtnClicked,
-    updateColorScheme,
+    updateColorScheme
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

@@ -110,7 +110,7 @@ const Wrapper = styled.div`
       .icon {
         color: #00ff88;
         width: 100%;
-        filter: drop-shadow(0 0 15px ${(props) => props.theme.iconGlow});
+        filter: drop-shadow(0 0 15px ${props => props.theme.iconGlow});
       }
     }
     .icon-shadow {

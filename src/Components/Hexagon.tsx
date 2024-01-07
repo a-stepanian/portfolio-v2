@@ -29,19 +29,12 @@ export const Hexagon = (props: IHexagonProps) => {
         <svg className="clip-svg">
           <defs>
             <clipPath id="hexagon-clip" clipPathUnits="objectBoundingBox">
-              {/* <polygon points="0.25 0.05, 0.75 0.05, 1 0.5, 0.75 0.95, 0.25 0.95, 0 0.5" /> */}
               <polygon points="0.05 0.25, 0.5 0.05, 0.95 0.25, 0.95 0.75, .5 0.95, 0.05 0.75" />
             </clipPath>
           </defs>
         </svg>
       </div>
-      <InfoPanel
-        leftOffset={
-          text === "background" ? "48.5px" : text === "portfolio" ? "98.5px" : text === "contact" ? "48.5px" : "198.5px"
-        }
-        text={text}
-      />
-      {/* <InfoPanelNew text={text} /> */}
+      <InfoPanel text={text} />
     </Wrapper>
   );
 };
@@ -50,7 +43,7 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    filter: drop-shadow(0 0 5px ${(props) => props.theme.glowColor});
+    filter: drop-shadow(0 0 5px ${props => props.theme.glowColor});
     .clip-border {
       border: none;
       display: block;
@@ -59,7 +52,7 @@ const Wrapper = styled.div`
       background: #555;
       width: 100px;
       height: 100px;
-      color: ${(props) => props.theme.hexagonOutline};
+      color: ${props => props.theme.hexagonOutline};
       /* Button outline un-selected */
       .blue-overlay {
         transition: 0.4s linear;
@@ -68,7 +61,7 @@ const Wrapper = styled.div`
         right: 0;
         width: 100%;
         height: 0;
-        background: ${(props) => props.theme.textColor};
+        background: ${props => props.theme.textColor};
         z-index: 1;
       }
       /* Button outline selected */
@@ -77,7 +70,7 @@ const Wrapper = styled.div`
         height: 100px;
       }
       .blue-text {
-        color: ${(props) => props.theme.textColor};
+        color: ${props => props.theme.textColor};
       }
       .icon {
         z-index: 3;
@@ -93,16 +86,16 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background-color: ${(props) => props.theme.bgColor};
+        background-color: ${props => props.theme.bgColor};
         clip-path: url("#hexagon-clip");
         z-index: 2;
       }
       &:hover {
         background: #555;
-        color: ${(props) => props.theme.textColor};
+        color: ${props => props.theme.textColor};
         cursor: pointer;
         &::after {
-          background: ${(props) => props.theme.hoverColor};
+          background: ${props => props.theme.hoverColor};
         }
       }
     }
@@ -133,8 +126,8 @@ const Wrapper = styled.div`
       width: 4px;
       height: 0;
       transition: 0.2s 0.2s linear;
-      background-color: ${(props) => props.theme.textColor};
-      filter: drop-shadow(0 0 5px ${(props) => props.theme.glowColor});
+      background-color: ${props => props.theme.textColor};
+      filter: drop-shadow(0 0 5px ${props => props.theme.glowColor});
     }
     .clicked-line-top-row {
       bottom: calc(100px - 100vh);

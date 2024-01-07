@@ -8,7 +8,7 @@ export const App = () => {
   const { btnClicked, colorScheme } = useAppContext();
 
   useEffect(() => {
-    const otherBtns = ["background", "contact", "portfolio", "another"].filter((x) => x !== btnClicked);
+    const otherBtns = ["background", "contact", "portfolio", "another"].filter(x => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {
       document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
@@ -75,7 +75,7 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: ${props => props.theme.bgColor};
   & * {
     margin: 0;
     padding: 0;
