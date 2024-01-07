@@ -7,14 +7,13 @@ export interface IColorScheme {
   hoverColor: string;
   textColor: string;
   textColorMuted: string;
+  panelBg: string;
+  hexagonOutline: string;
+  glowColor: string;
+  iconGlow: string;
 }
 
-export type TButtonText =
-  | "portfolio"
-  | "background"
-  | "contact"
-  | "another"
-  | "";
+export type TButtonText = "portfolio" | "background" | "contact" | "another" | "";
 
 interface IAppState {
   btnClicked: TButtonText;
@@ -41,11 +40,15 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     isDarkMode: true,
-    bgColor: "#111",
-    hexBorderColor: "#555",
-    hoverColor: "#122",
-    textColor: "#7ffff2",
-    textColorMuted: "#7ffff244",
+    bgColor: "#000000",
+    hexBorderColor: "#FA64B5",
+    hoverColor: "#000000",
+    textColor: "#A3EA71",
+    textColorMuted: "#FA64B5",
+    panelBg: "#10170b",
+    hexagonOutline: "#A3EA71",
+    glowColor: "#A3EA71",
+    iconGlow: "#fa64b470",
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);
@@ -58,9 +61,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     updateColorScheme,
   };
 
-  return (
-    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 };
 
 export { AppContextProvider, useAppContext };

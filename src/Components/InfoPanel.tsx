@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAppContext } from "./AppContext";
+import { useAppContext } from "../AppContext";
 import { FaRegWindowClose } from "react-icons/fa";
 import ThreeDimensions from "./ThreeDimensions";
 
@@ -16,12 +16,12 @@ const InfoPanelNew = (props: IInfoPanelNewProps) => {
 
   return (
     <Wrapper>
-      <div className={`panel ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
+      <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`}>
         <div className="panel-header">
-          {/* <h1>{text}</h1> */}
-          {/* <button type="button" onClick={() => updateBtnClicked("")}>
+          <h1>{text}</h1>
+          <button type="button" onClick={() => updateBtnClicked("")}>
             <FaRegWindowClose className="icon" />
-          </button> */}
+          </button>
         </div>
         <ThreeDimensions />
       </div>
@@ -36,14 +36,16 @@ const Wrapper = styled.section`
     align-items: center;
     opacity: 0;
     z-index: 4;
-    transition: 0.2s linear;
     position: fixed;
-    top: 220px;
+    box-shadow: inset 0 0 25px ${(props) => props.theme.glowColor};
+    top: 200px;
+    left: 48.5px;
     width: 0;
-    height: 0;
-    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.1s;
+    height: calc(100vh - 200px);
+    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.15s;
     border: 4px solid ${(props) => props.theme.textColor};
-    background-color: ${(props) => props.theme.hoverColor};
+    border-radius: 3px;
+    background-color: ${(props) => props.theme.panelBg};
     overflow-y: scroll;
     &::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -63,7 +65,7 @@ const Wrapper = styled.section`
     }
 
     &::-webkit-scrollbar-track {
-      background-color: ${(props) => props.theme.hoverColor};
+      background-color: ${(props) => props.theme.glowColor};
     }
 
     & * {
@@ -83,6 +85,16 @@ const Wrapper = styled.section`
           font-size: 1.4rem;
         }
       }
+      opacity: 0;
+      animation: appear 1s linear 0.6s forwards;
+    }
+    @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1 !important;
+      }
     }
     h1,
     p {
@@ -98,23 +110,26 @@ const Wrapper = styled.section`
     }
   }
   .open {
-    left: 0 !important;
     right: 0;
     width: 100vw;
     opacity: 1;
     bottom: 0;
-    height: calc(100vh - 220px);
     padding: 1rem;
-    transition: height 0.4s linear 0.7s, width 0.2s linear 0.6s, padding 0.2s linear 0.6s, left 0.2s linear 0.6s,
-      opacity 0.01s linear 0.6s;
+    transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.1s linear 0.6s, opacity 0.01s linear 0.6s;
     & * {
+      transition: opacity 0.1s linear 0.6s;
       opacity: 1;
     }
   }
+  .panel.open.contact {
+    left: -100px;
+  }
+  .panel.open.background {
+    left: 0px;
+  }
   @media (min-width: 990px) {
     .open {
-      transition: height 0.4s linear 0.8s, width 0.4s linear 0.6s, padding 0.3s linear 0.6s, left 0.3s linear 0.6s,
-        opacity 0.01s linear 0.6s;
+      transition: width 0.2s linear 0.6s, padding 0.01s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
     }
   }
 `;

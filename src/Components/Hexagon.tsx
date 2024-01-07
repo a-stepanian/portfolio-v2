@@ -3,7 +3,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
 import styled from "styled-components";
-import { TButtonText, useAppContext } from "./AppContext";
+import { TButtonText, useAppContext } from "../AppContext";
 
 interface IHexagonProps {
   text: TButtonText;
@@ -20,35 +20,12 @@ export const Hexagon = (props: IHexagonProps) => {
           className={`clip-border ${text}-clip-border`}
           onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}>
           <div className={`blue-overlay ${text}-blue-overlay`}></div>
-          <h2 className={`clip-caption ${text}-clip-caption`}>
-            {/* {text.charAt(0).toUpperCase() + text.slice(1)} */}
-            {text}
-          </h2>
-          {text === "portfolio" && (
-            <FaLaptopCode className={`icon ${text}-icon`} />
-          )}
-          {text === "background" && (
-            <BiBriefcase className={`icon ${text}-icon`} />
-          )}
-          {text === "contact" && (
-            <MdMailOutline className={`icon ${text}-icon`} />
-          )}
+          <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
+          {text === "portfolio" && <FaLaptopCode className={`icon ${text}-icon`} />}
+          {text === "background" && <BiBriefcase className={`icon ${text}-icon`} />}
+          {text === "contact" && <MdMailOutline className={`icon ${text}-icon`} />}
         </button>
-        <div className={`line ${text}-line`}>
-          <InfoPanel
-            leftOffset={
-              text === "background"
-                ? "48.5px"
-                : text === "portfolio"
-                ? "98.5px"
-                : text === "contact"
-                ? "148.5px"
-                : "198.5px"
-            }
-            text={text}
-          />
-          {/* <InfoPanelNew text={text} /> */}
-        </div>
+        <div className={`line ${text}-line`}></div>
         <svg className="clip-svg">
           <defs>
             <clipPath id="hexagon-clip" clipPathUnits="objectBoundingBox">
@@ -58,6 +35,13 @@ export const Hexagon = (props: IHexagonProps) => {
           </defs>
         </svg>
       </div>
+      <InfoPanel
+        leftOffset={
+          text === "background" ? "48.5px" : text === "portfolio" ? "98.5px" : text === "contact" ? "48.5px" : "198.5px"
+        }
+        text={text}
+      />
+      {/* <InfoPanelNew text={text} /> */}
     </Wrapper>
   );
 };
@@ -66,6 +50,7 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
+    filter: drop-shadow(0 0 5px ${(props) => props.theme.glowColor});
     .clip-border {
       border: none;
       display: block;
@@ -74,8 +59,8 @@ const Wrapper = styled.div`
       background: #555;
       width: 100px;
       height: 100px;
-      color: #555;
-      /* button outline un-selected */
+      color: ${(props) => props.theme.hexagonOutline};
+      /* Button outline un-selected */
       .blue-overlay {
         transition: 0.4s linear;
         position: absolute;
@@ -86,7 +71,7 @@ const Wrapper = styled.div`
         background: ${(props) => props.theme.textColor};
         z-index: 1;
       }
-      /* button outline selected */
+      /* Button outline selected */
       .clicked-blue-overlay {
         transition: 0.4s linear 0.2s;
         height: 100px;
@@ -127,24 +112,6 @@ const Wrapper = styled.div`
     .blink-dark::after {
       animation: blink-dark 0.2s ease-in-out; /* Apply the blink animation on click */
     }
-    @keyframes blink-light {
-      0%,
-      100% {
-        background-color: transparent;
-      }
-      50% {
-        background-color: #e6a662;
-      }
-    }
-    @keyframes blink-dark {
-      0%,
-      100% {
-        background-color: transparent;
-      }
-      50% {
-        background-color: #122;
-      }
-    }
     .clip-caption {
       z-index: 3;
       position: relative;
@@ -167,16 +134,36 @@ const Wrapper = styled.div`
       height: 0;
       transition: 0.2s 0.2s linear;
       background-color: ${(props) => props.theme.textColor};
+      filter: drop-shadow(0 0 5px ${(props) => props.theme.glowColor});
     }
     .clicked-line-top-row {
-      bottom: -100px;
-      height: 108px;
+      bottom: calc(100px - 100vh);
+      height: calc(100vh - 92px);
       transition: 0.2s linear 0.4s;
     }
     .clicked-line-bottom-row {
-      bottom: -20px;
-      height: 26px;
+      bottom: calc(100px - 100vh);
+      height: calc(100vh - 92px);
       transition: 0.2s linear 0.4s;
+    }
+  }
+  /* Animations */
+  @keyframes blink-light {
+    0%,
+    100% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #e6a662;
+    }
+  }
+  @keyframes blink-dark {
+    0%,
+    100% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #122;
     }
   }
 `;

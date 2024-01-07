@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
-import { useAppContext } from "./AppContext";
+import { useAppContext } from "../AppContext";
 
 export const DarkModeBtn = () => {
   const { colorScheme, updateColorScheme } = useAppContext();
@@ -10,40 +10,34 @@ export const DarkModeBtn = () => {
         <button
           className="clip-border"
           onClick={() => {
-            document
-              ?.querySelector("#site-wrapper")
-              ?.classList.add("fast-transition");
+            document?.querySelector("#site-wrapper")?.classList.add("fast-transition");
             setTimeout(() => {
-              document
-                ?.querySelector("#site-wrapper")
-                ?.classList.remove("fast-transition");
+              document?.querySelector("#site-wrapper")?.classList.remove("fast-transition");
             }, 200);
-            if (colorScheme.isDarkMode) {
-              updateColorScheme({
-                isDarkMode: false,
-                bgColor: "#fbebcc",
-                hexBorderColor: "#faca79",
-                hoverColor: "#e6a662",
-                textColor: "#754838",
-                textColorMuted: "#75483844",
-              });
-              return;
-            }
-            updateColorScheme({
-              isDarkMode: true,
-              bgColor: "#111",
-              hexBorderColor: "#555",
-              hoverColor: "#122",
-              textColor: "#7ffff2",
-              textColorMuted: "#7ffff244",
-            });
+            // if (colorScheme.isDarkMode) {
+            //   updateColorScheme({
+            //     isDarkMode: false,
+            //     bgColor: "#fbebcc",
+            //     hexBorderColor: "#faca79",
+            //     hoverColor: "#e6a662",
+            //     textColor: "#754838",
+            //     textColorMuted: "#75483844",
+            //     panelBg: "#75483844",
+            //   });
+            //   return;
+            // }
+            // updateColorScheme({
+            //   isDarkMode: true,
+            //   bgColor: "#111",
+            //   hexBorderColor: "#555",
+            //   hoverColor: "#122",
+            //   textColor: "#7ffff2",
+            //   textColorMuted: "#7ffff244",
+            //   panelBg: "#7ffff244",
+            // });
             return;
           }}>
-          {colorScheme.isDarkMode ? (
-            <MdOutlineDarkMode className="icon" />
-          ) : (
-            <MdOutlineLightMode className="icon" />
-          )}
+          {colorScheme.isDarkMode ? <MdOutlineDarkMode className="icon" /> : <MdOutlineLightMode className="icon" />}
         </button>
         <svg className="clip-svg">
           <defs>

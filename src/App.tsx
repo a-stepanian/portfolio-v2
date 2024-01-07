@@ -1,10 +1,8 @@
-import "./App.css";
-import styled, { ThemeProvider } from "styled-components";
-import { Hexagon } from "./Hexagon";
 import { useEffect } from "react";
-import { DarkModeBtn } from "./DarkModeBtn";
+import styled, { ThemeProvider } from "styled-components";
+import { Hexagon } from "./Components/Hexagon";
+import { DarkModeBtn } from "./Components/DarkModeBtn";
 import { useAppContext } from "./AppContext";
-import ThreeDimensions from "./ThreeDimensions";
 
 export const App = () => {
   const { btnClicked, colorScheme } = useAppContext();
@@ -49,7 +47,6 @@ export const App = () => {
     <ThemeProvider theme={colorScheme}>
       <Wrapper>
         <div id="site-wrapper">
-          <h1>Portfolio</h1>
           <nav>
             <div className="top-row">
               <Hexagon lightColor={"red"} text={"background"} />
@@ -70,6 +67,12 @@ export const App = () => {
 };
 
 const Wrapper = styled.div`
+  & * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Chakra Petch", sans-serif;
+  }
   position: fixed;
   top: 0;
   left: 0;
@@ -84,18 +87,9 @@ const Wrapper = styled.div`
   overflow: hidden;
   color: ${(props) => props.theme.textColor};
   background-color: ${(props) => props.theme.bgColor};
-
-  .fast-transition * {
-    transition: 0.2s linear 0s !important;
-  }
-
-  h1 {
-    font-size: 1rem;
-    font-weight: 100;
-  }
-
   nav {
     position: relative;
+    width: 276px;
     height: 200px;
     .top-row {
       display: flex;
@@ -103,12 +97,16 @@ const Wrapper = styled.div`
     .bottom-hexagon {
       position: absolute;
       bottom: 20px;
-      left: 25%;
+      left: 51px;
     }
     .another-hexagon {
       position: absolute;
       bottom: 20px;
-      left: 75%;
+      left: 149px;
     }
+  }
+  /* Used for dark/light mode transition speed */
+  .fast-transition * {
+    transition: 0.2s linear 0s !important;
   }
 `;
