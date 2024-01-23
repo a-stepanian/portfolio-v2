@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { Hexagon } from "./Components/Hexagon";
 import { DarkModeBtn } from "./Components/DarkModeBtn";
 import { useAppContext } from "./AppContext";
+import ThreeDimensionsWide from "./Components/ThreeDimensionsMobile";
 
 export const App = () => {
   const { btnClicked, colorScheme } = useAppContext();
@@ -55,11 +56,11 @@ export const App = () => {
             <div className="bottom-hexagon">
               <Hexagon lightColor={"blue"} text={"portfolio"} />
             </div>
-            <div className="another-hexagon">
-              <Hexagon lightColor={"orange"} text={"another"} />
-            </div>
             <DarkModeBtn />
           </nav>
+          <div className="three-dimensions-mobile-wrapper">
+            <ThreeDimensionsWide />
+          </div>
         </div>
       </Wrapper>
     </ThemeProvider>
@@ -83,10 +84,11 @@ const Wrapper = styled.div`
     font-family: "Chakra Petch", sans-serif;
   }
   #site-wrapper {
+    display: flex;
     animation: appear 1s forwards;
     nav {
       position: relative;
-      width: 276px;
+      width: 206px;
       height: 200px;
       .top-row {
         display: flex;
@@ -96,11 +98,13 @@ const Wrapper = styled.div`
         bottom: 20px;
         left: 51px;
       }
-      .another-hexagon {
-        position: absolute;
-        bottom: 20px;
-        left: 149px;
-      }
+    }
+    .three-dimensions-mobile-wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: calc(100vw - 206px);
+      height: 200px;
     }
   }
   /* Used for dark/light mode transition speed */

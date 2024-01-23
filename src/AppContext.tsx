@@ -11,6 +11,9 @@ export interface IColorScheme {
   hexagonOutline: string;
   glowColor: string;
   iconGlow: string;
+  iconColor: string;
+  threeDimensionsBackground: string;
+  threeDimensionsBorder: string;
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "another" | "";
@@ -41,14 +44,17 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     isDarkMode: true,
     bgColor: "#000000",
-    hexBorderColor: "#FA64B5",
+    hexBorderColor: "#ff3e5e",
     hoverColor: "#000000",
     textColor: "#A3EA71",
-    textColorMuted: "#FA64B5",
+    textColorMuted: "#ff3e5e",
     panelBg: "#10170b",
     hexagonOutline: "#A3EA71",
     glowColor: "#A3EA71",
-    iconGlow: "#fa64b470"
+    iconGlow: "#ff3e5e",
+    iconColor: "#ff3e5e",
+    threeDimensionsBackground: "#A3EA711e",
+    threeDimensionsBorder: "#A3EA71"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);

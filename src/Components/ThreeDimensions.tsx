@@ -104,11 +104,12 @@ const Wrapper = styled.div`
       position: absolute;
       top: calc(50% - 80px);
       left: calc(50% - 72px);
-      height: 30px;
+      height: 50%;
       transform: translateY(0);
       animation: icon-bounce 6s ease-in-out infinite 0.1s;
       .icon {
         color: #00ff88;
+        height: 100%;
         width: 100%;
         filter: drop-shadow(0 0 15px ${props => props.theme.iconGlow});
       }
