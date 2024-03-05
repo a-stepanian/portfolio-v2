@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { Hexagon } from "./Components/Hexagon";
 import { DarkModeBtn } from "./Components/DarkModeBtn";
 import { useAppContext } from "./AppContext";
-import ThreeDimensionsWide from "./Components/ThreeDimensionsMobile";
+import ThreeDimensionsMobile from "./Components/ThreeDimensionsMobile";
 
 export const App = () => {
   const { btnClicked, colorScheme } = useAppContext();
@@ -56,11 +56,13 @@ export const App = () => {
             <div className="bottom-hexagon">
               <Hexagon lightColor={"blue"} text={"portfolio"} />
             </div>
-            <DarkModeBtn />
+            {/* <DarkModeBtn /> */}
           </nav>
-          <div className="three-dimensions-mobile-wrapper">
-            <ThreeDimensionsWide />
-          </div>
+          {btnClicked !== "" && (
+            <div className="three-dimensions-mobile-wrapper">
+              <ThreeDimensionsMobile />
+            </div>
+          )}
         </div>
       </Wrapper>
     </ThemeProvider>
@@ -77,7 +79,7 @@ const Wrapper = styled.div`
   height: 100vh;
   overflow: hidden;
   background-color: ${props => props.theme.bgColor};
-  & * {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -85,7 +87,7 @@ const Wrapper = styled.div`
   }
   #site-wrapper {
     display: flex;
-    animation: appear 1s forwards;
+    animation: site-appear 1s forwards;
     nav {
       position: relative;
       width: 206px;
@@ -105,6 +107,7 @@ const Wrapper = styled.div`
       right: 0;
       width: calc(100vw - 206px);
       height: 200px;
+      animation: site-appear 1s forwards;
     }
   }
   /* Used for dark/light mode transition speed */
@@ -112,7 +115,7 @@ const Wrapper = styled.div`
     transition: 0.2s linear 0s !important;
   }
   /* Animations */
-  @keyframes appear {
+  @keyframes site-appear {
     0% {
       opacity: 0;
     }

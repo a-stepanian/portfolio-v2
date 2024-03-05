@@ -20,8 +20,8 @@ const InfoPanel = (props: IInfoPanelProps) => {
   return (
     <Wrapper>
       <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
-        <InfoPanelContents text={text} />
-        <ThreeDimensions />
+        {text !== "" && <InfoPanelContents text={text} />}
+        {text !== "" && <ThreeDimensions />}
       </div>
     </Wrapper>
   );
@@ -49,67 +49,16 @@ const Wrapper = styled.section`
     & * {
       opacity: 0;
     }
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      h1,
-      p {
-        color: ${props => props.theme.textColor};
-      }
-      .icon {
-        font-size: 9rem;
-        color: #274e4b;
-      }
-      h1 {
-        font-size: 4rem;
-        margin-bottom: 4rem;
-      }
-      button {
-        padding: 0;
-        border: none;
-        background: none;
-        &:hover {
-          cursor: pointer;
-        }
-        .icon {
-          font-size: 1.4rem;
-        }
-      }
-      animation: appear 1s linear 0.6s forwards;
-    }
-  }
-  /* .panel.contact {
-    left: 148.5px;
-  }
-  .panel.background {
-    left: 48.5px;
-  } */
-  .panel.open {
-    left: 0 !important;
   }
   .open {
+    left: 0 !important;
     width: 100vw;
     opacity: 1;
     padding: 1rem;
-    transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.1s linear 0.6s, opacity 0.01s linear 0.6s;
+    transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
     & * {
-      transition: opacity 0.1s linear 0.6s;
+      transition: opacity 0.8s linear 0.8s;
       opacity: 1;
-    }
-  }
-  /* Media queries */
-  @media (min-width: 990px) {
-    .open {
-      transition: width 0.2s linear 0.6s, padding 0.01s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
-    }
-  }
-  /* Animations */
-  @keyframes appear {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1 !important;
     }
   }
 `;

@@ -46,140 +46,145 @@ const ThreeDimensions = () => {
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 5%;
-  left: 10%;
-  width: 180px;
-  height: 90%;
-  perspective: calc(180px * 3); // Viewer's "distance" from the 3D object
-  .three-d-object {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding-top: 0.75rem;
-    transform-style: preserve-3d;
-    z-index: 1;
-    animation: infinite-spin 30s linear infinite;
-    .face {
-      position: absolute;
-      width: 180px;
-      height: 92%;
-      background-color: #7ffff233;
-      border: 2px solid #7ffff2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 0;
-      animation: appear 1s linear 0.6s;
-      animation-name: appear, shift-face-z-index;
-      animation-duration: 1s, 30s;
-      animation-timing-function: linear, linear;
-      animation-delay: 0.6s, 0;
-      h5 {
-        font-size: 1.5rem;
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 180px;
+    height: 90%;
+    perspective: calc(180px * 3); // Viewer's "distance" from the 3D object
+    .three-d-object {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-top: 0.75rem;
+      transform-style: preserve-3d;
+      z-index: 1;
+      animation: infinite-spin 30s linear infinite 5s;
+      .face {
+        position: absolute;
+        width: 180px;
+        height: 92%;
+        background-color: ${props => props.theme.threeDimensionsBackground};
+        border: 2px solid ${props => props.theme.threeDimensionsBorder};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 0;
+        animation: appear 1s linear 0.6s;
+        animation-name: appear, shift-face-z-index;
+        animation-duration: 1s, 30s;
+        animation-timing-function: linear, linear;
+        animation-delay: 0.6s, 0;
+        h5 {
+          font-size: 1.5rem;
+          color: ${props => props.theme.iconGlow};
+        }
+      }
+      /* Initial static positioning of the 3D object faces */
+      .side1 {
+        transform: rotateY(0deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      .side2 {
+        transform: rotateY(60deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      .side3 {
+        transform: rotateY(120deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      .side4 {
+        transform: rotateY(180deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      .side5 {
+        transform: rotateY(240deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      .side6 {
+        transform: rotateY(300deg) translateZ(calc(180px / 2 / 0.5774));
+      }
+      /* Bouncing icon and shadow */
+      .icon-wrapper {
+        position: absolute;
+        top: calc(50% - 80px);
+        left: calc(50% - 72px);
+        height: 50%;
+        transform: translateY(0);
+        animation: icon-bounce 6s ease-in-out infinite 0.1s;
+        .icon {
+          color: ${props => props.theme.iconColor};
+          height: 100%;
+          width: 100%;
+          filter: drop-shadow(0 0 15px ${props => props.theme.iconGlow});
+        }
+      }
+      .icon-shadow {
+        position: absolute;
+        height: 12px;
+        border-radius: 60px;
+        width: 120px;
+        bottom: 16%;
+        left: calc(50% - 60px);
+        background-color: ${props => props.theme.iconGlow};
+        animation: shadow-spin-and-pulse 6s ease-in-out infinite;
+        transform: scale(1.2);
+        filter: blur(10px);
       }
     }
-    /* Initial static positioning of the 3D object faces */
-    .side1 {
-      transform: rotateY(0deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    .side2 {
-      transform: rotateY(60deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    .side3 {
-      transform: rotateY(120deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    .side4 {
-      transform: rotateY(180deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    .side5 {
-      transform: rotateY(240deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    .side6 {
-      transform: rotateY(300deg) translateZ(calc(180px / 2 / 0.5774));
-    }
-    /* Bouncing icon and shadow */
-    .icon-wrapper {
-      position: absolute;
-      top: calc(50% - 80px);
-      left: calc(50% - 72px);
-      height: 50%;
-      transform: translateY(0);
-      animation: icon-bounce 6s ease-in-out infinite 0.1s;
-      .icon {
-        color: #00ff88;
-        height: 100%;
-        width: 100%;
-        filter: drop-shadow(0 0 15px ${props => props.theme.iconGlow});
+    /* Animations */
+    @keyframes appear {
+      0% {
+        opacity: 0 !important;
+      }
+      100% {
+        opacity: 1 !important;
       }
     }
-    .icon-shadow {
-      position: absolute;
-      height: 12px;
-      border-radius: 60px;
-      width: 120px;
-      bottom: 16%;
-      left: calc(50% - 60px);
-      background-color: rgba(255, 0, 60, 0.49);
-      animation: shadow-spin-and-pulse 6s ease-in-out infinite;
-      transform: scale(1.2);
-      filter: blur(10px);
+    @keyframes icon-bounce {
+      0%,
+      50%,
+      100% {
+        transform: translateY(0) rotateY(0);
+      }
+      25%,
+      75% {
+        transform: translateY(45px);
+      }
     }
-  }
-  /* Animations */
-  @keyframes appear {
-    0% {
-      opacity: 0 !important;
+    @keyframes shadow-spin-and-pulse {
+      0%,
+      50%,
+      100% {
+        transform: scale(1.2) rotateZ(0);
+        filter: blur(10px);
+      }
+      25% {
+        transform: scale(1) rotateZ(-5deg) translateX(-3px);
+        filter: blur(6px);
+      }
+      75% {
+        transform: scale(1) rotateZ(5deg) translateX(3px);
+        filter: blur(6px);
+      }
     }
-    100% {
-      opacity: 1 !important;
+    @keyframes shift-face-z-index {
+      0% {
+        z-index: 10;
+      }
+      50% {
+        z-index: 0;
+      }
+      100% {
+        z-index: 0;
+      }
     }
-  }
-  @keyframes icon-bounce {
-    0%,
-    50%,
-    100% {
-      transform: translateY(0) rotateY(0);
-    }
-    25%,
-    75% {
-      transform: translateY(45px);
-    }
-  }
-  @keyframes shadow-spin-and-pulse {
-    0%,
-    50%,
-    100% {
-      transform: scale(1.2) rotateZ(0);
-      filter: blur(10px);
-    }
-    25% {
-      transform: scale(1) rotateZ(-5deg) translateX(-3px);
-      filter: blur(6px);
-    }
-    75% {
-      transform: scale(1) rotateZ(5deg) translateX(3px);
-      filter: blur(6px);
-    }
-  }
-  @keyframes shift-face-z-index {
-    0% {
-      z-index: 10;
-    }
-    50% {
-      z-index: 0;
-    }
-    100% {
-      z-index: 0;
-    }
-  }
-  @keyframes infinite-spin {
-    0% {
-      transform: translateZ(calc(180px / 2 / -0.5774)) rotateY(0deg);
-    }
-    100% {
-      transform: translateZ(calc(180px / 2 / -0.5774)) rotateY(360deg);
+    @keyframes infinite-spin {
+      0% {
+        transform: translateZ(calc(180px / 2 / -0.5774)) rotateY(0deg);
+      }
+      100% {
+        transform: translateZ(calc(180px / 2 / -0.5774)) rotateY(360deg);
+      }
     }
   }
 `;

@@ -36,15 +36,15 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 
 const Wrapper = styled.section`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 50%;
-  height: calc(100% - 40px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  padding: 1rem !important;
   display: flex;
   flex-direction: column;
-  border: 2px solid ${props => props.theme.textColor};
-  border-radius: 3px;
-  overflow-y: scroll;
+  overflow-y: auto;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
@@ -64,19 +64,16 @@ const Wrapper = styled.section`
   .panel-header {
     display: flex;
     justify-content: space-between;
-    h1,
-    p {
-      color: ${props => props.theme.textColor};
-    }
-    .icon {
-      font-size: 9rem;
-      color: #274e4b;
-    }
     h1 {
-      font-size: 4rem;
-      margin-bottom: 4rem;
+      color: ${props => props.theme.textColor};
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     button {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: end;
       padding: 0;
       border: none;
       background: none;
@@ -85,18 +82,21 @@ const Wrapper = styled.section`
       }
       .icon {
         font-size: 1.4rem;
+        color: ${props => props.theme.textColor};
       }
     }
-    animation: appear 1s linear 0.6s forwards;
   }
-}
-/* Animations */
-@keyframes appear {
-  0% {
-    opacity: 0;
+  p {
+    color: ${props => props.theme.textColor};
   }
-  100% {
-    opacity: 1 !important;
+  @media (min-width: 768px) {
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    height: calc(100% - 40px);
+    border: 2px solid ${props => props.theme.textColor};
+    border-radius: 3px;
   }
 `;
 
