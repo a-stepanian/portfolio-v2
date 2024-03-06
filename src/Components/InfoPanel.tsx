@@ -20,8 +20,12 @@ const InfoPanel = (props: IInfoPanelProps) => {
   return (
     <Wrapper>
       <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
-        {text !== "" && <InfoPanelContents text={text} />}
-        {text !== "" && <ThreeDimensions />}
+        {text !== "" && (
+          <div className="info-panel-contents-wrapper">
+            <InfoPanelContents text={text} />
+            {text !== "" && <ThreeDimensions />}
+          </div>
+        )}
       </div>
     </Wrapper>
   );
@@ -46,7 +50,7 @@ const Wrapper = styled.section`
     border: 4px solid ${props => props.theme.textColor};
     border-radius: 3px;
     background-color: ${props => props.theme.panelBg};
-    & * {
+    & .info-panel-contents-wrapper {
       opacity: 0;
     }
   }
@@ -56,7 +60,7 @@ const Wrapper = styled.section`
     opacity: 1;
     padding: 1rem;
     transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
-    & * {
+    & .info-panel-contents-wrapper {
       transition: opacity 0.8s linear 0.8s;
       opacity: 1;
     }

@@ -15,6 +15,8 @@ export const App = () => {
       document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
       document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text");
       document?.querySelector(`.${text}-icon`)?.classList.remove("blue-text");
+      document?.querySelector(`.${text}-clip-caption`)?.classList.remove("skewed-text");
+      document?.querySelector(`.${text}-icon`)?.classList.remove("skewed-text");
       document
         ?.querySelector(`.${text}-line`)
         ?.classList.remove(`clicked-line-${["portfolio", "another"].includes(text) ? "bottom" : "top"}-row`);
@@ -24,7 +26,9 @@ export const App = () => {
       document?.querySelector(".information-panel")?.classList.add("information-panel-open");
       document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
+      document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("skewed-text");
       document?.querySelector(`.${btnClicked}-icon`)?.classList.add("blue-text");
+      document?.querySelector(`.${btnClicked}-icon`)?.classList.add("skewed-text");
       document
         ?.querySelector(`.${btnClicked}-line`)
         ?.classList.add(`clicked-line-${["portfolio", "another"].includes(btnClicked) ? "bottom" : "top"}-row`);

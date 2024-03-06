@@ -76,6 +76,8 @@ const Wrapper = styled.div`
         z-index: 3;
         position: relative;
         font-size: 1.4rem;
+        transform: rotateY(0) skew(0, 0) translate(0, 0);
+        transition: all 0.2s;
       }
 
       &::after {
@@ -113,10 +115,15 @@ const Wrapper = styled.div`
       font-size: 0.8rem;
       text-align: center;
       font-weight: 500;
+      transform: rotateY(0) skew(0, 0) translate(0, 0);
+      transition: all 0.2s;
     }
     .clip-svg {
       width: 0;
       height: 0;
+      &:hover {
+        cursor: pointer;
+      }
     }
     .line {
       z-index: 3;
@@ -138,6 +145,9 @@ const Wrapper = styled.div`
       bottom: calc(100px - 100vh);
       height: calc(100vh - 92px);
       transition: 0.2s linear 0.4s;
+    }
+    .skewed-text {
+      transform: rotateY(45deg) skew(0deg, -20deg) translate(28px, 14px) !important;
     }
   }
   /* Animations */
