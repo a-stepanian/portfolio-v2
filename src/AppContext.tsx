@@ -2,16 +2,10 @@ import React, { createContext, useContext, useState } from "react";
 
 export interface IColorScheme {
   isDarkMode: boolean;
-  bgColor: string;
-  hexBorderColor: string;
-  hoverColor: string;
-  textColor: string;
-  textColorMuted: string;
+  blackColor: string;
+  primaryColor: string;
   panelBg: string;
-  hexagonOutline: string;
-  glowColor: string;
-  iconGlow: string;
-  iconColor: string;
+  panel2Bg: string;
   threeDimensionsBackground: string;
   threeDimensionsBorder: string;
   threeDimensionsOpacity: string;
@@ -44,16 +38,10 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     isDarkMode: true,
-    bgColor: "#000000",
-    hexBorderColor: "#71e4ea",
-    hoverColor: "#000000",
-    textColor: "#71e4ea",
-    textColorMuted: "#71e4ea",
+    primaryColor: "#71e4ea",
+    blackColor: "#000000",
     panelBg: "#081011",
-    hexagonOutline: "#71e4ea",
-    glowColor: "#71e4ea",
-    iconGlow: "#71e4ea",
-    iconColor: "#71e4ea",
+    panel2Bg: "#8ed9dd",
     threeDimensionsBackground: "#71e4ea1e",
     threeDimensionsBorder: "#71e4ea",
     threeDimensionsOpacity: "0"

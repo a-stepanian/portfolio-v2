@@ -17,22 +17,22 @@ export const DarkModeBtn = () => {
             // if (colorScheme.isDarkMode) {
             //   updateColorScheme({
             //     isDarkMode: false,
-            //     bgColor: "#fbebcc",
-            //     hexBorderColor: "#faca79",
-            //     hoverColor: "#e6a662",
-            //     textColor: "#754838",
-            //     textColorMuted: "#75483844",
+            //     blackColor: "#fbebcc",
+            //     primaryColor: "#faca79",
+            //     blackColor: "#e6a662",
+            //     primaryColor: "#754838",
+            //     primaryColor: "#75483844",
             //     panelBg: "#75483844",
             //   });
             //   return;
             // }
             // updateColorScheme({
             //   isDarkMode: true,
-            //   bgColor: "#111",
-            //   hexBorderColor: "#555",
-            //   hoverColor: "#122",
-            //   textColor: "#7ffff2",
-            //   textColorMuted: "#7ffff244",
+            //   blackColor: "#111",
+            //   primaryColor: "#555",
+            //   blackColor: "#122",
+            //   primaryColor: "#7ffff2",
+            //   primaryColor: "#7ffff244",
             //   panelBg: "#7ffff244",
             // });
             return;
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
     .icon {
       z-index: 3;
       position: relative;
-      color: ${props => props.theme.textColor};
+      color: ${props => props.theme.primaryColor};
       font-size: 1.4rem;
     }
     .clip-border {
@@ -108,7 +108,7 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background: ${props => props.theme.bgColor};
+        background: ${props => props.theme.blackColor};
         clip-path: url("#inner-trapezoid");
         z-index: 2;
       }
@@ -117,7 +117,7 @@ const Wrapper = styled.div`
         color: aquamarine;
         cursor: pointer;
         &::after {
-          background: ${props => props.theme.hoverColor};
+          background: ${props => props.theme.blackColor};
         }
       }
     }

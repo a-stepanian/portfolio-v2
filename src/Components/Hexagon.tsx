@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    filter: drop-shadow(0 0 5px ${props => props.theme.glowColor});
+    filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     .clip-border {
       border: none;
       display: block;
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
       background: #555;
       width: 100px;
       height: 100px;
-      color: ${props => props.theme.hexagonOutline};
+      color: ${props => props.theme.primaryColor};
       /* Button outline un-selected */
       .blue-overlay {
         transition: 0.4s linear;
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
         right: 0;
         width: 100%;
         height: 0;
-        background: ${props => props.theme.textColor};
+        background: ${props => props.theme.primaryColor};
         z-index: 1;
       }
       /* Button outline selected */
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
         height: 100px;
       }
       .blue-text {
-        color: ${props => props.theme.textColor};
+        color: ${props => props.theme.primaryColor};
       }
       .icon {
         z-index: 3;
@@ -88,16 +88,16 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background-color: ${props => props.theme.bgColor};
+        background-color: ${props => props.theme.blackColor};
         clip-path: url("#hexagon-clip");
         z-index: 2;
       }
       &:hover {
         background: #555;
-        color: ${props => props.theme.textColor};
+        color: ${props => props.theme.primaryColor};
         cursor: pointer;
         &::after {
-          background: ${props => props.theme.hoverColor};
+          background: ${props => props.theme.blackColor};
         }
       }
     }
@@ -133,8 +133,8 @@ const Wrapper = styled.div`
       width: 4px;
       height: 0;
       transition: 0.2s 0.2s linear;
-      background-color: ${props => props.theme.textColor};
-      filter: drop-shadow(0 0 5px ${props => props.theme.glowColor});
+      background-color: ${props => props.theme.primaryColor};
+      filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     }
     .clicked-line-top-row {
       bottom: calc(100px - 100vh);

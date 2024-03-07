@@ -45,10 +45,10 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
     display: block;
     position: absolute;
-    top: 3%;
-    left: calc((100vw - 206px - calc((100vw - 206px) / 2)) / 2);
-    width: calc((100vw - 200px) / 2);
-    height: 200px;
+    bottom: 5%;
+    left: 80px;
+    width: 120px;
+    height: 80%;
     perspective: calc(50vw); // Viewer's "distance" from the 3D object
     .three-d-object {
       position: relative;
@@ -60,9 +60,9 @@ const Wrapper = styled.div`
       .face {
         position: absolute;
         height: 92%;
-        width: calc((100vw - 200px) / 2);
+        width: 120px;
         background-color: ${props => props.theme.threeDimensionsBackground};
-        border: 2px solid ${props => props.theme.iconGlow};
+        border: 2px solid ${props => props.theme.primaryColor};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -74,27 +74,27 @@ const Wrapper = styled.div`
         animation-delay: 0.6s, 0s;
         h5 {
           font-size: 0.6rem;
-          color: ${props => props.theme.iconGlow};
+          color: ${props => props.theme.primaryColor};
         }
       }
       /* Initial static positioning of the 3D object faces */
       .side1 {
-        transform: rotateY(0deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(0deg) translateZ(calc(120px / 2 / 0.5774));
       }
       .side2 {
-        transform: rotateY(60deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(60deg) translateZ(calc(120px / 2 / 0.5774));
       }
       .side3 {
-        transform: rotateY(120deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(120deg) translateZ(calc(120px / 2 / 0.5774));
       }
       .side4 {
-        transform: rotateY(180deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(180deg) translateZ(calc(120px / 2 / 0.5774));
       }
       .side5 {
-        transform: rotateY(240deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(240deg) translateZ(calc(120px / 2 / 0.5774));
       }
       .side6 {
-        transform: rotateY(300deg) translateZ(calc(calc((100vw - 200px) / 2) / 2 / 0.5774));
+        transform: rotateY(300deg) translateZ(calc(120px / 2 / 0.5774));
       }
     }
     /* Bouncing icon and shadow */
@@ -106,10 +106,10 @@ const Wrapper = styled.div`
       transform: translateY(0);
       animation: icon-bounce 6s ease-in-out infinite 0.1s;
       .icon {
-        color: ${props => props.theme.iconColor};
+        color: ${props => props.theme.primaryColor};
         height: 100%;
         width: 100%;
-        filter: drop-shadow(0 0 10px ${props => props.theme.iconGlow});
+        filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
       }
     }
     .icon-shadow {
@@ -118,9 +118,9 @@ const Wrapper = styled.div`
       height: 10px;
       border-radius: 60px;
       width: 60px;
-      top: 150px;
+      top: 120px;
       left: calc(50% - 20px);
-      background-color: ${props => props.theme.iconGlow};
+      background-color: ${props => props.theme.primaryColor};
       filter: blur(30px);
       transform: scale(1.2);
       animation: shadow-pulse 6s ease-in-out infinite 0.2s;
@@ -177,10 +177,10 @@ const Wrapper = styled.div`
     }
     @keyframes infinite-spin-mobile {
       0% {
-        transform: translateZ(calc(calc((100vw - 200px) / 2) / 2 / -0.5774)) rotateY(0deg);
+        transform: translateZ(calc(120px / 2 / -0.5774)) rotateY(0deg);
       }
       100% {
-        transform: translateZ(calc(calc((100vw - 200px) / 2) / 2 / -0.5774)) rotateY(360deg);
+        transform: translateZ(calc(120px / 2 / -0.5774)) rotateY(360deg);
       }
     }
   }

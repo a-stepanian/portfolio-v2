@@ -33,7 +33,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
 
 const Wrapper = styled.section`
   .panel {
-    filter: drop-shadow(0 0 5px ${props => props.theme.glowColor});
+    filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     position: fixed;
     top: 200px;
     bottom: 0;
@@ -44,10 +44,10 @@ const Wrapper = styled.section`
     width: 0;
     opacity: 0;
     z-index: 4;
-    box-shadow: inset 0 0 5px ${props => props.theme.glowColor};
+    box-shadow: inset 0 0 5px ${props => props.theme.primaryColor};
     height: calc(100vh - 200px);
     transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.15s;
-    border: 4px solid ${props => props.theme.textColor};
+    border: 4px solid ${props => props.theme.primaryColor};
     border-radius: 3px;
     background-color: ${props => props.theme.panelBg};
     & .info-panel-contents-wrapper {

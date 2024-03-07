@@ -24,6 +24,7 @@ export const App = () => {
     // style button clicked
     if (btnClicked.length > 0) {
       document?.querySelector(".information-panel")?.classList.add("information-panel-open");
+      document?.querySelector(".info-panel-contents-wrapper")?.classList.add("grow-tall");
       document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("skewed-text");
@@ -82,7 +83,7 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.blackColor};
   * {
     margin: 0;
     padding: 0;
@@ -125,6 +126,17 @@ const Wrapper = styled.div`
     }
     100% {
       opacity: 1 !important;
+    }
+  }
+  .grow-tall {
+    animation: bigPanel 5s forwards 5s;
+  }
+  @keyframes bigPanel {
+    0% {
+      height: 10px;
+    }
+    100% {
+      height: 100px;
     }
   }
 `;

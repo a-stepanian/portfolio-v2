@@ -55,17 +55,17 @@ const Wrapper = styled.section`
     height: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.textColorMuted};
-    border: 2px solid ${props => props.theme.hoverColor};
+    background-color: ${props => props.theme.primaryColor};
+    border: 2px solid ${props => props.theme.blackColor};
   }
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.glowColor};
+    background-color: ${props => props.theme.primaryColor};
   }
   .panel-header {
     display: flex;
     justify-content: space-between;
     h1 {
-      color: ${props => props.theme.textColor};
+      color: ${props => props.theme.primaryColor};
       font-size: 1rem;
       margin-bottom: 1rem;
     }
@@ -82,21 +82,28 @@ const Wrapper = styled.section`
       }
       .icon {
         font-size: 1.4rem;
-        color: ${props => props.theme.textColor};
+        color: ${props => props.theme.primaryColor};
       }
     }
   }
   p {
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
-    top: 20px;
-    bottom: 20px;
-    left: 20px;
+    position: fixed;
+    top: -180px;
+    left: 250px;
     right: 20px;
-    height: calc(100% - 40px);
-    border: 2px solid ${props => props.theme.textColor};
+    height: calc(100vh - 50px);
+    border: 2px solid ${props => props.theme.primaryColor};
+    background-color: ${props => props.theme.panel2Bg};
     border-radius: 3px;
+    .panel-header h1,
+    .panel-header button,
+    .panel-header button .icon,
+    p {
+      color: ${props => props.theme.blackColor};
+    }
   }
 `;
 
