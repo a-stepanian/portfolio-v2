@@ -1,17 +1,17 @@
 import React, { createContext, useContext, useState } from "react";
 
 export interface IColorScheme {
-  isDarkMode: boolean;
   blackColor: string;
   primaryColor: string;
   panelBg: string;
   panel2Bg: string;
+  hexagonOutlineColor: string;
   threeDimensionsBackground: string;
   threeDimensionsBorder: string;
   threeDimensionsOpacity: string;
 }
 
-export type TButtonText = "portfolio" | "background" | "contact" | "another" | "";
+export type TButtonText = "portfolio" | "background" | "contact" | "";
 
 interface IAppState {
   btnClicked: TButtonText;
@@ -37,13 +37,13 @@ const useAppContext = () => {
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
-    isDarkMode: true,
-    primaryColor: "#71e4ea",
-    blackColor: "#000000",
-    panelBg: "#081011",
-    panel2Bg: "#8ed9dd",
-    threeDimensionsBackground: "#71e4ea1e",
-    threeDimensionsBorder: "#71e4ea",
+    blackColor: "#111",
+    panelBg: "#222",
+    primaryColor: "#ff8192",
+    hexagonOutlineColor: "#e4abb2",
+    panel2Bg: "#a3b9ba",
+    threeDimensionsBackground: "#2fd5ca1e",
+    threeDimensionsBorder: "#9fe1cd",
     threeDimensionsOpacity: "0"
   });
 

@@ -49,7 +49,7 @@ const Wrapper = styled.div`
       display: block;
       position: relative;
       clip-path: url("#hexagon-clip");
-      background: #555;
+      background: #111;
       width: 100px;
       height: 100px;
       color: ${props => props.theme.primaryColor};
@@ -93,7 +93,7 @@ const Wrapper = styled.div`
         z-index: 2;
       }
       &:hover {
-        background: #555;
+        background: #333;
         color: ${props => props.theme.primaryColor};
         cursor: pointer;
         &::after {
@@ -104,8 +104,8 @@ const Wrapper = styled.div`
     .blink-light::after {
       animation: blink-light 0.2s ease-in-out; /* Apply the blink animation on click */
     }
-    .blink-dark::after {
-      animation: blink-dark 0.2s ease-in-out; /* Apply the blink animation on click */
+    .blink::after {
+      animation: blink 0.2s ease-in-out; /* Apply the blink animation on click */
     }
     .clip-caption {
       z-index: 3;
@@ -119,6 +119,13 @@ const Wrapper = styled.div`
       transition: all 0.2s;
     }
     .clip-svg {
+      width: 0;
+      height: 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .clip-svg2 {
       width: 0;
       height: 0;
       &:hover {
@@ -160,7 +167,7 @@ const Wrapper = styled.div`
       background-color: #e6a662;
     }
   }
-  @keyframes blink-dark {
+  @keyframes blink {
     0%,
     100% {
       background-color: transparent;

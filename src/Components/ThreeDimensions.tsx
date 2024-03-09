@@ -8,61 +8,61 @@ const ThreeDimensions = () => {
   const { btnClicked } = useAppContext();
 
   return (
-    <Wrapper>
-      <div className="three-d-object">
-        <div className="face side1">
+    <Wrapper style={{ height: "80%" }}>
+      <div className="big-three-d-object">
+        <div className="big-face side1">
           <h5>{btnClicked}</h5>
         </div>
-        <div className="face side2">
+        <div className="big-face side2">
           <h5>{btnClicked}</h5>
         </div>
-        <div className="face side3">
+        <div className="big-face side3">
           <h5>{btnClicked}</h5>
         </div>
-        <div className="face side4">
+        <div className="big-face side4">
           <h5>{btnClicked}</h5>
         </div>
-        <div className="face side5">
+        <div className="big-face side5">
           <h5>{btnClicked}</h5>
         </div>
-        <div className="face side6">
+        <div className="big-face side6">
           <h5>{btnClicked}</h5>
         </div>
       </div>
-      <div className="icon-wrapper">
-        {btnClicked === "portfolio" && <FaLaptopCode className="icon" />}
-        {btnClicked === "background" && <BiBriefcase className="icon" />}
-        {btnClicked === "contact" && <MdMailOutline className="icon" />}
-      </div>
-      {btnClicked !== "" && <div className="icon-shadow"></div>}
+      {btnClicked !== "" && (
+        <div className="big-icon-wrapper">
+          {btnClicked === "portfolio" && <FaLaptopCode className="icon" />}
+          {btnClicked === "background" && <BiBriefcase className="icon" />}
+          {btnClicked === "contact" && <MdMailOutline className="icon" />}
+        </div>
+      )}
+      {btnClicked !== "" && <div className="big-icon-shadow"></div>}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: none;
-
   @media (min-width: 768px) {
     display: block;
     position: absolute;
     bottom: 5%;
-    left: 80px;
+    left: 70px;
     width: 120px;
-    height: 80%;
-    perspective: calc(50vw); // Viewer's "distance" from the 3D object
-    .three-d-object {
+    perspective: calc(400px); // Viewer's "distance" from the 3D object
+    .big-three-d-object {
       position: relative;
-      height: 90%;
+      height: 100%;
       padding-top: 0.75rem;
       transform-style: preserve-3d;
       z-index: 1;
-      animation: infinite-spin-mobile 30s linear infinite;
-      .face {
+      animation: infinite-spin 30s linear infinite;
+      .big-face {
         position: absolute;
         height: 92%;
         width: 120px;
         background-color: ${props => props.theme.threeDimensionsBackground};
-        border: 2px solid ${props => props.theme.primaryColor};
+        border: 1px solid ${props => props.theme.threeDimensionsBorder};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
         animation-delay: 0.6s, 0s;
         h5 {
           font-size: 0.6rem;
-          color: ${props => props.theme.primaryColor};
+          color: ${props => props.theme.threeDimensionsBorder};
         }
       }
       /* Initial static positioning of the 3D object faces */
@@ -98,32 +98,32 @@ const Wrapper = styled.div`
       }
     }
     /* Bouncing icon and shadow */
-    .icon-wrapper {
+    .big-icon-wrapper {
       position: absolute;
-      top: calc(50% - 50px);
-      left: calc(50% - 40px);
+      top: 0;
+      left: calc(50% - 50px);
       height: 50%;
-      transform: translateY(0);
-      animation: icon-bounce 6s ease-in-out infinite 0.1s;
+      transform: translateY(30%);
+      animation: big-icon-bounce 8s ease-in-out infinite 0.1s;
       .icon {
-        color: ${props => props.theme.primaryColor};
+        color: ${props => props.theme.threeDimensionsBorder};
         height: 100%;
         width: 100%;
-        filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
+        filter: drop-shadow(0 0 10px ${props => props.theme.threeDimensionsBorder});
       }
     }
-    .icon-shadow {
+    .big-icon-shadow {
       z-index: 1;
       position: absolute;
       height: 10px;
       border-radius: 60px;
       width: 60px;
-      top: 120px;
+      bottom: 50px;
       left: calc(50% - 20px);
-      background-color: ${props => props.theme.primaryColor};
+      background-color: ${props => props.theme.threeDimensionsBorder};
       filter: blur(30px);
       transform: scale(1.2);
-      animation: shadow-pulse 6s ease-in-out infinite 0.2s;
+      animation: big-shadow-pulse 8s ease-in-out infinite;
     }
     /* Animations */
     @keyframes appear {
@@ -134,20 +134,20 @@ const Wrapper = styled.div`
         opacity: 1 !important;
       }
     }
-    @keyframes icon-bounce {
+    @keyframes big-icon-bounce {
       0%,
       50%,
       100% {
-        transform: translateY(0) rotateY(0);
+        transform: translateY(30%) rotateY(0);
       }
       25% {
-        transform: translateY(30px) rotateY(30deg);
+        transform: translateY(97%) rotateY(30deg);
       }
       75% {
-        transform: translateY(30px) rotateY(-30deg);
+        transform: translateY(97%) rotateY(-30deg);
       }
     }
-    @keyframes shadow-pulse {
+    @keyframes big-shadow-pulse {
       0%,
       50%,
       100% {
@@ -155,13 +155,15 @@ const Wrapper = styled.div`
       }
       /* facing right */
       25% {
-        filter: blur(20px);
-        left: calc(50% - 25px);
+        filter: blur(10px);
+        transform: scale(1.2) rotate(-10deg);
+        left: calc(50% - 30px);
       }
       /* facing left */
       75% {
-        filter: blur(20px);
-        left: calc(50% - 15px);
+        filter: blur(10px);
+        transform: scale(1.2) rotate(10deg);
+        left: calc(50% - 25px);
       }
     }
     @keyframes shift-face-z-index {
@@ -175,7 +177,7 @@ const Wrapper = styled.div`
         z-index: 0;
       }
     }
-    @keyframes infinite-spin-mobile {
+    @keyframes infinite-spin {
       0% {
         transform: translateZ(calc(120px / 2 / -0.5774)) rotateY(0deg);
       }
