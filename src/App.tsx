@@ -11,6 +11,7 @@ export const App = () => {
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {
+      document?.querySelector(`.${text}-hexagon-wrapper`)?.classList.remove("extra-drop-shadow");
       document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
       document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text");
       // document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text", "skewed-text");
@@ -23,6 +24,7 @@ export const App = () => {
     if (btnClicked.length > 0) {
       document?.querySelector(".information-panel")?.classList.add("information-panel-open");
       // style button clicked
+      document?.querySelector(`.${btnClicked}-hexagon-wrapper`)?.classList.add("extra-drop-shadow");
       document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
       // document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text", "skewed-text");
@@ -46,13 +48,12 @@ export const App = () => {
         <div id="site-wrapper">
           <nav>
             <div className="top-row">
-              <Hexagon lightColor={"red"} text={"background"} />
-              <Hexagon lightColor={"yellow"} text={"contact"} />
+              <Hexagon text={"background"} />
+              <Hexagon text={"contact"} />
             </div>
             <div className="bottom-hexagon">
-              <Hexagon lightColor={"blue"} text={"portfolio"} />
+              <Hexagon text={"portfolio"} />
             </div>
-            {/* <DarkModeBtn /> */}
           </nav>
           {btnClicked !== "" && (
             <div className="three-dimensions-mobile-wrapper">

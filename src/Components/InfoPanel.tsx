@@ -22,7 +22,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
       <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
         {text !== "" && (
           <div className="info-panel-contents-wrapper">
-            <InfoPanelContents text={text} />
+            {/* <InfoPanelContents text={text} /> */}
             {text !== "" && <ThreeDimensions />}
           </div>
         )}

@@ -1,29 +1,26 @@
 import InfoPanel from "./InfoPanel";
-import { FaLaptopCode } from "react-icons/fa";
-import { BiBriefcase } from "react-icons/bi";
-import { MdMailOutline } from "react-icons/md";
+import { PiBriefcaseThin, PiEnvelopeSimpleThin, PiCertificateThin } from "react-icons/pi";
 import styled from "styled-components";
 import { TButtonText, useAppContext } from "../AppContext";
 
 interface IHexagonProps {
   text: TButtonText;
-  lightColor: string;
 }
 
 export const Hexagon = (props: IHexagonProps) => {
-  const { text, lightColor } = props;
+  const { text } = props;
   const { btnClicked, updateBtnClicked } = useAppContext();
   return (
     <Wrapper>
-      <div className="hexagon-wrapper">
+      <div className={`hexagon-wrapper ${text}-hexagon-wrapper`}>
         <button
           className={`clip-border ${text}-clip-border`}
           onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}>
           <div className={`blue-overlay ${text}-blue-overlay`}></div>
           <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
-          {text === "portfolio" && <FaLaptopCode className={`icon ${text}-icon`} />}
-          {text === "background" && <BiBriefcase className={`icon ${text}-icon`} />}
-          {text === "contact" && <MdMailOutline className={`icon ${text}-icon`} />}
+          {text === "portfolio" && <PiBriefcaseThin className={`icon ${text}-icon`} />}
+          {text === "background" && <PiCertificateThin className={`icon ${text}-icon`} />}
+          {text === "contact" && <PiEnvelopeSimpleThin className={`icon ${text}-icon`} />}
         </button>
         <div className={`line ${text}-line`}></div>
         <svg className="clip-svg">
@@ -43,13 +40,13 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
+    filter: drop-shadow(0 0 1px ${props => props.theme.primaryColor});
     .clip-border {
       border: none;
       display: block;
       position: relative;
       clip-path: url("#hexagon-clip");
-      background: #111;
+      background: #2a2a2a;
       width: 100px;
       height: 100px;
       color: ${props => props.theme.primaryColor};
@@ -75,7 +72,7 @@ const Wrapper = styled.div`
       .icon {
         z-index: 3;
         position: relative;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         transform: rotateY(0) skew(0, 0) translate(0, 0);
         transition: all 0.2s;
       }
@@ -114,7 +111,7 @@ const Wrapper = styled.div`
       width: 100%;
       font-size: 0.8rem;
       text-align: center;
-      font-weight: 500;
+      font-weight: 100;
       transform: rotateY(0) skew(0, 0) translate(0, 0);
       transition: all 0.2s;
     }
@@ -174,6 +171,15 @@ const Wrapper = styled.div`
     }
     50% {
       background-color: #122;
+    }
+  }
+  .extra-drop-shadow {
+    filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
+    .clip-caption {
+      font-weight: 500;
+    }
+    .icon {
+      filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     }
   }
 `;
