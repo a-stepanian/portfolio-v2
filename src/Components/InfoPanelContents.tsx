@@ -83,7 +83,6 @@ const Wrapper = styled.section`
     justify-content: flex-end;
     button {
       height: 40px;
-      transform: translateX(24px);
       width: 40px;
       display: flex;
       justify-content: center;

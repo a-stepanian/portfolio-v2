@@ -46,7 +46,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   // });
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#302232",
-    panelBg: "#0863757d",
+    panelBg: "#fff",
     primaryColor: "#fcbf49",
     hexagonOutlineColor: "#edf2f4",
     panel2Bg: "#086375",

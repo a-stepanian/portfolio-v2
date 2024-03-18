@@ -14,30 +14,32 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    let primaryColor = "";
-    let panelBg = "";
-    switch (btnClicked) {
-      case "background": {
-        primaryColor = "#1dd3b0";
-        panelBg = "#3a4649";
-        break;
+    if (btnClicked?.length > 0) {
+      let primaryColor = "";
+      let panelBg = "";
+      switch (btnClicked) {
+        case "background": {
+          primaryColor = "#1dd3b0";
+          panelBg = "#3a4649";
+          break;
+        }
+        case "portfolio": {
+          primaryColor = "#affc41";
+          panelBg = "#39413c";
+          break;
+        }
+        default: {
+          primaryColor = "#ff5d57";
+          panelBg = "#4a2b38";
+          break;
+        }
       }
-      case "portfolio": {
-        primaryColor = "#affc41";
-        panelBg = "#39413c";
-        break;
-      }
-      default: {
-        primaryColor = "#b2ff9e";
-        panelBg = "#3b3b3f";
-        break;
-      }
+      updateColorScheme({
+        ...colorScheme,
+        primaryColor,
+        panelBg
+      });
     }
-    updateColorScheme({
-      ...colorScheme,
-      primaryColor,
-      panelBg
-    });
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {

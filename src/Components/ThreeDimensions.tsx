@@ -3,6 +3,7 @@ import { useAppContext } from "../AppContext";
 import { FaLaptopCode } from "react-icons/fa";
 import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
+import { PiBriefcaseBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
 
 const ThreeDimensions = () => {
   const { btnClicked } = useAppContext();
@@ -31,9 +32,9 @@ const ThreeDimensions = () => {
       </div>
       {btnClicked !== "" && (
         <div className="big-icon-wrapper">
-          {btnClicked === "portfolio" && <FaLaptopCode className="icon" />}
-          {btnClicked === "background" && <BiBriefcase className="icon" />}
-          {btnClicked === "contact" && <MdMailOutline className="icon" />}
+          {btnClicked === "portfolio" && <PiBriefcaseBold className="icon" />}
+          {btnClicked === "background" && <PiCertificateBold className="icon" />}
+          {btnClicked === "contact" && <PiEnvelopeSimpleBold className="icon" />}
         </div>
       )}
       {btnClicked !== "" && <div className="big-icon-shadow"></div>}
