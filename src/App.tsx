@@ -5,12 +5,43 @@ import { useAppContext } from "./AppContext";
 import ThreeDimensionsMobile from "./Components/ThreeDimensionsMobile";
 
 export const App = () => {
-  const { btnClicked, colorScheme } = useAppContext();
+  const { btnClicked, colorScheme, updateBtnClicked, updateColorScheme } = useAppContext();
 
   useEffect(() => {
+    setTimeout(() => {
+      updateBtnClicked("portfolio");
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    let primaryColor = "";
+    let panelBg = "";
+    switch (btnClicked) {
+      case "background": {
+        primaryColor = "#1dd3b0";
+        panelBg = "#3a4649";
+        break;
+      }
+      case "portfolio": {
+        primaryColor = "#affc41";
+        panelBg = "#39413c";
+        break;
+      }
+      default: {
+        primaryColor = "#b2ff9e";
+        panelBg = "#3b3b3f";
+        break;
+      }
+    }
+    updateColorScheme({
+      ...colorScheme,
+      primaryColor,
+      panelBg
+    });
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {
+      document?.querySelector(`.${text}-hexagon-wrapper`)?.classList.add("btn-shrink");
       document?.querySelector(`.${text}-hexagon-wrapper`)?.classList.remove("extra-drop-shadow");
       document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
       document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text");
@@ -24,6 +55,7 @@ export const App = () => {
     if (btnClicked.length > 0) {
       document?.querySelector(".information-panel")?.classList.add("information-panel-open");
       // style button clicked
+      document?.querySelector(`.${btnClicked}-hexagon-wrapper`)?.classList.remove("btn-shrink");
       document?.querySelector(`.${btnClicked}-hexagon-wrapper`)?.classList.add("extra-drop-shadow");
       document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
@@ -76,6 +108,10 @@ const Wrapper = styled.div`
   height: 100vh;
   overflow: hidden;
   background-color: ${props => props.theme.blackColor};
+  transition: 0.2s;
+  .btn-shrink {
+    transform: scale(0.9) !important;
+  }
   * {
     margin: 0;
     padding: 0;

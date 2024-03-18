@@ -62,7 +62,7 @@ const Wrapper = styled.div`
         height: 92%;
         width: 120px;
         background-color: ${props => props.theme.threeDimensionsBackground};
-        border: 1px solid ${props => props.theme.threeDimensionsBorder};
+        border: 1px solid ${props => props.theme.primaryColor};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
         animation-delay: 0.6s, 0s;
         h5 {
           font-size: 0.6rem;
-          color: ${props => props.theme.threeDimensionsBorder};
+          color: ${props => props.theme.primaryColor};
         }
       }
       /* Initial static positioning of the 3D object faces */
@@ -106,10 +106,10 @@ const Wrapper = styled.div`
       transform: translateY(30%);
       animation: big-icon-bounce 8s ease-in-out infinite 0.1s;
       .icon {
-        color: ${props => props.theme.threeDimensionsBorder};
+        color: ${props => props.theme.primaryColor};
         height: 100%;
         width: 100%;
-        filter: drop-shadow(0 0 10px ${props => props.theme.threeDimensionsBorder});
+        filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
       }
     }
     .big-icon-shadow {
@@ -120,7 +120,7 @@ const Wrapper = styled.div`
       width: 60px;
       bottom: 50px;
       left: calc(50% - 20px);
-      background-color: ${props => props.theme.threeDimensionsBorder};
+      background-color: ${props => props.theme.primaryColor};
       filter: blur(30px);
       transform: scale(1.2);
       animation: big-shadow-pulse 8s ease-in-out infinite;

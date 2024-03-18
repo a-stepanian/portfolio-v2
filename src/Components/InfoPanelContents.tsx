@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
-import { FaRegWindowClose } from "react-icons/fa";
-import ThreeDimensions from "./ThreeDimensions";
+import { PiXThin } from "react-icons/pi";
+import { useRef } from "react";
+import Projects from "./portfolio/Projects";
 
 interface IInfoPanelContentsProps {
   text: string;
@@ -10,79 +11,100 @@ interface IInfoPanelContentsProps {
 const InfoPanelContents = (props: IInfoPanelContentsProps) => {
   const { text } = props;
   const { btnClicked, updateBtnClicked } = useAppContext();
+  const scrollTarget = useRef<HTMLDivElement>(null);
 
-  const isOpen = text === btnClicked;
+  if (text === btnClicked) {
+    scrollTarget?.current?.scrollIntoView();
+  }
 
   const leftOffset =
     text === "background" ? "48.5px" : text === "portfolio" ? "98.5px" : text === "contact" ? "48.5px" : "198.5px";
 
   return (
     <Wrapper>
-      <div className="panel-header">
-        <h1>{text}</h1>
+      <div ref={scrollTarget}></div>
+      <div className="button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")}>
-          <FaRegWindowClose className="icon" />
+          <PiXThin className="close-icon" />
         </button>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, exercitationem eaque, distinctio corporis
-        quia facilis atque quibusdam beatae a aperiam minus dignissimos tempora provident delectus quisquam culpa!
-        Deleniti, eligendi. Ad laborum, culpa ab doloremque vitae accusamus accusantium unde. Neque vero atque
-        voluptatibus expedita odio aliquid eos magni laboriosam blanditiis assumenda.
-      </p>
+      <div className="panel-header">
+        <h1>{text === "background" ? "background info" : text === "contact" ? "Let's Connect" : text}</h1>
+      </div>
+      <Projects />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
+  box-shadow: inset 0 0 5px #c69749;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   height: 100%;
-  padding: 1rem !important;
+  padding: 0 1rem 1rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
   &::-webkit-scrollbar:vertical {
-    width: 6px;
-  }
-  &::-webkit-scrollbar:horizontal {
-    height: 6px;
+    width: 4px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${props => props.theme.primaryColor};
-    border: 2px solid ${props => props.theme.blackColor};
+    box-shadow: 0 0 5px ${props => props.theme.primaryColor};
+    border-radius: 2px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.primaryColor};
+    width: 8px;
+    background-color: transparent;
+    border-radius: 4px;
   }
   .panel-header {
+    padding: 1.5rem 0 0;
     display: flex;
     justify-content: space-between;
     h1 {
       color: ${props => props.theme.primaryColor};
-      font-size: 1rem;
+      font-size: 2rem;
+      font-weight: 100;
       margin-bottom: 1rem;
     }
+  }
+  .button-wrapper {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
     button {
       height: 40px;
+      transform: translateX(24px);
       width: 40px;
       display: flex;
-      justify-content: end;
+      justify-content: center;
+      align-items: center;
       padding: 0;
       border: none;
+      border-radius: 3px;
       background: none;
+      transition: 0.1s;
+      .close-icon {
+        font-size: 1.2rem;
+        color: ${props => props.theme.primaryColor};
+        transition: 0.1s;
+      }
       &:hover {
         cursor: pointer;
-      }
-      .icon {
-        font-size: 1.4rem;
-        color: ${props => props.theme.primaryColor};
+        .close-icon {
+          font-size: 2rem;
+          color: ${props => props.theme.primaryColor};
+          filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
+        }
       }
     }
   }
@@ -90,19 +112,32 @@ const Wrapper = styled.section`
     color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
+    padding: 2rem;
     position: fixed;
     top: -180px;
     left: 250px;
     right: 20px;
     height: calc(100vh - 50px);
     border: 2px solid ${props => props.theme.primaryColor};
-    background-color: ${props => props.theme.panel2Bg};
+    background-color: ${props => props.theme.panelBg};
     border-radius: 3px;
-    .panel-header h1,
-    .panel-header button,
-    .panel-header button .icon,
-    p {
-      color: ${props => props.theme.blackColor};
+    .button-wrapper {
+      button {
+        border-radius: 3px;
+        background: none;
+        transition: 0.1s;
+        .close-icon {
+          font-size: 1.8rem;
+          color: ${props => props.theme.primaryColor};
+        }
+        &:hover {
+          cursor: pointer;
+          .close-icon {
+            font-size: 2.4rem;
+            filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
+          }
+        }
+      }
     }
   }
 `;

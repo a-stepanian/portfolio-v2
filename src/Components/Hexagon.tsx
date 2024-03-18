@@ -40,7 +40,8 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    filter: drop-shadow(0 0 1px ${props => props.theme.primaryColor});
+    transition: 0.2s;
+    filter: drop-shadow(0 0 0 ${props => props.theme.primaryColor});
     .clip-border {
       border: none;
       display: block;
@@ -138,7 +139,7 @@ const Wrapper = styled.div`
       height: 0;
       transition: 0.2s 0.2s linear;
       background-color: ${props => props.theme.primaryColor};
-      filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
+      filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
     }
     .clicked-line-top-row {
       bottom: calc(100px - 100vh);
@@ -174,12 +175,12 @@ const Wrapper = styled.div`
     }
   }
   .extra-drop-shadow {
-    filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
+    filter: drop-shadow(0 0 8px ${props => props.theme.primaryColor});
     .clip-caption {
       font-weight: 500;
     }
     .icon {
-      filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
+      filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
     }
   }
 `;

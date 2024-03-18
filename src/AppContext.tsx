@@ -7,7 +7,6 @@ export interface IColorScheme {
   panel2Bg: string;
   hexagonOutlineColor: string;
   threeDimensionsBackground: string;
-  threeDimensionsBorder: string;
   threeDimensionsOpacity: string;
 }
 
@@ -36,14 +35,22 @@ const useAppContext = () => {
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
+  // const [colorScheme, setColorScheme] = useState<IColorScheme>({
+  //   blackColor: "#000000",
+  //   panelBg: "#282A3A",
+  //   primaryColor: "#8ecae6",
+  //   hexagonOutlineColor: "#735F32",
+  //   panel2Bg: "#735F32",
+  //   threeDimensionsBackground: "#a4aef73b",
+  //   threeDimensionsOpacity: "0"
+  // });
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
-    blackColor: "#2a2a2a",
-    panelBg: "#0a0a0a",
-    primaryColor: "#ff3c56",
-    hexagonOutlineColor: "#e4abb2",
-    panel2Bg: "#a3b9ba",
-    threeDimensionsBackground: "#2fd5ca1e",
-    threeDimensionsBorder: "#9fe1cd",
+    blackColor: "#302232",
+    panelBg: "#0863757d",
+    primaryColor: "#fcbf49",
+    hexagonOutlineColor: "#edf2f4",
+    panel2Bg: "#086375",
+    threeDimensionsBackground: "#80b5d23a",
     threeDimensionsOpacity: "0"
   });
 

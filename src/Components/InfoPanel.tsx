@@ -10,7 +10,7 @@ interface IInfoPanelProps {
 
 const InfoPanel = (props: IInfoPanelProps) => {
   const { text } = props;
-  const { btnClicked, updateBtnClicked } = useAppContext();
+  const { btnClicked } = useAppContext();
 
   const isOpen = text === btnClicked;
 
@@ -22,7 +22,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
       <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
         {text !== "" && (
           <div className="info-panel-contents-wrapper">
-            {/* <InfoPanelContents text={text} /> */}
+            <InfoPanelContents text={text} />
             {text !== "" && <ThreeDimensions />}
           </div>
         )}
@@ -61,8 +61,13 @@ const Wrapper = styled.section`
     padding: 1rem;
     transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
     & .info-panel-contents-wrapper {
-      transition: opacity 0.8s linear 0.8s;
+      transition: opacity 0.6s linear 0.6s;
       opacity: 1;
+    }
+  }
+  @media (min-width: 768px) {
+    .panel {
+      background-color: ${props => props.theme.blackColor};
     }
   }
 `;

@@ -58,7 +58,7 @@ const Wrapper = styled.div`
       height: 92%;
       width: calc((100vw - 200px) / 2);
       background-color: ${props => props.theme.threeDimensionsBackground};
-      border: 2px solid ${props => props.theme.threeDimensionsBorder};
+      border: 2px solid ${props => props.theme.primaryColor};
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
       animation-delay: 0.6s, 0s;
       h5 {
         font-size: 0.6rem;
-        color: ${props => props.theme.threeDimensionsBorder};
+        color: ${props => props.theme.primaryColor};
       }
     }
     /* Initial static positioning of the 3D object faces */
@@ -97,15 +97,15 @@ const Wrapper = styled.div`
   .icon-wrapper {
     position: absolute;
     top: calc(50% - 50px);
-    left: calc(50% - 40px);
+    left: calc(50% - 35px);
     height: 35%;
     transform: translateY(0);
     animation: icon-bounce 6s ease-in-out infinite 0.1s;
     .icon {
-      color: ${props => props.theme.threeDimensionsBorder};
+      color: ${props => props.theme.primaryColor};
       height: 100%;
       width: 100%;
-      filter: drop-shadow(0 0 10px ${props => props.theme.threeDimensionsBorder});
+      filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     }
   }
   .icon-shadow {
@@ -116,7 +116,7 @@ const Wrapper = styled.div`
     width: 60px;
     top: 150px;
     left: calc(50% - 20px);
-    background-color: ${props => props.theme.threeDimensionsBorder};
+    background-color: ${props => props.theme.primaryColor};
     filter: blur(30px);
     transform: scale(1.2);
     animation: shadow-pulse 6s ease-in-out infinite 0.2s;
@@ -182,6 +182,11 @@ const Wrapper = styled.div`
   @media (min-width: 380px) {
     .three-d-object .face h5 {
       font-size: 0.9rem;
+    }
+  }
+  @media (min-width: 480px) {
+    .three-d-object {
+      animation: infinite-spin-mobile 60s linear infinite;
     }
   }
   @media (min-width: 768px) {
