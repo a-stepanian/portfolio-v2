@@ -3,6 +3,8 @@ import { useAppContext } from "../AppContext";
 import { PiXThin } from "react-icons/pi";
 import { useRef } from "react";
 import Projects from "./portfolio/Projects";
+import Contact from "./contact/Contact";
+import Experience from "./experience/Experience";
 
 interface IInfoPanelContentsProps {
   text: string;
@@ -28,16 +30,15 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
           <PiXThin className="close-icon" />
         </button>
       </div>
-      <div className="panel-header">
-        <h1>{text === "background" ? "background info" : text === "contact" ? "Let's Connect" : text}</h1>
-      </div>
-      <Projects />
+      {btnClicked === "portfolio" && <Projects />}
+      {btnClicked === "contact" && <Contact />}
+      {btnClicked === "background" && <Experience />}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  box-shadow: inset 0 0 5px #c69749;
+  box-shadow: inset 0 0 15px ${props => props.theme.primaryColor};
   position: absolute;
   top: 0;
   bottom: 0;
@@ -65,19 +66,9 @@ const Wrapper = styled.section`
     background-color: transparent;
     border-radius: 4px;
   }
-  .panel-header {
-    padding: 1.5rem 0 0;
-    display: flex;
-    justify-content: space-between;
-    h1 {
-      color: ${props => props.theme.primaryColor};
-      font-size: 2rem;
-      font-weight: 100;
-      margin-bottom: 1rem;
-    }
-  }
   .button-wrapper {
     position: sticky;
+    width: calc(100% + 1rem);
     top: 0;
     display: flex;
     justify-content: flex-end;
