@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import ContactForm from "./ContactForm";
 import { GiCircuitry } from "react-icons/gi";
+import { useState } from "react";
 
 const Contact = () => {
+  const [isSent, setIsSent] = useState<boolean>(false);
   return (
     <Wrapper>
       <div className="circuit-wrapper">
@@ -12,8 +14,8 @@ const Contact = () => {
       </div>
       <div className="form-wrapper" id="contact">
         <div className="background-card">
-          <h3 className="lets-connect">Let's connect!</h3>
-          <ContactForm />
+          {!isSent && <h3 className="lets-connect">Let's connect!</h3>}
+          <ContactForm setIsSent={setIsSent} />
         </div>
       </div>
     </Wrapper>
@@ -91,7 +93,7 @@ const Wrapper = styled.section`
         color: ${props => props.theme.blackColor};
         font-size: calc(100vw - 220px);
         opacity: 0.15;
-        filter: blur(8px);
+        filter: blur(3px);
       }
     }
   }
