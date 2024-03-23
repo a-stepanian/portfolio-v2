@@ -15,10 +15,7 @@ const IndividualProject = (props: IIndividualProjectProps) => {
 
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
 
-  const toggleInfo = () => {
-    if (isInfoOpen) setIsInfoOpen(false);
-    if (!isInfoOpen) setIsInfoOpen(true);
-  };
+  const toggleInfo = () => setIsInfoOpen(prev => !prev);
 
   return (
     <Wrapper>
@@ -31,7 +28,11 @@ const IndividualProject = (props: IIndividualProjectProps) => {
       )}
 
       <div className="img-container">
-        <img src={site.thumbnail} alt={`screenshot of ${site.title} website`} onClick={toggleInfo} />
+        <img
+          src={`/portfolio-v2/images/${site.thumbnail}`}
+          alt={`screenshot of ${site.title} website`}
+          onClick={toggleInfo}
+        />
         <div className={`${isInfoOpen ? "info info-open" : "info"}`}>
           <div>
             <h4>Built with:</h4>
@@ -79,9 +80,9 @@ const IndividualProject = (props: IIndividualProjectProps) => {
 
 const Wrapper = styled.article`
   position: relative;
-  color: var(--black);
-  background-color: var(--main-bg);
-  border: 3px solid var(--black);
+  color: ${props => props.theme.blackColor};
+  background-color: ${props => props.theme.primaryColor};
+  border: 3px solid ${props => props.theme.blackColor};
   padding: 1rem;
   max-width: 25rem;
   .featured {
@@ -89,7 +90,7 @@ const Wrapper = styled.article`
     top: calc(-2rem - 3px);
     left: calc(50% - 7.5rem - 3px);
     width: 15rem;
-    background-color: var(--black);
+    background-color: ${props => props.theme.blackColor};
     color: goldenrod;
     height: 2rem;
     display: flex;
@@ -113,14 +114,10 @@ const Wrapper = styled.article`
       }
     }
   }
-  p,
-  span {
-    font-family: "Lato", sans-serif;
-  }
 
   .img-container {
     position: relative;
-    background-color: var(--black);
+    background-color: ${props => props.theme.blackColor};
   }
   img {
     display: block;
@@ -135,8 +132,8 @@ const Wrapper = styled.article`
     height: 0;
     width: 100%;
     padding: 0 0.5rem;
-    background-color: var(--main-muted);
-    transition: height var(--info);
+    background-color: ${props => props.theme.blackColor};
+    transition: height 0.5s;
     box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.1), inset 3px 0 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     display: flex;
@@ -152,8 +149,8 @@ const Wrapper = styled.article`
       p {
         font-size: 0.7rem;
         margin: 0.2rem;
-        background-color: var(--black);
-        color: var(--white);
+        background-color: ${props => props.theme.primaryColor};
+        color: ${props => props.theme.blackColor};
         padding: 0 0.3rem 0.2rem;
         white-space: nowrap;
       }
@@ -166,7 +163,7 @@ const Wrapper = styled.article`
     a {
       height: 4.2rem;
       width: 4.2rem;
-      color: var(--black);
+      color: ${props => props.theme.primaryColor};
       font-size: 1.2rem;
       display: flex;
       flex-direction: column;
@@ -193,14 +190,14 @@ const Wrapper = styled.article`
       justify-content: space-between;
       align-items: center;
       .project-title {
-        font-family: "Bebas Neue", cursive;
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 600;
         padding: 0;
       }
     }
     p {
       padding: 0.5rem 0;
+      color: ${props => props.theme.blackColor};
     }
   }
 
@@ -243,7 +240,6 @@ const Wrapper = styled.article`
         }
       }
       a {
-        color: var(--black);
         font-size: 2rem;
         display: flex;
         flex-direction: column;
