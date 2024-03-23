@@ -45,7 +45,6 @@ const Wrapper = styled.section`
   left: 0;
   right: 0;
   height: 100%;
-  padding: 0 1rem 1rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -68,7 +67,6 @@ const Wrapper = styled.section`
   }
   .button-wrapper {
     position: sticky;
-    width: calc(100% + 1rem);
     top: 0;
     display: flex;
     justify-content: flex-end;
@@ -84,7 +82,7 @@ const Wrapper = styled.section`
       background: none;
       transition: 0.1s;
       .close-icon {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         color: ${props => props.theme.primaryColor};
         transition: 0.1s;
       }
@@ -102,7 +100,6 @@ const Wrapper = styled.section`
     color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
-    padding: 2rem;
     position: fixed;
     top: -180px;
     left: 250px;
@@ -113,9 +110,8 @@ const Wrapper = styled.section`
     border-radius: 3px;
     .button-wrapper {
       button {
-        border-radius: 3px;
-        background: none;
-        transition: 0.1s;
+        height: 50px;
+        width: 50px;
         .close-icon {
           font-size: 1.8rem;
           color: ${props => props.theme.primaryColor};
