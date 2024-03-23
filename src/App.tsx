@@ -10,7 +10,7 @@ export const App = () => {
   useEffect(() => {
     setTimeout(() => {
       updateBtnClicked("portfolio");
-    }, 1000);
+    }, 3000);
   }, []);
 
   useEffect(() => {
