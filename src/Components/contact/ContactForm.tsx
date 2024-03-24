@@ -27,34 +27,38 @@ const ContactForm = () => {
   }, [state.succeeded]);
 
   if (state.submitting) {
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending.";
-    }, 75);
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending..";
-    }, 150);
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending...";
-    }, 225);
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending....";
-    }, 300);
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending.....";
-    }, 375);
-    setTimeout(() => {
-      const span = document.querySelector(".sending-text") as HTMLSpanElement;
-      if (span) span.innerText = "Sending......";
-    }, 450);
+    const dots = document.querySelectorAll(".dot");
+    for (let i = 0; i < dots.length; i++) {
+      const delay = (i + 1) * 70;
+      setTimeout(() => {
+        dots[i].classList.add("show");
+      }, delay);
+    }
     return (
       <Thanks>
         <h3>
           <span className="sending-text">Sending</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
         </h3>
       </Thanks>
     );
@@ -131,6 +135,12 @@ const ContactForm = () => {
 };
 
 const Thanks = styled.div`
+  .dot {
+    display: none;
+  }
+  .show {
+    display: inline;
+  }
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -140,6 +150,7 @@ const Thanks = styled.div`
     font-size: 2.3rem;
     font-weight: 100;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin: 1.5rem 0 1rem;
