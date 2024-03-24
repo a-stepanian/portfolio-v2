@@ -151,6 +151,9 @@ const Wrapper = styled.div`
   /* Animations */
   @keyframes site-appear {
     0% {
+      opacity: 0.1;
+    }
+    1% {
       opacity: 0;
     }
     50% {
