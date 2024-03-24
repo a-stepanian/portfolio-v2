@@ -1,6 +1,6 @@
 import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
-import { IoIosCheckboxOutline } from "react-icons/io";
+import { IoIosCheckboxOutline, IoIosSquareOutline } from "react-icons/io";
 import { useAppContext } from "../../AppContext";
 import { useEffect, useState } from "react";
 
@@ -20,8 +20,47 @@ const ContactForm = () => {
     setReadyToSubmit(values.name?.length > 0 && values.email?.length > 0);
   }, [values]);
 
-  if (emailSent || state.succeeded) {
-    updateEmailSent(true);
+  useEffect(() => {
+    if (state.succeeded) {
+      updateEmailSent(true);
+    }
+  }, [state.succeeded]);
+
+  if (state.submitting) {
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending.";
+    }, 75);
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending..";
+    }, 150);
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending...";
+    }, 225);
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending....";
+    }, 300);
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending.....";
+    }, 375);
+    setTimeout(() => {
+      const span = document.querySelector(".sending-text") as HTMLSpanElement;
+      if (span) span.innerText = "Sending......";
+    }, 450);
+    return (
+      <Thanks>
+        <h3>
+          <span className="sending-text">Sending</span>
+        </h3>
+      </Thanks>
+    );
+  }
+
+  if (emailSent) {
     return (
       <Thanks>
         <h3>
