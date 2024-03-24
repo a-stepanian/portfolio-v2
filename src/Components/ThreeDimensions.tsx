@@ -9,22 +9,22 @@ const ThreeDimensions = () => {
     <Wrapper style={{ height: "80%" }}>
       <div className="big-three-d-object">
         <div className="big-face side1">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="big-face side2">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="big-face side3">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="big-face side4">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="big-face side5">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="big-face side6">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
       </div>
       {btnClicked !== "" && (
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
         animation-duration: 1s, 30s;
         animation-timing-function: linear, linear;
         animation-delay: 0.6s, 0s;
-        h5 {
+        .nav-text {
           font-size: 0.6rem;
           color: ${props => props.theme.primaryColor};
         }

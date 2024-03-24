@@ -74,41 +74,14 @@ const Wrapper = styled.section`
     border-radius: 4px;
   }
   .button-wrapper {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: flex-end;
-    button {
-      height: 40px;
-      width: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      border: none;
-      border-radius: 3px;
-      transition: 0.1s;
-      .close-icon {
-        font-size: 1.4rem;
-        color: ${props => props.theme.primaryColor};
-        transition: 0.1s;
-      }
-      &:hover {
-        cursor: pointer;
-        .close-icon {
-          font-size: 2rem;
-          color: ${props => props.theme.primaryColor};
-          filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
-        }
-      }
-    }
+    display: none;
   }
   p {
     color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
     position: fixed;
-    bottom: calc(50vh);
+    bottom: calc((100vh - 200px) / 2);
     left: 250px;
     right: 20px;
     top: unset;
@@ -118,12 +91,29 @@ const Wrapper = styled.section`
     border-radius: 3px;
     filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     .button-wrapper {
+      display: block;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: flex-end;
       button {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        border: none;
+        border-radius: 3px;
+        transition: 0.1s;
+        background-color: #29222a;
+        z-index: 1;
         margin-top: 16px;
         margin-right: 16px;
-        background-color: #29222aaa;
         .close-icon {
+          font-size: 1.4rem;
           color: ${props => props.theme.primaryColor};
+          transition: 0.1s;
         }
         &:hover {
           background-color: #29222a;

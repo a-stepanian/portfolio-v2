@@ -16,7 +16,7 @@ const Job = (props: IJobProps) => {
           <h3>{title}</h3>
         </div>
         <a href={companyUrl} target="_blank" rel="noreferrer">
-          <img src={logo} alt={`${company} logo`} />
+          <img src={`/portfolio-v2/images/${logo}`} alt={`${company} logo`} loading="lazy" />
           <h4>{company}</h4>
         </a>
       </header>
@@ -35,20 +35,18 @@ const Job = (props: IJobProps) => {
 
 const Wrapper = styled.article`
   width: 100%;
-  color: ${props => props.theme.blackColor};
-  background-color: var(--white-opaque);
+  color: ${props => props.theme.primaryColor};
   .job-header {
     width: 100%;
     overflow-x: hidden;
     z-index: 1;
     position: sticky;
-    top: 6.95rem;
+    top: 10px;
     width: 100%;
     height: 6.3rem;
     background: ${props => props.theme.blackColor};
     padding-right: 7rem;
     padding-left: 0.3rem;
-    border-bottom: var(--small-border);
     .title-company {
       height: 100%;
       display: flex;
@@ -66,13 +64,12 @@ const Wrapper = styled.article`
       padding: 0 0 0.1rem 0.25rem;
       height: 1.2rem;
       text-decoration: none;
-      background-color: var(--main);
       display: flex;
       align-items: center;
       width: 100%;
       h4 {
         padding: 0.1rem;
-        color: ${props => props.theme.blackColor};
+        color: ${props => props.theme.primaryColor};
         font-size: 0.6rem;
         letter-spacing: -0.02rem;
         white-space: nowrap;
@@ -123,7 +120,7 @@ const Wrapper = styled.article`
         height: 1.75rem;
         h4 {
           padding: 0.1rem;
-          color: ${props => props.theme.blackColor};
+          color: ${props => props.theme.primaryColor};
           font-size: 0.75rem;
           letter-spacing: -0.05rem;
           white-space: nowrap;
@@ -148,7 +145,6 @@ const Wrapper = styled.article`
 
   @media (min-width: 768px) {
     margin-bottom: 5rem;
-    border: var(--small-border);
     border-right: none;
     .job-header {
       padding: 0.3rem;

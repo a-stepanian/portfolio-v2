@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useAppContext } from "../AppContext";
 import ThreeDimensions from "./ThreeDimensions";
 import InfoPanelContents from "./InfoPanelContents";
+import { PiXThin } from "react-icons/pi";
 
 interface IInfoPanelProps {
   text: string;
@@ -9,7 +10,7 @@ interface IInfoPanelProps {
 
 const InfoPanel = (props: IInfoPanelProps) => {
   const { text } = props;
-  const { btnClicked } = useAppContext();
+  const { btnClicked, updateBtnClicked } = useAppContext();
 
   const isOpen = text === btnClicked;
 
@@ -21,6 +22,11 @@ const InfoPanel = (props: IInfoPanelProps) => {
       <div className={`panel ${btnClicked} ${isOpen ? "open" : ""}`} style={{ left: leftOffset }}>
         {text !== "" && (
           <div className="info-panel-contents-wrapper">
+            <div className="button-wrapper">
+              <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
+                <PiXThin className="close-icon" />
+              </button>
+            </div>
             <InfoPanelContents text={text} />
             {text !== "" && <ThreeDimensions />}
           </div>
@@ -54,6 +60,39 @@ const Wrapper = styled.section`
       opacity: 0;
     }
   }
+  .button-wrapper {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      border: none;
+      border-radius: 3px;
+      transition: 0.1s;
+      background-color: #29222aaa;
+      z-index: 1;
+      .close-icon {
+        font-size: 1.4rem;
+        color: ${props => props.theme.primaryColor};
+        transition: 0.1s;
+      }
+      &:hover {
+        cursor: pointer;
+        .close-icon {
+          font-size: 2rem;
+          color: ${props => props.theme.primaryColor};
+          filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
+        }
+      }
+    }
+  }
   .open {
     left: 0 !important;
     width: 100vw;
@@ -65,7 +104,7 @@ const Wrapper = styled.section`
       opacity: 1;
     }
     .open-tall {
-      transition: height 0.5s 0.95s, bottom 0.5s 0.95s;
+      transition: height 0.3s linear 0.8s, bottom 0.3s linear 0.8s;
       bottom: 20px;
       height: calc(100vh - 50px) !important;
     }
@@ -73,6 +112,9 @@ const Wrapper = styled.section`
   @media (min-width: 768px) {
     .panel {
       background-color: ${props => props.theme.blackColor};
+    }
+    .button-wrapper {
+      display: none;
     }
   }
 `;

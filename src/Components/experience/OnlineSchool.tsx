@@ -90,7 +90,7 @@ const OnlineSchool = () => {
       <div className="courses">
         <p className="course">React Tutorial and Projects Course</p>
         <div className="certificate-wrapper">
-          <img src="react.jpg" alt="React Course Certificate of Completion" />
+          <img src="/portfolio-v2/images/react.jpg" alt="React Course Certificate of Completion" loading="lazy" />
         </div>
         <ul>
           {reactSkills.map((skill, index) => {
@@ -101,7 +101,11 @@ const OnlineSchool = () => {
 
         <p className="course">The Git and Github Bootcamp</p>
         <div className="certificate-wrapper">
-          <img src="gitbootcamplarge.png" alt="Web Developer Bootcamp Certificate of Completion" />
+          <img
+            src="/portfolio-v2/images/gitbootcamplarge.png"
+            alt="Web Developer Bootcamp Certificate of Completion"
+            loading="lazy"
+          />
         </div>
         <ul>
           {gitSkills.map((skill, index) => {
@@ -112,7 +116,11 @@ const OnlineSchool = () => {
 
         <p className="course">The Web Developer Bootcamp</p>
         <div className="certificate-wrapper">
-          <img src="webdevcertificatelarge.png" alt="Web Developer Bootcamp Certificate of Completion" />
+          <img
+            src="/portfolio-v2/images/webdevcertificatelarge.png"
+            alt="Web Developer Bootcamp Certificate of Completion"
+            loading="lazy"
+          />
         </div>
         <ul>
           {webDevSkills.map((skill, index) => {
@@ -123,7 +131,7 @@ const OnlineSchool = () => {
 
         <p className="course">JavaScript Algorithms and Data Structures</p>
         <div className="certificate-wrapper">
-          <img src="fcc2.png" alt="Free code camp certificate" />
+          <img src="/portfolio-v2/images/fcc2.png" alt="Free code camp certificate" loading="lazy" />
         </div>
         <ul>
           {fcc2Skills.map((skill, index) => {
@@ -134,7 +142,7 @@ const OnlineSchool = () => {
 
         <p className="course">Responsive Web Design</p>
         <div className="certificate-wrapper">
-          <img src="fcc1.png" alt="Free code camp certificate" />
+          <img src="/portfolio-v2/images/fcc1.png" alt="Free code camp certificate" loading="lazy" />
         </div>
         <ul>
           {fcc1Skills.map((skill, index) => {
@@ -147,17 +155,15 @@ const OnlineSchool = () => {
 };
 
 const Wrapper = styled.article`
-  color: ${props => props.theme.blackColor};
-  background-color: var(--white-opaque);
+  color: ${props => props.theme.primaryColor};
   .school-header {
     position: sticky;
-    top: 6.95rem;
+    top: 10px;
     height: 6.6rem;
     z-index: 1;
     background: ${props => props.theme.blackColor};
     padding-right: 7.5rem;
     padding-left: 0.3rem;
-    border-bottom: var(--small-border);
     .title-company {
       padding: 0.5rem 0;
       height: 100%;
@@ -204,7 +210,6 @@ const Wrapper = styled.article`
 
   .line {
     width: 90%;
-    border-bottom: var(--small-border);
   }
 
   /* ------------- */
@@ -228,7 +233,6 @@ const Wrapper = styled.article`
 
   @media (min-width: 768px) {
     margin-bottom: 5rem;
-    border: var(--small-border);
     border-right: none;
     .school-header {
       padding-right: 0.3rem;
@@ -243,7 +247,6 @@ const Wrapper = styled.article`
   }
 
   @media (min-width: 992px) {
-    border: var(--small-border);
     .school-header {
       h3 {
         font-size: 2.5rem;

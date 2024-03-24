@@ -9,11 +9,6 @@ const Contact = () => {
 
   return (
     <Wrapper>
-      <div className="circuit-wrapper">
-        <GiCircuitry className="circuit" />
-        <GiCircuitry className="circuit" />
-        <GiCircuitry className="circuit" />
-      </div>
       <div className="form-wrapper" id="contact">
         <div className="background-card">
           {!emailSent && <h3 className="lets-connect">Let's connect!</h3>}
@@ -48,6 +43,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     .background-card {
+      margin-top: 10px;
       height: 370px;
       display: flex;
       flex-direction: column;
@@ -95,6 +91,7 @@ const Wrapper = styled.section`
     }
     .form-wrapper .background-card {
       height: 470px;
+      margin-top: 30px;
     }
   }
   @media (min-width: 990px) {

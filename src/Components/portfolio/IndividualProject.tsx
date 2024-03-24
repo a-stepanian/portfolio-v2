@@ -32,6 +32,7 @@ const IndividualProject = (props: IIndividualProjectProps) => {
           src={`/portfolio-v2/images/${site.thumbnail}`}
           alt={`screenshot of ${site.title} website`}
           onClick={toggleInfo}
+          loading="lazy"
         />
         <div className={`${isInfoOpen ? "info info-open" : "info"}`}>
           <div>

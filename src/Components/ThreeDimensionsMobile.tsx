@@ -11,22 +11,22 @@ const ThreeDimensionsMobile = () => {
     <Wrapper>
       <div className="three-d-object">
         <div className="face side1">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="face side2">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="face side3">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="face side4">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="face side5">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
         <div className="face side6">
-          <h5>{btnClicked}</h5>
+          <p className="nav-text">{btnClicked}</p>
         </div>
       </div>
       <div className="icon-wrapper">
@@ -68,7 +68,7 @@ const Wrapper = styled.div`
       animation-duration: 1s, 30s;
       animation-timing-function: linear, linear;
       animation-delay: 0.6s, 0s;
-      h5 {
+      .nav-text {
         font-size: 0.6rem;
         color: ${props => props.theme.primaryColor};
       }
@@ -180,7 +180,7 @@ const Wrapper = styled.div`
     }
   }
   @media (min-width: 380px) {
-    .three-d-object .face h5 {
+    .three-d-object .face .nav-text {
       font-size: 0.9rem;
     }
   }
@@ -188,9 +188,6 @@ const Wrapper = styled.div`
     .three-d-object {
       animation: infinite-spin-mobile 60s linear infinite;
     }
-  }
-  @media (min-width: 768px) {
-    display: none;
   }
 `;
 

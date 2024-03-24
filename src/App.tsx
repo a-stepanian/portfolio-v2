@@ -148,6 +148,11 @@ const Wrapper = styled.div`
   .fast-transition * {
     transition: 0.2s linear 0s !important;
   }
+  @media (min-width: 768px) {
+    .three-dimensions-mobile-wrapper {
+      display: none;
+    }
+  }
   /* Animations */
   @keyframes site-appear {
     0% {
