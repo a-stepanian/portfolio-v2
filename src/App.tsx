@@ -5,7 +5,7 @@ import { useAppContext } from "./AppContext";
 import ThreeDimensionsMobile from "./Components/ThreeDimensionsMobile";
 
 export const App = () => {
-  const { btnClicked, colorScheme, updateBtnClicked, updateColorScheme } = useAppContext();
+  const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
 
   useEffect(() => {
     if (btnClicked?.length > 0) {
@@ -76,7 +76,7 @@ export const App = () => {
       document?.querySelector(".information-panel")?.classList.remove("information-panel-open");
       document.querySelector(".info-panel-contents")?.classList.remove("open-tall");
     }
-  }, [btnClicked]);
+  }, [btnClicked, updateColorScheme]);
 
   return (
     <ThemeProvider theme={colorScheme}>

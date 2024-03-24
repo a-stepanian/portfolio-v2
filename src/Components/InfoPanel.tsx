@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
-import { FaRegWindowClose } from "react-icons/fa";
 import ThreeDimensions from "./ThreeDimensions";
 import InfoPanelContents from "./InfoPanelContents";
 

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface InfoToggleButton {
+interface InfoToggleButtonProps {
   isInfoOpen: boolean;
 }
 
-const InfoToggleButton = (props: InfoToggleButton) => {
+const InfoToggleButton = (props: InfoToggleButtonProps) => {
   const { isInfoOpen } = props;
   return (
     <Wrapper
