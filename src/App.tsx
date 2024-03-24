@@ -76,7 +76,7 @@ export const App = () => {
       document?.querySelector(".information-panel")?.classList.remove("information-panel-open");
       document.querySelector(".info-panel-contents")?.classList.remove("open-tall");
     }
-  }, [btnClicked, updateColorScheme]);
+  }, [btnClicked]);
 
   return (
     <ThemeProvider theme={colorScheme}>
@@ -144,7 +144,7 @@ const Wrapper = styled.div`
       right: 0;
       width: calc(100vw - 206px);
       height: 200px;
-      animation: site-appear 1s forwards;
+      animation: site-appear 1.8s forwards;
     }
   }
   /* Used for dark/light mode transition speed */
@@ -154,6 +154,9 @@ const Wrapper = styled.div`
   /* Animations */
   @keyframes site-appear {
     0% {
+      opacity: 0;
+    }
+    50% {
       opacity: 0;
     }
     100% {

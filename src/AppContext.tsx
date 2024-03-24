@@ -38,7 +38,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#29222a",
     panelBg: "#39413c",
-    primaryColor: "#affc41",
+    primaryColor: "#1dd3b0",
     hexagonOutlineColor: "#edf2f4",
     panel2Bg: "#086375",
     threeDimensionsBackground: "#80b5d23a",
