@@ -12,21 +12,32 @@ interface IInfoPanelContentsProps {
 
 const InfoPanelContents = (props: IInfoPanelContentsProps) => {
   const { text } = props;
+
   const { btnClicked, updateBtnClicked } = useAppContext();
+
   const scrollTarget = useRef<HTMLDivElement>(null);
 
   if (text === btnClicked) {
     scrollTarget?.current?.scrollIntoView();
   }
 
-  const leftOffset =
-    text === "background" ? "48.5px" : text === "portfolio" ? "98.5px" : text === "contact" ? "48.5px" : "198.5px";
+  const customBackground: string =
+    text === "contact"
+      ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
+      : text === "background"
+      ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+      : "";
 
   return (
-    <Wrapper>
+    <Wrapper className={`info-panel-contents open-tall`} style={{ background: customBackground }}>
       <div ref={scrollTarget}></div>
       <div className="button-wrapper">
-        <button type="button" onClick={() => updateBtnClicked("")}>
+        <button
+          type="button"
+          onClick={() => updateBtnClicked("")}
+          aria-label="Close"
+          title="Close"
+          style={{ background: text === "contact" ? "#29222aaa" : "transparent" }}>
           <PiXThin className="close-icon" />
         </button>
       </div>
@@ -38,13 +49,13 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 };
 
 const Wrapper = styled.section`
-  box-shadow: inset 0 0 15px ${props => props.theme.primaryColor};
+  background: url("/portfolio-v2/images/portfolio-bg-lg.png") center center / cover;
+  box-shadow: inset 0 0 20px ${props => props.theme.primaryColor};
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -79,7 +90,6 @@ const Wrapper = styled.section`
       padding: 0;
       border: none;
       border-radius: 3px;
-      background: none;
       transition: 0.1s;
       .close-icon {
         font-size: 1.4rem;
@@ -101,13 +111,15 @@ const Wrapper = styled.section`
   }
   @media (min-width: 768px) {
     position: fixed;
-    top: -180px;
+    bottom: calc(50vh);
     left: 250px;
     right: 20px;
-    height: calc(100vh - 50px);
+    top: unset;
+    height: 0;
     border: 2px solid ${props => props.theme.primaryColor};
     background-color: ${props => props.theme.panelBg};
     border-radius: 3px;
+    filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     .button-wrapper {
       button {
         height: 50px;

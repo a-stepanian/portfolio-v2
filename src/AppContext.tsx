@@ -35,19 +35,10 @@ const useAppContext = () => {
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
-  // const [colorScheme, setColorScheme] = useState<IColorScheme>({
-  //   blackColor: "#000000",
-  //   panelBg: "#282A3A",
-  //   primaryColor: "#8ecae6",
-  //   hexagonOutlineColor: "#735F32",
-  //   panel2Bg: "#735F32",
-  //   threeDimensionsBackground: "#a4aef73b",
-  //   threeDimensionsOpacity: "0"
-  // });
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
-    blackColor: "#302232",
-    panelBg: "#fff",
-    primaryColor: "#fcbf49",
+    blackColor: "#29222a",
+    panelBg: "#39413c",
+    primaryColor: "#affc41",
     hexagonOutlineColor: "#edf2f4",
     panel2Bg: "#086375",
     threeDimensionsBackground: "#80b5d23a",

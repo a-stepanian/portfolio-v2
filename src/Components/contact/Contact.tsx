@@ -55,6 +55,7 @@ const Wrapper = styled.section`
       padding: 0 0.5rem 1rem;
       width: 280px;
       background-color: ${props => props.theme.blackColor};
+      box-shadow: 0 0 20px #ff5d572b;
       transition: 0.5s;
       .lets-connect {
         color: ${props => props.theme.primaryColor};
@@ -93,7 +94,15 @@ const Wrapper = styled.section`
         color: ${props => props.theme.blackColor};
         font-size: calc(100vw - 220px);
         opacity: 0.15;
-        filter: blur(3px);
+        filter: blur(2px);
+      }
+    }
+  }
+  @media (min-width: 990px) {
+    .form-wrapper {
+      .background-card {
+        padding: 2rem 0 4rem;
+        width: 480px;
       }
     }
   }

@@ -34,7 +34,7 @@ const ContactForm = (props: IContactFormProps) => {
       <label htmlFor="message">Message</label>
       <textarea id="message" name="message" rows={4} />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button type="submit" disabled={state.submitting}>
+      <button type="submit" disabled={state.submitting} aria-label="Submit" title="Submit">
         Send
       </button>
     </Wrapper>

@@ -37,7 +37,7 @@ const Wrapper = styled.button`
     right: 0.55rem;
     width: 1.5rem;
     height: 0.2rem;
-    background-color: var(--black);
+    background-color: ${props => props.theme.blackColor};
     transition: 0.5s;
   }
 

@@ -8,12 +8,6 @@ export const App = () => {
   const { btnClicked, colorScheme, updateBtnClicked, updateColorScheme } = useAppContext();
 
   useEffect(() => {
-    setTimeout(() => {
-      updateBtnClicked("portfolio");
-    }, 3000);
-  }, []);
-
-  useEffect(() => {
     if (btnClicked?.length > 0) {
       let primaryColor = "";
       let panelBg = "";
@@ -38,6 +32,13 @@ export const App = () => {
         ...colorScheme,
         primaryColor,
         panelBg
+      });
+      const panel = document.querySelector(`.info-panel-contents-${btnClicked}`);
+      panel?.classList.add("open-tall");
+      const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
+      // remove styles from other buttons
+      otherBtns.forEach(() => {
+        document.querySelector(`.info-panel-contents-${btnClicked}`)?.classList.remove("open-tall");
       });
     }
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
@@ -73,6 +74,7 @@ export const App = () => {
       }, 500);
     } else {
       document?.querySelector(".information-panel")?.classList.remove("information-panel-open");
+      document.querySelector(".info-panel-contents")?.classList.remove("open-tall");
     }
   }, [btnClicked]);
 

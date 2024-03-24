@@ -15,7 +15,9 @@ export const Hexagon = (props: IHexagonProps) => {
       <div className={`hexagon-wrapper ${text}-hexagon-wrapper`}>
         <button
           className={`clip-border ${text}-clip-border`}
-          onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}>
+          onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}
+          aria-label={`Open ${text}`}
+          title={text}>
           <div className={`blue-overlay ${text}-blue-overlay`}></div>
           <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
           {text === "portfolio" && <PiBriefcaseThin className={`icon ${text}-icon`} />}
@@ -40,7 +42,7 @@ const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
     height: 100px;
-    transition: 0.2s;
+    transition: filter 0.2s linear 0.2s, transform 0.2s linear 0.2s;
     filter: drop-shadow(0 0 0 ${props => props.theme.primaryColor});
     .clip-border {
       border: none;
@@ -53,18 +55,18 @@ const Wrapper = styled.div`
       color: ${props => props.theme.primaryColor};
       /* Button outline un-selected */
       .blue-overlay {
-        transition: 0.4s linear;
+        transition: height 0.4s linear, background-color 0.2s linear 0.2s;
         position: absolute;
         bottom: 0;
         right: 0;
         width: 100%;
         height: 0;
-        background: ${props => props.theme.primaryColor};
+        background-color: ${props => props.theme.primaryColor};
         z-index: 1;
       }
       /* Button outline selected */
       .clicked-blue-overlay {
-        transition: 0.4s linear 0.2s;
+        transition: height 0.4s linear 0.2s, background-color 0.2s linear 0.2s;
         height: 100px;
       }
       .blue-text {
@@ -75,7 +77,7 @@ const Wrapper = styled.div`
         position: relative;
         font-size: 1.5rem;
         transform: rotateY(0) skew(0, 0) translate(0, 0);
-        transition: all 0.2s;
+        transition: 0.2s linear 0.2s;
       }
 
       &::after {
@@ -99,9 +101,6 @@ const Wrapper = styled.div`
         }
       }
     }
-    .blink-light::after {
-      animation: blink-light 0.2s ease-in-out; /* Apply the blink animation on click */
-    }
     .blink::after {
       animation: blink 0.2s ease-in-out; /* Apply the blink animation on click */
     }
@@ -114,16 +113,9 @@ const Wrapper = styled.div`
       text-align: center;
       font-weight: 100;
       transform: rotateY(0) skew(0, 0) translate(0, 0);
-      transition: all 0.2s;
+      transition: 0.2s linear 0.2s;
     }
     .clip-svg {
-      width: 0;
-      height: 0;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .clip-svg2 {
       width: 0;
       height: 0;
       &:hover {
@@ -137,41 +129,23 @@ const Wrapper = styled.div`
       left: calc(50% - 2px);
       width: 4px;
       height: 0;
-      transition: 0.2s 0.2s linear;
+      transition: bottom 0.2s linear 0.2s, height 0.2s linear 0.2s, background-color 0.2s linear 0.4s,
+        filter 0.2s linear 0.4s;
       background-color: ${props => props.theme.primaryColor};
       filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
     }
     .clicked-line-top-row {
       bottom: calc(100px - 100vh);
       height: calc(100vh - 92px);
-      transition: 0.2s linear 0.4s;
+      transition: bottom 0.2s linear 0.4s, height 0.2s linear 0.4s, background-color 0.2s linear, filter 0.2s linear;
     }
     .clicked-line-bottom-row {
       bottom: calc(100px - 100vh);
       height: calc(100vh - 92px);
-      transition: 0.2s linear 0.4s;
+      transition: bottom 0.2s linear 0.4s, height 0.2s linear 0.4s, background-color 0.2s linear, filter 0.2s linear;
     }
     .skewed-text {
       transform: rotateY(45deg) skew(0deg, -20deg) translate(28px, 14px) !important;
-    }
-  }
-  /* Animations */
-  @keyframes blink-light {
-    0%,
-    100% {
-      background-color: transparent;
-    }
-    50% {
-      background-color: #e6a662;
-    }
-  }
-  @keyframes blink {
-    0%,
-    100% {
-      background-color: transparent;
-    }
-    50% {
-      background-color: #122;
     }
   }
   .extra-drop-shadow {
@@ -181,6 +155,15 @@ const Wrapper = styled.div`
     }
     .icon {
       filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
+    }
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #122;
     }
   }
 `;
