@@ -45,7 +45,8 @@ const Wrapper = styled.section`
     z-index: 4;
     box-shadow: inset 0 0 5px ${props => props.theme.primaryColor};
     height: calc(100vh - 200px);
-    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.15s;
+    transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.15s,
+      border 0.2s linear 0.2s, filter 0.2s linear 0.2s, box-shadow 0.2s linear 0.2s;
     border: 4px solid ${props => props.theme.primaryColor};
     border-radius: 3px;
     background-color: ${props => props.theme.panelBg};
