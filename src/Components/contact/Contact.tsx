@@ -44,10 +44,9 @@ const Wrapper = styled.section`
   .form-wrapper {
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
     .background-card {
+      height: 370px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -96,6 +95,9 @@ const Wrapper = styled.section`
         opacity: 0.15;
         filter: blur(2px);
       }
+    }
+    .form-wrapper .background-card {
+      height: 470px;
     }
   }
   @media (min-width: 990px) {

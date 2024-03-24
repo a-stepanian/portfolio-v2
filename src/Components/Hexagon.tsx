@@ -49,7 +49,7 @@ const Wrapper = styled.div`
       display: block;
       position: relative;
       clip-path: url("#hexagon-clip");
-      background: #2a2a2a;
+      background: #29222a;
       width: 100px;
       height: 100px;
       color: ${props => props.theme.primaryColor};
@@ -93,7 +93,7 @@ const Wrapper = styled.div`
         z-index: 2;
       }
       &:hover {
-        background: #333;
+        background: #3d4350;
         color: ${props => props.theme.primaryColor};
         cursor: pointer;
         &::after {

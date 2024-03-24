@@ -32,7 +32,7 @@ const ContactForm = (props: IContactFormProps) => {
       <input id="email" type="email" name="email" required={true} />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
       <label htmlFor="message">Message</label>
-      <textarea id="message" name="message" rows={4} />
+      <textarea id="message" name="message" rows={3} />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
       <button type="submit" disabled={state.submitting} aria-label="Submit" title="Submit">
         Send
@@ -73,12 +73,12 @@ const Wrapper = styled.form`
   label,
   button {
     font-size: 0.9rem;
-    line-height: 1.6rem;
+    line-height: 1.2rem;
     font-weight: 500;
     color: ${props => props.theme.primaryColor};
   }
   input {
-    margin-bottom: 1rem;
+    margin-bottom: 8px;
   }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -110,7 +110,7 @@ const Wrapper = styled.form`
   }
 
   button {
-    margin-top: 2rem;
+    margin-top: 10px;
     padding: 1rem;
     border: var(--small-border);
     color: ${props => props.theme.blackColor};
@@ -124,6 +124,20 @@ const Wrapper = styled.form`
       color: #633a4a;
       opacity: 1;
       box-shadow: 0 0 5px #be6f6c;
+    }
+  }
+
+  @media (min-width: 768px) {
+    button {
+      margin-top: 30px;
+    }
+    input {
+      margin-bottom: 12px;
+    }
+    label,
+    button {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
     }
   }
 `;
