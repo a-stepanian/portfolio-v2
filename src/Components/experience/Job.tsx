@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import { TExperience } from "../../data";
 
-const Job = ({ job }) => {
+interface IJobProps {
+  job: TExperience;
+}
+
+const Job = (props: IJobProps) => {
+  const { job } = props;
   const { company, companyUrl, title, description, id, logo } = job;
 
   return (
@@ -15,7 +21,7 @@ const Job = ({ job }) => {
         </a>
       </header>
       <ul>
-        {description.map((jobDuty, index) => {
+        {description?.map((jobDuty: string, index: number) => {
           return (
             <li key={index} className="duty">
               {jobDuty}

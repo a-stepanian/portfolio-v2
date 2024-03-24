@@ -10,6 +10,18 @@ export type TProject = {
   repo2?: string;
 };
 
+export type TExperience = {
+  id: string;
+  company?: string;
+  location?: string;
+  stateImg?: string;
+  companyUrl?: string;
+  logo?: string;
+  title?: string;
+  date?: string;
+  description?: string[];
+};
+
 const data: TProject[] = [
   {
     id: "7",
@@ -87,7 +99,7 @@ const data: TProject[] = [
 
 export default data;
 
-export const experience = [
+export const experience: TExperience[] = [
   {
     id: "rainier",
     company: "United States Gypsum",
