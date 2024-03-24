@@ -2,9 +2,11 @@ import styled from "styled-components";
 import ContactForm from "./ContactForm";
 import { GiCircuitry } from "react-icons/gi";
 import { useState } from "react";
+import { useAppContext } from "../../AppContext";
 
 const Contact = () => {
-  const [isSent, setIsSent] = useState<boolean>(false);
+  const { emailSent, updateEmailSent } = useAppContext();
+
   return (
     <Wrapper>
       <div className="circuit-wrapper">
@@ -14,8 +16,8 @@ const Contact = () => {
       </div>
       <div className="form-wrapper" id="contact">
         <div className="background-card">
-          {!isSent && <h3 className="lets-connect">Let's connect!</h3>}
-          <ContactForm setIsSent={setIsSent} />
+          {!emailSent && <h3 className="lets-connect">Let's connect!</h3>}
+          <ContactForm />
         </div>
       </div>
     </Wrapper>
@@ -57,7 +59,7 @@ const Wrapper = styled.section`
       box-shadow: 0 0 20px #ff5d572b;
       transition: 0.5s;
       .lets-connect {
-        color: ${props => props.theme.primaryColor};
+        color: #1dd3b0;
         margin: 1rem 0;
         font-size: 2rem;
       }
@@ -75,11 +77,6 @@ const Wrapper = styled.section`
         padding: 0 1rem 1.5rem;
         width: 340px;
         background-color: ${props => props.theme.blackColor};
-        .lets-connect {
-          color: ${props => props.theme.primaryColor};
-          margin: 1rem 0;
-          font-size: 2rem;
-        }
       }
     }
   }

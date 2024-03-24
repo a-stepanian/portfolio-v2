@@ -29,15 +29,12 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
       : "";
 
   return (
-    <Wrapper className={`info-panel-contents open-tall`} style={{ background: customBackground }}>
+    <Wrapper
+      className={`info-panel-contents info-panel-contents-${text} open-tall`}
+      style={{ background: customBackground }}>
       <div ref={scrollTarget}></div>
       <div className="button-wrapper">
-        <button
-          type="button"
-          onClick={() => updateBtnClicked("")}
-          aria-label="Close"
-          title="Close"
-          style={{ background: text === "contact" ? "#29222aaa" : "transparent" }}>
+        <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
           <PiXThin className="close-icon" />
         </button>
       </div>
@@ -122,16 +119,17 @@ const Wrapper = styled.section`
     filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     .button-wrapper {
       button {
-        height: 50px;
-        width: 50px;
+        margin-top: 16px;
+        margin-right: 16px;
+        background-color: #29222aaa;
         .close-icon {
-          font-size: 1.8rem;
           color: ${props => props.theme.primaryColor};
         }
         &:hover {
+          background-color: #29222a;
           cursor: pointer;
           .close-icon {
-            font-size: 2.4rem;
+            font-size: 1.4rem;
             filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
           }
         }

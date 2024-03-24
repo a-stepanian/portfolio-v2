@@ -64,7 +64,7 @@ const Wrapper = styled.section`
       opacity: 1;
     }
     .open-tall {
-      transition: height 0.4s 0.9s, bottom 0.4s 0.9s;
+      transition: height 0.5s 0.95s, bottom 0.5s 0.95s;
       bottom: 20px;
       height: calc(100vh - 50px) !important;
     }

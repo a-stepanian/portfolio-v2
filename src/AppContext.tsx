@@ -4,18 +4,18 @@ export interface IColorScheme {
   blackColor: string;
   primaryColor: string;
   panelBg: string;
-  panel2Bg: string;
   hexagonOutlineColor: string;
   threeDimensionsBackground: string;
-  threeDimensionsOpacity: string;
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "";
 
 interface IAppState {
   btnClicked: TButtonText;
+  emailSent: boolean;
   colorScheme: IColorScheme;
   updateBtnClicked: (info: TButtonText) => void;
+  updateEmailSent: (info: boolean) => void;
   updateColorScheme: (info: IColorScheme) => void;
 }
 
@@ -35,23 +35,25 @@ const useAppContext = () => {
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
+  const [emailSent, setEmailSent] = useState<boolean>(false);
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#29222a",
     panelBg: "#39413c",
     primaryColor: "#1dd3b0",
     hexagonOutlineColor: "#edf2f4",
-    panel2Bg: "#086375",
-    threeDimensionsBackground: "#80b5d23a",
-    threeDimensionsOpacity: "0"
+    threeDimensionsBackground: "#80b5d23a"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);
+  const updateEmailSent = (info: boolean) => setEmailSent(info);
   const updateColorScheme = (info: IColorScheme) => setColorScheme(info);
 
   const contextValue: IAppState = {
     btnClicked,
+    emailSent,
     colorScheme,
     updateBtnClicked,
+    updateEmailSent,
     updateColorScheme
   };
 

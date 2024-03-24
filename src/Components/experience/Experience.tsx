@@ -3,7 +3,6 @@ import { experience } from "../../data";
 import OnlineSchool from "./OnlineSchool";
 import Job from "./Job";
 import School from "./School";
-import { GiCircuitry } from "react-icons/gi";
 
 const Experience = () => {
   return (

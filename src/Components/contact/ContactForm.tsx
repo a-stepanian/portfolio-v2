@@ -1,25 +1,38 @@
 import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
 import { IoIosCheckboxOutline } from "react-icons/io";
+import { useAppContext } from "../../AppContext";
+import { useEffect, useState } from "react";
 
-interface IContactFormProps {
-  setIsSent: React.Dispatch<React.SetStateAction<boolean>>;
+interface IValues {
+  name: string;
+  email: string;
+  message: string;
 }
 
-const ContactForm = (props: IContactFormProps) => {
-  const { setIsSent } = props;
+const ContactForm = () => {
+  const [values, setValues] = useState<IValues>({ name: "", email: "", message: "" });
+  const [readyToSubmit, setReadyToSubmit] = useState<boolean>(false);
+  const { emailSent, updateEmailSent } = useAppContext();
   const [state, handleSubmit] = useForm("xqknjpzd");
 
-  if (state.succeeded) {
-    setIsSent(true);
+  useEffect(() => {
+    setReadyToSubmit(values.name?.length > 0 && values.email?.length > 0);
+  }, [values]);
+
+  if (emailSent || state.succeeded) {
+    updateEmailSent(true);
     return (
       <Thanks>
         <h3>
           <IoIosCheckboxOutline />
           <span>Sent</span>
         </h3>
-        <p className="thanks">Thank you for your message, I'll be in contact soon!</p>
-        <p>- Alex</p>
+        <p className="thanks">
+          Thank you for your message,
+          <br />
+          I'll be in contact soon! <br /> <span>- Alex</span>
+        </p>
       </Thanks>
     );
   }
@@ -27,14 +40,51 @@ const ContactForm = (props: IContactFormProps) => {
   return (
     <Wrapper onSubmit={handleSubmit}>
       <label htmlFor="full-name">Name</label>
-      <input type="text" name="name" id="full-name" required={true} />
+      <input
+        type="text"
+        name="name"
+        style={{ backgroundColor: values.name.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        id="full-name"
+        required={true}
+        onChange={e =>
+          setValues(prev => {
+            return { ...prev, name: e.target.value };
+          })
+        }
+      />
       <label htmlFor="email">Email</label>
-      <input id="email" type="email" name="email" required={true} />
+      <input
+        style={{ backgroundColor: values.email.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        id="email"
+        type="email"
+        name="email"
+        required={true}
+        onChange={e =>
+          setValues(prev => {
+            return { ...prev, email: e.target.value };
+          })
+        }
+      />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
       <label htmlFor="message">Message</label>
-      <textarea id="message" name="message" rows={3} />
+      <textarea
+        id="message"
+        name="message"
+        rows={3}
+        style={{ backgroundColor: values.message.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        onChange={e =>
+          setValues(prev => {
+            return { ...prev, message: e.target.value };
+          })
+        }
+      />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button type="submit" disabled={state.submitting} aria-label="Submit" title="Submit">
+      <button
+        type="submit"
+        disabled={state.submitting}
+        className={readyToSubmit ? "" : "disabled-btn"}
+        aria-label="Submit"
+        title="Submit">
         Send
       </button>
     </Wrapper>
@@ -42,23 +92,35 @@ const ContactForm = (props: IContactFormProps) => {
 };
 
 const Thanks = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   h3 {
     color: #affc41;
+    font-size: 2.3rem;
+    font-weight: 100;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1.5rem 0 1rem;
     svg {
       margin-right: 5px;
-      font-size: 1.2rem;
+      font-size: 2.4rem;
     }
     span {
       margin-right: 5px;
     }
   }
   p {
+    background-color: rgba(127, 191, 240, 0.084);
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 1.2rem;
     color: ${props => props.theme.primaryColor};
-    &:nth-of-type(2) {
+    span {
+      display: inline-block;
+      width: 100%;
       text-align: end;
     }
   }
@@ -75,7 +137,7 @@ const Wrapper = styled.form`
     font-size: 0.9rem;
     line-height: 1.2rem;
     font-weight: 500;
-    color: ${props => props.theme.primaryColor};
+    color: #1dd3b0;
   }
   input {
     margin-bottom: 8px;
@@ -85,9 +147,9 @@ const Wrapper = styled.form`
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: ${props => props.theme.primaryColor};
+    -webkit-text-fill-color: #1dd3b0;
     transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #534555;
+    box-shadow: inset 0 0 20px 20px #3d5752;
   }
   input,
   textarea {
@@ -96,7 +158,7 @@ const Wrapper = styled.form`
     appearance: none;
     padding: 4px 8px;
     border: 0.15rem solid ${props => props.theme.blackColor};
-    color: ${props => props.theme.primaryColor};
+    color: #1dd3b0;
     border-radius: 5px;
     background-color: rgb(74 43 56);
     font-size: 16px;
@@ -104,8 +166,8 @@ const Wrapper = styled.form`
     &:focus {
       border-radius: 1px;
       outline: none;
-      outline: 0.15rem solid ${props => props.theme.primaryColor};
-      background-color: #534555;
+      outline: 0.15rem solid #1dd3b0;
+      background-color: #3d5752;
     }
   }
 
@@ -114,7 +176,7 @@ const Wrapper = styled.form`
     padding: 1rem;
     border: var(--small-border);
     color: ${props => props.theme.blackColor};
-    background-color: ${props => props.theme.primaryColor};
+    background-color: #1dd3b0;
     font-size: 1.2rem;
     opacity: 0.9;
     transition: 0.2s;
@@ -124,6 +186,15 @@ const Wrapper = styled.form`
       color: #633a4a;
       opacity: 1;
       box-shadow: 0 0 5px #be6f6c;
+    }
+  }
+  .disabled-btn {
+    background-color: #1dd3ae3d;
+    &:hover {
+      cursor: unset;
+      color: ${props => props.theme.blackColor};
+      opacity: 0.9;
+      box-shadow: none;
     }
   }
 

@@ -33,12 +33,9 @@ export const App = () => {
         primaryColor,
         panelBg
       });
-      const panel = document.querySelector(`.info-panel-contents-${btnClicked}`);
-      panel?.classList.add("open-tall");
-      const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
-      // remove styles from other buttons
-      otherBtns.forEach(() => {
-        document.querySelector(`.info-panel-contents-${btnClicked}`)?.classList.remove("open-tall");
+
+      ["background", "contact", "portfolio"].forEach(() => {
+        document.querySelector(`.info-panel-contents-${btnClicked}`)?.classList.add("open-tall");
       });
     }
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
