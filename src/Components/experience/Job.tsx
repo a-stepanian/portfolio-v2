@@ -12,13 +12,12 @@ const Job = (props: IJobProps) => {
   return (
     <Wrapper>
       <header className={`job-header ${id}`}>
-        <div className="title-company">
-          <h3>{title}</h3>
-        </div>
-        <a href={companyUrl} target="_blank" rel="noreferrer">
-          <img src={`/portfolio-v2/images/${logo}`} alt={`${company} logo`} loading="lazy" />
-          <h4>{company}</h4>
-        </a>
+        <h4 className="company-name">
+          <a href={companyUrl} target="_blank" rel="noreferrer">
+            {company}
+          </a>
+        </h4>
+        <h3 className="job-title">{title}</h3>
       </header>
       <ul>
         {description?.map((jobDuty: string, index: number) => {
@@ -34,49 +33,39 @@ const Job = (props: IJobProps) => {
 };
 
 const Wrapper = styled.article`
+  position: relative;
+  z-index: 999;
   width: 100%;
   color: ${props => props.theme.primaryColor};
   .job-header {
-    width: 100%;
-    overflow-x: hidden;
-    z-index: 1;
+    z-index: 999;
+    & * {
+      z-index: 999;
+    }
     position: sticky;
     top: 10px;
-    width: 100%;
-    height: 6.3rem;
-    background: ${props => props.theme.blackColor};
-    padding-right: 7rem;
-    padding-left: 0.3rem;
-    .title-company {
-      height: 100%;
-      display: flex;
-      align-items: center;
+    background: #393850e6;
+    padding: 4px 1rem 8px;
+    margin: 0 34px 0 8px;
+    box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
+    .job-title {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
-    h3 {
-      font-size: 1.6rem;
-      line-height: 1.6rem;
-    }
-
-    a {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      padding: 0 0 0.1rem 0.25rem;
-      height: 1.2rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      h4 {
-        padding: 0.1rem;
+    .company-name {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      line-height: 10px;
+      a {
+        text-decoration: none;
         color: ${props => props.theme.primaryColor};
         font-size: 0.6rem;
         letter-spacing: -0.02rem;
         white-space: nowrap;
-      }
-      img {
-        height: 80%;
-        margin: 0.1rem 0.2rem;
       }
     }
   }
@@ -90,59 +79,6 @@ const Wrapper = styled.article`
     }
   }
 
-  /* ------------- */
-  /* MEDIA QUERIES */
-  /* ------------- */
-
-  @media (min-width: 330px) {
-    .job-header {
-      h3 {
-        font-size: 1.8rem;
-        line-height: 1.8rem;
-      }
-    }
-  }
-
-  @media (min-width: 380px) {
-    .job-header {
-      h3 {
-        margin-top: 0.4rem;
-        font-size: 1.9rem;
-        line-height: 1.8rem;
-      }
-    }
-  }
-
-  @media (min-width: 520px) {
-    .job-header {
-      a {
-        padding: 0 0 0.25rem 0.25rem;
-        height: 1.75rem;
-        h4 {
-          padding: 0.1rem;
-          color: ${props => props.theme.primaryColor};
-          font-size: 0.75rem;
-          letter-spacing: -0.05rem;
-          white-space: nowrap;
-        }
-        img {
-          height: 80%;
-          margin: 0.1rem 0.2rem;
-        }
-      }
-    }
-  }
-
-  @media (min-width: 600px) {
-    .job-header {
-      h3 {
-        margin-top: 0.4rem;
-        font-size: 2.1rem;
-        line-height: 1.9rem;
-      }
-    }
-  }
-
   @media (min-width: 768px) {
     margin-bottom: 5rem;
     border-right: none;
@@ -152,7 +88,7 @@ const Wrapper = styled.article`
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      .title-company {
+      .job-title {
         height: auto;
         display: flex;
         align-items: center;
@@ -170,7 +106,6 @@ const Wrapper = styled.article`
   }
 
   @media (min-width: 992px) {
-    border: var(--small-border);
     .job-header {
       align-items: center;
       h3 {

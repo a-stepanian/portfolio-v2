@@ -3,9 +3,10 @@ import React, { createContext, useContext, useState } from "react";
 export interface IColorScheme {
   blackColor: string;
   primaryColor: string;
-  panelBg: string;
   hexagonOutlineColor: string;
   threeDimensionsBackground: string;
+  panelRadius: string;
+  buttonBorderColor: string;
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "";
@@ -38,10 +39,11 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [emailSent, setEmailSent] = useState<boolean>(false);
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#29222a",
-    panelBg: "#39413c",
     primaryColor: "#1dd3b0",
     hexagonOutlineColor: "#edf2f4",
-    threeDimensionsBackground: "#80b5d23a"
+    threeDimensionsBackground: "#80b5d23a",
+    panelRadius: "3px",
+    buttonBorderColor: "#29222a"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);

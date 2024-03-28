@@ -33,7 +33,7 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
       className={`info-panel-contents info-panel-contents-${text} open-tall`}
       style={{ background: customBackground }}>
       <div ref={scrollTarget}></div>
-      <div className="button-wrapper">
+      <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
           <PiXThin className="close-icon" />
         </button>
@@ -47,7 +47,6 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 
 const Wrapper = styled.section`
   background: url("/portfolio-v2/images/portfolio-bg-lg.png") center center / cover;
-  box-shadow: inset 0 0 20px ${props => props.theme.primaryColor};
   position: absolute;
   top: 0;
   right: 0;
@@ -73,7 +72,7 @@ const Wrapper = styled.section`
     background-color: transparent;
     border-radius: 4px;
   }
-  .button-wrapper {
+  .contents-button-wrapper {
     display: none;
   }
   p {
@@ -87,10 +86,9 @@ const Wrapper = styled.section`
     top: unset;
     height: 0;
     border: 2px solid ${props => props.theme.primaryColor};
-    background-color: ${props => props.theme.panelBg};
     border-radius: 3px;
     filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
-    .button-wrapper {
+    .contents-button-wrapper {
       display: block;
       position: sticky;
       top: 0;

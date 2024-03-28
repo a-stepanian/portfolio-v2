@@ -38,6 +38,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
 
 const Wrapper = styled.section`
   .panel {
+    background-color: ${props => props.theme.blackColor};
     filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     position: fixed;
     top: 200px;
@@ -54,8 +55,7 @@ const Wrapper = styled.section`
     transition: height 0.2s linear, width 0.2s linear, padding 0.2s linear, left 0.2s linear, opacity 0.1s linear 0.15s,
       border 0.2s linear 0.2s, filter 0.2s linear 0.2s, box-shadow 0.2s linear 0.2s;
     border: 4px solid ${props => props.theme.primaryColor};
-    border-radius: 3px;
-    background-color: ${props => props.theme.panelBg};
+    border-radius: ${props => props.theme.panelRadius};
     & .info-panel-contents-wrapper {
       opacity: 0;
     }
@@ -63,7 +63,7 @@ const Wrapper = styled.section`
   .button-wrapper {
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 5px;
     display: flex;
     justify-content: flex-end;
     button {
@@ -76,8 +76,8 @@ const Wrapper = styled.section`
       border: none;
       border-radius: 3px;
       transition: 0.1s;
-      background-color: #29222aaa;
-      z-index: 1;
+      background-color: transparent;
+      z-index: 1000;
       .close-icon {
         font-size: 1.4rem;
         color: ${props => props.theme.primaryColor};
@@ -87,7 +87,6 @@ const Wrapper = styled.section`
         cursor: pointer;
         .close-icon {
           font-size: 2rem;
-          color: ${props => props.theme.primaryColor};
           filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
         }
       }
@@ -104,9 +103,7 @@ const Wrapper = styled.section`
       opacity: 1;
     }
     .open-tall {
-      transition: height 0.3s linear 0.8s, bottom 0.3s linear 0.8s;
-      bottom: 20px;
-      height: calc(100vh - 50px) !important;
+      transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
     }
   }
   @media (min-width: 768px) {
@@ -115,6 +112,22 @@ const Wrapper = styled.section`
     }
     .button-wrapper {
       display: none;
+    }
+    .open {
+      left: 0 !important;
+      width: 100vw;
+      opacity: 1;
+      padding: 1rem;
+      transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
+      & .info-panel-contents-wrapper {
+        transition: opacity 0.6s linear 0.6s;
+        opacity: 1;
+      }
+      .open-tall {
+        transition: height 0.3s linear 0.8s, bottom 0.3s linear 0.8s;
+        bottom: 20px;
+        height: calc(100vh - 50px) !important;
+      }
     }
   }
 `;

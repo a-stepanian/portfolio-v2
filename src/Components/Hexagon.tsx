@@ -25,13 +25,6 @@ export const Hexagon = (props: IHexagonProps) => {
           {text === "contact" && <PiEnvelopeSimpleThin className={`icon ${text}-icon`} />}
         </button>
         <div className={`line ${text}-line`}></div>
-        <svg className="clip-svg">
-          <defs>
-            <clipPath id="hexagon-clip" clipPathUnits="objectBoundingBox">
-              <polygon points="0.05 0.25, 0.5 0.05, 0.95 0.25, 0.95 0.75, .5 0.95, 0.05 0.75" />
-            </clipPath>
-          </defs>
-        </svg>
       </div>
       <InfoPanel text={text} />
     </Wrapper>
@@ -45,11 +38,12 @@ const Wrapper = styled.div`
     transition: filter 0.2s linear 0.2s, transform 0.2s linear 0.2s;
     filter: drop-shadow(0 0 0 ${props => props.theme.primaryColor});
     .clip-border {
+      transition: clip-path 0.2s;
       border: none;
       display: block;
       position: relative;
-      clip-path: url("#hexagon-clip");
-      background: #29222a;
+      clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
+      background: ${props => props.theme.buttonBorderColor};
       width: 100px;
       height: 100px;
       color: ${props => props.theme.primaryColor};
@@ -79,7 +73,6 @@ const Wrapper = styled.div`
         transform: rotateY(0) skew(0, 0) translate(0, 0);
         transition: 0.2s linear 0.2s;
       }
-
       &::after {
         content: "";
         position: absolute;
@@ -89,7 +82,7 @@ const Wrapper = styled.div`
         bottom: 4px;
         margin: 0 auto;
         background-color: ${props => props.theme.blackColor};
-        clip-path: url("#hexagon-clip");
+        clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
         z-index: 2;
       }
       &:hover {
@@ -99,6 +92,14 @@ const Wrapper = styled.div`
         &::after {
           background: ${props => props.theme.blackColor};
         }
+      }
+    }
+    .clip-border-circle {
+      width: 92px;
+      height: 92px;
+      clip-path: circle(50% at 50% 50%);
+      &::after {
+        clip-path: circle(50% at 50% 50%);
       }
     }
     .blink::after {
@@ -114,13 +115,6 @@ const Wrapper = styled.div`
       font-weight: 100;
       transform: rotateY(0) skew(0, 0) translate(0, 0);
       transition: 0.2s linear 0.2s;
-    }
-    .clip-svg {
-      width: 0;
-      height: 0;
-      &:hover {
-        cursor: pointer;
-      }
     }
     .line {
       z-index: 3;

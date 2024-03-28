@@ -43,14 +43,14 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     .background-card {
-      margin-top: 10px;
+      margin-top: 7px;
       height: 370px;
       display: flex;
       flex-direction: column;
       align-items: center;
       border-radius: 4px;
       padding: 0 0.5rem 1rem;
-      width: 280px;
+      width: calc(100% - 10px);
       background-color: ${props => props.theme.blackColor};
       box-shadow: 0 0 20px #ff5d572b;
       transition: 0.5s;

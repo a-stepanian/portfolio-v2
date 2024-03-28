@@ -8,30 +8,27 @@ export const App = () => {
   const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
 
   useEffect(() => {
+    const lightMode = document.querySelector(".clip-border-circle") !== null;
     if (btnClicked?.length > 0) {
       let primaryColor = "";
-      let panelBg = "";
       switch (btnClicked) {
         case "background": {
           primaryColor = "#1dd3b0";
-          panelBg = "#3a4649";
           break;
         }
         case "portfolio": {
           primaryColor = "#affc41";
-          panelBg = "#39413c";
           break;
         }
         default: {
           primaryColor = "#ff5d57";
-          panelBg = "#4a2b38";
           break;
         }
       }
+      if (lightMode) primaryColor = "#666";
       updateColorScheme({
         ...colorScheme,
-        primaryColor,
-        panelBg
+        primaryColor
       });
 
       ["background", "contact", "portfolio"].forEach(() => {
@@ -75,6 +72,50 @@ export const App = () => {
     }
   }, [btnClicked]);
 
+  const toggleDarkMode = () => {
+    const lightMode = document.querySelector(".clip-border-circle") !== null;
+    const clipBorders = document?.querySelectorAll(".clip-border");
+    const contactHexagon = document?.querySelector(".contact-hexagon-wrapper");
+    if (lightMode) {
+      clipBorders?.forEach(x => x?.classList.remove("clip-border-circle"));
+      contactHexagon?.classList.remove("move-right");
+      let primaryColor = "#eee";
+      if (btnClicked?.length > 0) {
+        switch (btnClicked) {
+          case "background": {
+            primaryColor = "#1dd3b0";
+            break;
+          }
+          case "portfolio": {
+            primaryColor = "#affc41";
+            break;
+          }
+          default: {
+            primaryColor = "#ff5d57";
+            break;
+          }
+        }
+      }
+      updateColorScheme({
+        ...colorScheme,
+        primaryColor,
+        blackColor: "#29222a",
+        panelRadius: "3px",
+        buttonBorderColor: "#29222a"
+      });
+    } else {
+      clipBorders?.forEach(x => x?.classList.add("clip-border-circle"));
+      contactHexagon?.classList.add("move-right");
+      updateColorScheme({
+        ...colorScheme,
+        blackColor: "#e4d9e6",
+        primaryColor: "#666",
+        panelRadius: "40px",
+        buttonBorderColor: "#7e767f"
+      });
+    }
+  };
+
   return (
     <ThemeProvider theme={colorScheme}>
       <Wrapper>
@@ -87,6 +128,9 @@ export const App = () => {
             <div className="bottom-hexagon">
               <Hexagon text={"portfolio"} />
             </div>
+            <button type="button" style={{ position: "absolute", zIndex: "999" }} onClick={toggleDarkMode}>
+              click
+            </button>
           </nav>
           {btnClicked !== "" && (
             <div className="three-dimensions-mobile-wrapper">
@@ -147,6 +191,9 @@ const Wrapper = styled.div`
   /* Used for dark/light mode transition speed */
   .fast-transition * {
     transition: 0.2s linear 0s !important;
+  }
+  .move-right {
+    left: 10px;
   }
   @media (min-width: 768px) {
     .three-dimensions-mobile-wrapper {
