@@ -7,6 +7,11 @@ export interface IColorScheme {
   threeDimensionsBackground: string;
   panelRadius: string;
   buttonBorderColor: string;
+  lineWidth: string;
+  lineStyle: string;
+  infoPanelContentsBackground: string;
+  jobInfoTextColor: string;
+  siteBg: string;
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "";
@@ -42,8 +47,13 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     primaryColor: "#1dd3b0",
     hexagonOutlineColor: "#edf2f4",
     threeDimensionsBackground: "#80b5d23a",
-    panelRadius: "3px",
-    buttonBorderColor: "#29222a"
+    panelRadius: "4px",
+    buttonBorderColor: "#29222a",
+    lineWidth: "4px",
+    lineStyle: "solid",
+    infoPanelContentsBackground: "#eee",
+    jobInfoTextColor: "#e8ff94",
+    siteBg: "#29222a"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);

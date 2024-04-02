@@ -74,6 +74,7 @@ const Wrapper = styled.article`
     padding: 3rem;
     list-style-type: square;
     .duty {
+      color: ${props => props.theme.jobInfoTextColor};
       padding-bottom: 3rem;
       font-size: 1rem;
     }

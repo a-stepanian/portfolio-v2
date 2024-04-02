@@ -3,12 +3,20 @@ import styled, { ThemeProvider } from "styled-components";
 import { Hexagon } from "./Components/Hexagon";
 import { useAppContext } from "./AppContext";
 import ThreeDimensionsMobile from "./Components/ThreeDimensionsMobile";
+import TwoDimensionsMobile from "./Components/TwoDimensionsMobile";
+import { DarkModeButton } from "./Components/DarkModeButton";
 
 export const App = () => {
-  const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
+  const { btnClicked, updateBtnClicked, colorScheme, updateColorScheme } = useAppContext();
 
   useEffect(() => {
-    const lightMode = document.querySelector(".clip-border-circle") !== null;
+    const darkMode = document.querySelector(".clip-border-circle") !== null;
+    let customBackground: string =
+      btnClicked === "contact"
+        ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
+        : btnClicked === "background"
+        ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+        : "url('/portfolio-v2/images/portfolio-bg-lg.png') center center / cover";
     if (btnClicked?.length > 0) {
       let primaryColor = "";
       switch (btnClicked) {
@@ -25,10 +33,18 @@ export const App = () => {
           break;
         }
       }
-      if (lightMode) primaryColor = "#666";
+      if (darkMode) {
+        customBackground = "#eee";
+        primaryColor = "#555";
+        const panels = document?.querySelectorAll(".panel");
+        const panelContents = document?.querySelectorAll(".info-panel-contents");
+        panels?.forEach(x => x?.classList.add("no-shadow"));
+        panelContents?.forEach(x => x?.classList.add("no-shadow"));
+      }
       updateColorScheme({
         ...colorScheme,
-        primaryColor
+        primaryColor,
+        infoPanelContentsBackground: customBackground
       });
 
       ["background", "contact", "portfolio"].forEach(() => {
@@ -73,11 +89,21 @@ export const App = () => {
   }, [btnClicked]);
 
   const toggleDarkMode = () => {
-    const lightMode = document.querySelector(".clip-border-circle") !== null;
+    const darkMode = document.querySelector(".clip-border-circle") !== null;
+
     const clipBorders = document?.querySelectorAll(".clip-border");
+    const actionButtons = document?.querySelectorAll(".hexagon-wrapper");
+    const lines = document?.querySelectorAll(".line");
+    const panels = document?.querySelectorAll(".panel");
+    const panelContents = document?.querySelectorAll(".info-panel-contents");
     const contactHexagon = document?.querySelector(".contact-hexagon-wrapper");
-    if (lightMode) {
+
+    if (darkMode) {
       clipBorders?.forEach(x => x?.classList.remove("clip-border-circle"));
+      actionButtons?.forEach(x => x?.classList.remove("no-shadow"));
+      lines?.forEach(x => x?.classList.remove("no-shadow"));
+      panels?.forEach(x => x?.classList.remove("no-shadow"));
+      panelContents?.forEach(x => x?.classList.remove("no-shadow"));
       contactHexagon?.classList.remove("move-right");
       let primaryColor = "#eee";
       if (btnClicked?.length > 0) {
@@ -100,26 +126,86 @@ export const App = () => {
         ...colorScheme,
         primaryColor,
         blackColor: "#29222a",
-        panelRadius: "3px",
-        buttonBorderColor: "#29222a"
+        infoPanelContentsBackground: "#eee",
+        panelRadius: "4px",
+        buttonBorderColor: "#29222a",
+        lineWidth: "4px",
+        lineStyle: "solid",
+        jobInfoTextColor: "#e8ff94",
+        siteBg: "#29222a"
+        // "url('https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
+        // "url('https://images.unsplash.com/photo-1611659934318-06fd70ced53c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
       });
     } else {
       clipBorders?.forEach(x => x?.classList.add("clip-border-circle"));
+      actionButtons?.forEach(x => x?.classList.add("no-shadow"));
+      lines?.forEach(x => x?.classList.add("no-shadow"));
+      panels?.forEach(x => x?.classList.add("no-shadow"));
+      panelContents?.forEach(x => x?.classList.add("no-shadow"));
       contactHexagon?.classList.add("move-right");
       updateColorScheme({
         ...colorScheme,
-        blackColor: "#e4d9e6",
-        primaryColor: "#666",
-        panelRadius: "40px",
-        buttonBorderColor: "#7e767f"
+        primaryColor: "#555",
+        blackColor: "#e9e8e0",
+        panelRadius: "8px",
+        buttonBorderColor: "#7e767f",
+        lineWidth: "3px",
+        lineStyle: "dashed",
+        jobInfoTextColor: "#2e370c",
+        siteBg:
+          "url('https://images.unsplash.com/photo-1612538498613-35c5c8d675c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
       });
     }
+    // if (btnClicked.length > 0) {
+    //   let btnClickedSaved = btnClicked;
+    //   updateBtnClicked("");
+    //   setTimeout(() => {
+    //     updateBtnClicked(btnClickedSaved);
+    //   }, 450);
+    // }
   };
 
   return (
     <ThemeProvider theme={colorScheme}>
       <Wrapper>
         <div id="site-wrapper">
+          <h1 className="title">Designed and Built by Alex Stepanian</h1>
+          <svg
+            className="squiggle"
+            width="300px"
+            height="175px"
+            style={{ filter: `blur(${colorScheme.blackColor === "#29222a" ? "10px" : "0"})` }}>
+            <path
+              fill="transparent"
+              stroke="#8c858c"
+              strokeWidth="4"
+              d="M10 80 Q 77.5 10, 145 80 T 280 80"
+              className="path"></path>
+          </svg>
+          <svg
+            className="squiggle squiggle2"
+            width="300px"
+            height="175px"
+            style={{ filter: `blur(${colorScheme.blackColor === "#29222a" ? "10px" : "0"})` }}>
+            <path
+              fill="transparent"
+              stroke="#a59ba5"
+              strokeWidth="4"
+              d="M10 80 Q 77.5 10, 145 80 T 280 80"
+              className="path"></path>
+          </svg>
+          <svg
+            className="squiggle squiggle3"
+            width="300px"
+            height="175px"
+            style={{ filter: `blur(${colorScheme.blackColor === "#29222a" ? "10px" : "0"})` }}>
+            <path
+              fill="transparent"
+              stroke="#a59ba5"
+              strokeWidth="4"
+              d="M10 80 Q 77.5 10, 145 80 T 280 80"
+              className="path"></path>
+          </svg>
           <nav>
             <div className="top-row">
               <Hexagon text={"background"} />
@@ -127,14 +213,20 @@ export const App = () => {
             </div>
             <div className="bottom-hexagon">
               <Hexagon text={"portfolio"} />
+              {/* <div style={{ position: "relative", left: `${colorScheme.siteBg === "#29222a" ? "0" : "10px"}` }}> */}
+              <div
+                style={{
+                  position: "relative",
+                  left: `${colorScheme.siteBg === "#29222a" ? "0" : "10px"}`,
+                  top: `${colorScheme.siteBg === "#29222a" ? "0" : "5px"}`
+                }}>
+                <DarkModeButton toggleDarkMode={toggleDarkMode} />
+              </div>
             </div>
-            <button type="button" style={{ position: "absolute", zIndex: "999" }} onClick={toggleDarkMode}>
-              click
-            </button>
           </nav>
           {btnClicked !== "" && (
             <div className="three-dimensions-mobile-wrapper">
-              <ThreeDimensionsMobile />
+              {colorScheme.siteBg === "#29222a" ? <ThreeDimensionsMobile /> : <TwoDimensionsMobile />}
             </div>
           )}
         </div>
@@ -152,7 +244,8 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: ${props => props.theme.blackColor};
+  /* background: url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") */
+  background: ${props => props.theme.siteBg};
   transition: 0.2s;
   .btn-shrink {
     transform: scale(0.9) !important;
@@ -166,6 +259,55 @@ const Wrapper = styled.div`
   #site-wrapper {
     display: flex;
     animation: site-appear 1s forwards;
+    transition: filter 1s linear;
+    .title {
+      position: fixed;
+      bottom: 10vh;
+      right: 10vw;
+      text-align: end;
+      font-size: 1rem;
+      color: #544f54;
+      font-weight: 100;
+      opacity: 0.5;
+    }
+    .squiggle {
+      width: 300px;
+      display: block;
+      position: absolute;
+      left: calc(50% - 150px);
+      top: calc(50% - 80px);
+      transform: rotate(236deg) scale(4);
+      transition: 1s;
+      filter: blur(2px);
+      .path {
+        stroke-opacity: 0.2;
+        stroke-dasharray: 640;
+        stroke-dashoffset: 0;
+        /* animation: dash 4s linear; */
+      }
+    }
+    .squiggle2 {
+      transform: rotate(210deg) scale(4) translateX(100px);
+      .path {
+        /* stroke-dashoffset: 640; */
+        /* animation: dash 4s linear 1s forwards; */
+      }
+    }
+    .squiggle3 {
+      transform: rotate(210deg) scale(5) translateX(50px);
+      .path {
+        /* stroke-dashoffset: 640; */
+        /* animation: dash 4s linear 1s forwards; */
+      }
+    }
+    @keyframes dash {
+      from {
+        stroke-dashoffset: 640;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
     nav {
       position: relative;
       width: 206px;
@@ -177,6 +319,7 @@ const Wrapper = styled.div`
         position: absolute;
         bottom: 20px;
         left: 51px;
+        display: flex;
       }
     }
     .three-dimensions-mobile-wrapper {
@@ -195,6 +338,10 @@ const Wrapper = styled.div`
   .move-right {
     left: 10px;
   }
+  .no-shadow {
+    filter: none !important;
+    box-shadow: none !important;
+  }
   @media (min-width: 768px) {
     .three-dimensions-mobile-wrapper {
       display: none;
@@ -203,7 +350,7 @@ const Wrapper = styled.div`
   /* Animations */
   @keyframes site-appear {
     0% {
-      opacity: 0.1;
+      opacity: 0.001;
     }
     1% {
       opacity: 0;

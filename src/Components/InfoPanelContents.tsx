@@ -21,17 +21,8 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
     scrollTarget?.current?.scrollIntoView();
   }
 
-  const customBackground: string =
-    text === "contact"
-      ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
-      : text === "background"
-      ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
-      : "";
-
   return (
-    <Wrapper
-      className={`info-panel-contents info-panel-contents-${text} open-tall`}
-      style={{ background: customBackground }}>
+    <Wrapper className={`info-panel-contents info-panel-contents-${text} open-tall`}>
       <div ref={scrollTarget}></div>
       <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
@@ -46,7 +37,7 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 };
 
 const Wrapper = styled.section`
-  background: url("/portfolio-v2/images/portfolio-bg-lg.png") center center / cover;
+  background: ${props => props.theme.infoPanelContentsBackground};
   position: absolute;
   top: 0;
   right: 0;
@@ -79,13 +70,15 @@ const Wrapper = styled.section`
     color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
-    position: fixed;
+    position: absolute;
     bottom: calc((100vh - 200px) / 2);
     left: 250px;
     right: 20px;
     top: unset;
     height: 0;
-    border: 2px solid ${props => props.theme.primaryColor};
+    border-width: ${props => props.theme.lineWidth};
+    border-style: ${props => props.theme.lineStyle};
+    border-color: ${props => props.theme.primaryColor};
     border-radius: 3px;
     filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     .contents-button-wrapper {

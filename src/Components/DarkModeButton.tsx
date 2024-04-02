@@ -1,32 +1,31 @@
-import InfoPanel from "./InfoPanel";
-import { PiBriefcaseThin, PiEnvelopeSimpleThin, PiCertificateThin } from "react-icons/pi";
+import { PiMoonStarsThin, PiSunThin } from "react-icons/pi";
 import styled from "styled-components";
-import { TButtonText, useAppContext } from "../AppContext";
+import { useAppContext } from "../AppContext";
 
-interface IHexagonProps {
-  text: TButtonText;
+interface IDarkModeButtonProps {
+  toggleDarkMode: any;
 }
+export const DarkModeButton = (props: IDarkModeButtonProps) => {
+  const { toggleDarkMode } = props;
+  const { colorScheme } = useAppContext();
 
-export const Hexagon = (props: IHexagonProps) => {
-  const { text } = props;
-  const { btnClicked, updateBtnClicked } = useAppContext();
   return (
     <Wrapper>
-      <div className={`hexagon-wrapper ${text}-hexagon-wrapper`}>
+      <div className={`hexagon-wrapper dark-mode-button-hexagon-wrapper`}>
         <button
-          className={`clip-border ${text}-clip-border`}
-          onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}
-          aria-label={`Open ${text}`}
-          title={text}>
-          <div className={`blue-overlay ${text}-blue-overlay`}></div>
-          <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
-          {text === "portfolio" && <PiBriefcaseThin className={`icon ${text}-icon`} />}
-          {text === "background" && <PiCertificateThin className={`icon ${text}-icon`} />}
-          {text === "contact" && <PiEnvelopeSimpleThin className={`icon ${text}-icon`} />}
+          className={`clip-border btn-shrink`}
+          aria-label={`Open dark-mode-button`}
+          title="toggle dark and light mode"
+          onClick={toggleDarkMode}>
+          <div className={`blue-overlay dark-mode-button-blue-overlay`}></div>
+          {colorScheme.siteBg === "#29222a" ? (
+            <PiSunThin className={`icon dark-mode-button-icon`} />
+          ) : (
+            <PiMoonStarsThin className={`icon dark-mode-button-icon`} />
+          )}
         </button>
-        <div className={`line ${text}-line`}></div>
+        <div className={`line dark-mode-button-line`}></div>
       </div>
-      <InfoPanel text={text} />
     </Wrapper>
   );
 };
@@ -34,7 +33,7 @@ export const Hexagon = (props: IHexagonProps) => {
 const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
-    height: 100px;
+    height: 75px;
     transition: filter 0.2s linear 0.2s, transform 0.2s linear 0.2s;
     filter: drop-shadow(0 0 0 ${props => props.theme.primaryColor});
     .clip-border {
@@ -44,8 +43,8 @@ const Wrapper = styled.div`
       position: relative;
       clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
       background: ${props => props.theme.buttonBorderColor};
-      width: 100px;
-      height: 100px;
+      width: 75px;
+      height: 75px;
       color: ${props => props.theme.primaryColor};
       /* Button outline un-selected */
       .blue-overlay {
@@ -61,7 +60,7 @@ const Wrapper = styled.div`
       /* Button outline selected */
       .clicked-blue-overlay {
         transition: height 0.4s linear 0.2s, background-color 0.2s linear 0.2s;
-        height: 100px;
+        height: 75px;
       }
       .blue-text {
         color: ${props => props.theme.primaryColor};
@@ -69,9 +68,10 @@ const Wrapper = styled.div`
       .icon {
         z-index: 3;
         position: relative;
-        font-size: 1.5rem;
+        font-size: 2rem;
         transform: rotateY(0) skew(0, 0) translate(0, 0);
         transition: 0.2s linear 0.2s;
+        color: #555;
       }
       &::after {
         content: "";
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background-color: ${props => props.theme.blackColor};
+        background-color: #b5d2ccb8;
         clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
         z-index: 2;
       }
@@ -95,8 +95,8 @@ const Wrapper = styled.div`
       }
     }
     .clip-border-circle {
-      width: 92px;
-      height: 92px;
+      width: 65px;
+      height: 65px;
       clip-path: circle(50% at 50% 50%);
       &::after {
         top: 2px;

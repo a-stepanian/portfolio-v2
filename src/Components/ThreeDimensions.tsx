@@ -6,7 +6,7 @@ const ThreeDimensions = () => {
   const { btnClicked } = useAppContext();
 
   return (
-    <Wrapper style={{ height: "80%" }}>
+    <Wrapper>
       <div className="big-three-d-object">
         <div className="big-face side1">
           <p className="nav-text">{btnClicked}</p>
@@ -43,10 +43,10 @@ const Wrapper = styled.div`
   display: none;
   @media (min-width: 768px) {
     display: block;
-    position: absolute;
-    bottom: 5%;
-    left: 70px;
     width: 120px;
+    left: 60px;
+    height: 80%;
+    max-height: 540px;
     perspective: calc(400px); // Viewer's "distance" from the 3D object
     .big-three-d-object {
       position: relative;
