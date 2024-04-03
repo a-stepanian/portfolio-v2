@@ -13,7 +13,7 @@ interface IInfoPanelContentsProps {
 const InfoPanelContents = (props: IInfoPanelContentsProps) => {
   const { text } = props;
 
-  const { btnClicked, updateBtnClicked } = useAppContext();
+  const { btnClicked, updateBtnClicked, colorScheme } = useAppContext();
 
   const scrollTarget = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,10 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
   }
 
   return (
-    <Wrapper className={`info-panel-contents info-panel-contents-${text} open-tall`}>
+    <Wrapper
+      className={`info-panel-contents info-panel-contents-${text} open-tall ${
+        colorScheme.blackColor === "#29222a" ? "glow" : ""
+      }`}>
       <div ref={scrollTarget}></div>
       <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
@@ -80,7 +83,6 @@ const Wrapper = styled.section`
     border-style: ${props => props.theme.lineStyle};
     border-color: ${props => props.theme.primaryColor};
     border-radius: 3px;
-    filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
     .contents-button-wrapper {
       display: block;
       position: sticky;

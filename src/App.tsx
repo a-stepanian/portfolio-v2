@@ -5,6 +5,8 @@ import { useAppContext } from "./AppContext";
 import ThreeDimensionsMobile from "./Components/ThreeDimensionsMobile";
 import TwoDimensionsMobile from "./Components/TwoDimensionsMobile";
 import { DarkModeButton } from "./Components/DarkModeButton";
+import { LittleDiv } from "./Components/LittleDiv";
+import { LittleDiv2 } from "./Components/LittleDiv2";
 
 export const App = () => {
   const { btnClicked, updateBtnClicked, colorScheme, updateColorScheme } = useAppContext();
@@ -149,7 +151,7 @@ export const App = () => {
         blackColor: "#e9e8e0",
         panelRadius: "8px",
         buttonBorderColor: "#7e767f",
-        lineWidth: "3px",
+        lineWidth: "4px",
         lineStyle: "dashed",
         jobInfoTextColor: "#2e370c",
         siteBg:
@@ -169,7 +171,7 @@ export const App = () => {
     <ThemeProvider theme={colorScheme}>
       <Wrapper>
         <div id="site-wrapper">
-          <h1 className="title">Designed and Built by Alex Stepanian</h1>
+          <h1 className="title">Designed and Built by Alex Stepanian &copy;2024</h1>
           <svg
             className="squiggle"
             width="300px"
@@ -210,10 +212,17 @@ export const App = () => {
             <div className="top-row">
               <Hexagon text={"background"} />
               <Hexagon text={"contact"} />
+              <div
+                style={{
+                  position: "relative",
+                  left: `${colorScheme.siteBg === "#29222a" ? "-5px" : "15px"}`,
+                  top: `${colorScheme.siteBg === "#29222a" ? "45px" : "50px"}`
+                }}>
+                <LittleDiv />
+              </div>
             </div>
             <div className="bottom-hexagon">
               <Hexagon text={"portfolio"} />
-              {/* <div style={{ position: "relative", left: `${colorScheme.siteBg === "#29222a" ? "0" : "10px"}` }}> */}
               <div
                 style={{
                   position: "relative",
@@ -222,6 +231,16 @@ export const App = () => {
                 }}>
                 <DarkModeButton toggleDarkMode={toggleDarkMode} />
               </div>
+              {colorScheme.siteBg !== "#29222a" && (
+                <div
+                  style={{
+                    position: "relative",
+                    left: "20px",
+                    top: "10px"
+                  }}>
+                  <LittleDiv2 />
+                </div>
+              )}
             </div>
           </nav>
           {btnClicked !== "" && (

@@ -67,8 +67,12 @@ const Wrapper = styled.section`
     border-style: ${props => props.theme.lineStyle};
     border-color: ${props => props.theme.primaryColor};
     & .info-panel-contents-wrapper {
+      transition: opacity 0.1s linear 0.4s;
       opacity: 0;
     }
+  }
+  .glow {
+    filter: drop-shadow(0 0 10px ${props => props.theme.primaryColor});
   }
   .button-wrapper {
     position: absolute;
@@ -111,7 +115,7 @@ const Wrapper = styled.section`
       border-radius 0.2s linear 0.6s;
     border-radius: ${props => props.theme.panelRadius};
     & .info-panel-contents-wrapper {
-      transition: opacity 0.6s linear 0.6s;
+      transition: opacity 0.1s linear 0.6s;
       opacity: 1;
     }
     .open-tall {
@@ -121,6 +125,9 @@ const Wrapper = styled.section`
   @media (min-width: 768px) {
     .panel {
       background-color: ${props => props.theme.blackColor};
+      & .info-panel-contents-wrapper {
+        transition: 0.05s;
+      }
     }
     .button-wrapper {
       display: none;
