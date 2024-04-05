@@ -1,4 +1,3 @@
-import { PiMoonStarsThin, PiSunThin } from "react-icons/pi";
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
 

@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import ContactForm from "./ContactForm";
-import { GiCircuitry } from "react-icons/gi";
-import { useState } from "react";
 import { useAppContext } from "../../AppContext";
 
 const Contact = () => {
-  const { emailSent, updateEmailSent } = useAppContext();
+  const { emailSent } = useAppContext();
 
   return (
     <Wrapper>
@@ -21,23 +19,6 @@ const Contact = () => {
 
 const Wrapper = styled.section`
   height: calc(100% - 80px);
-  .circuit-wrapper {
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    svg {
-      color: ${props => props.theme.blackColor};
-      font-size: 100vw;
-      opacity: 0.3;
-      filter: blur(5px);
-      margin: -4vw -1vw;
-      transition: 0.5s;
-    }
-  }
   .form-wrapper {
     height: 100%;
     display: flex;
@@ -63,11 +44,6 @@ const Wrapper = styled.section`
   }
 
   @media (min-width: 480px) {
-    .circuit-wrapper {
-      svg {
-        opacity: 0.2;
-      }
-    }
     .form-wrapper {
       .background-card {
         padding: 0 1rem 1.5rem;
@@ -77,18 +53,6 @@ const Wrapper = styled.section`
     }
   }
   @media (min-width: 768px) {
-    .circuit-wrapper {
-      top: calc(-2vw);
-      left: calc(-2vw);
-      height: calc(100% + 2vw);
-      width: calc(100% + 2vw);
-      svg {
-        color: ${props => props.theme.blackColor};
-        font-size: calc(100vw - 220px);
-        opacity: 0.15;
-        filter: blur(2px);
-      }
-    }
     .form-wrapper .background-card {
       height: 470px;
       margin-top: 30px;
