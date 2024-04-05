@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import { Hexagon } from "./Components/Hexagon";
 import { useAppContext } from "./AppContext";
@@ -11,48 +12,53 @@ import { LittleDiv2 } from "./Components/LittleDiv2";
 export const App = () => {
   const { btnClicked, updateBtnClicked, colorScheme, updateColorScheme } = useAppContext();
 
+  // Runs when a button is clicked
   useEffect(() => {
     const darkMode = document.querySelector(".clip-border-circle") !== null;
-    let customBackground: string =
-      btnClicked === "contact"
-        ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
-        : btnClicked === "background"
-        ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
-        : "url('/portfolio-v2/images/portfolio-bg-lg.png') center center / cover";
-    if (btnClicked?.length > 0) {
-      let primaryColor = "";
-      switch (btnClicked) {
-        case "background": {
-          primaryColor = "#1dd3b0";
-          break;
-        }
-        case "portfolio": {
-          primaryColor = "#affc41";
-          break;
-        }
-        default: {
-          primaryColor = "#ff5d57";
-          break;
-        }
+
+    // Select background for the InfoPanelContents
+    let customBackground = darkMode
+      ? "#eee"
+      : btnClicked === "contact"
+      ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
+      : btnClicked === "background"
+      ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+      : "url('/portfolio-v2/images/portfolio-bg-lg.png') center center / cover";
+    // Select primary color
+    let primaryColor = "";
+    switch (btnClicked) {
+      case "background": {
+        primaryColor = darkMode ? "#555" : "#1dd3b0";
+        break;
       }
+      case "portfolio": {
+        primaryColor = darkMode ? "#555" : "#affc41";
+        break;
+      }
+      default: {
+        primaryColor = darkMode ? "#555" : "#ff5d57";
+        break;
+      }
+    }
+    // Update InfoPanelContents and primary color
+    updateColorScheme({
+      ...colorScheme,
+      primaryColor,
+      infoPanelContentsBackground: customBackground
+    });
+
+    if (btnClicked.length > 0) {
       if (darkMode) {
-        customBackground = "#eee";
-        primaryColor = "#555";
         const panels = document?.querySelectorAll(".panel");
         const panelContents = document?.querySelectorAll(".info-panel-contents");
         panels?.forEach(x => x?.classList.add("no-shadow"));
         panelContents?.forEach(x => x?.classList.add("no-shadow"));
       }
-      updateColorScheme({
-        ...colorScheme,
-        primaryColor,
-        infoPanelContentsBackground: customBackground
-      });
-
       ["background", "contact", "portfolio"].forEach(() => {
         document.querySelector(`.info-panel-contents-${btnClicked}`)?.classList.add("open-tall");
       });
     }
+
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
     // remove styles from other buttons
     otherBtns.forEach((text: string) => {
@@ -158,13 +164,13 @@ export const App = () => {
           "url('https://images.unsplash.com/photo-1612538498613-35c5c8d675c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
       });
     }
-    // if (btnClicked.length > 0) {
-    //   let btnClickedSaved = btnClicked;
-    //   updateBtnClicked("");
-    //   setTimeout(() => {
-    //     updateBtnClicked(btnClickedSaved);
-    //   }, 450);
-    // }
+    if (btnClicked.length > 0) {
+      let btnClickedSaved = btnClicked;
+      updateBtnClicked("");
+      setTimeout(() => {
+        updateBtnClicked(btnClickedSaved);
+      }, 450);
+    }
   };
 
   return (
@@ -268,12 +274,6 @@ const Wrapper = styled.div`
   transition: 0.2s;
   .btn-shrink {
     transform: scale(0.9) !important;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Chakra Petch", sans-serif;
   }
   #site-wrapper {
     display: flex;

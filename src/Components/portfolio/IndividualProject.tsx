@@ -26,14 +26,19 @@ const IndividualProject = (props: IIndividualProjectProps) => {
           <BsFillStarFill className="star" />
         </div>
       )}
-
       <div className="img-container">
-        <img
-          src={`/portfolio-v2/images/${site.thumbnail}`}
-          alt={`screenshot of ${site.title} website`}
-          onClick={toggleInfo}
-          loading="lazy"
-        />
+        {site.videoUrl ? (
+          <video id="menuwebVideo" width="320" controls>
+            <source src={site.videoUrl} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={`/portfolio-v2/images/${site.thumbnail}`}
+            alt={`screenshot of ${site.title} website`}
+            onClick={toggleInfo}
+            loading="lazy"
+          />
+        )}
         <div className={`${isInfoOpen ? "info info-open" : "info"}`}>
           <div>
             <h4>Built with:</h4>
@@ -69,11 +74,13 @@ const IndividualProject = (props: IIndividualProjectProps) => {
         </div>
       </div>
       <footer onClick={toggleInfo}>
-        <div>
-          <h3 className="project-title">{site.title}</h3>
+        <div className="my-row">
+          <div className="my-column">
+            <h3 className="project-title">{site.title}</h3>
+            <p>{site.description}</p>
+          </div>
           <InfoToggleButton isInfoOpen={isInfoOpen} />
         </div>
-        <p>{site.description}</p>
       </footer>
     </Wrapper>
   );
@@ -86,6 +93,7 @@ const Wrapper = styled.article`
   border: 3px solid ${props => props.theme.blackColor};
   padding: 1rem;
   max-width: 25rem;
+  margin: 3rem 1rem;
   .featured {
     position: absolute;
     top: calc(-2rem - 3px);
@@ -117,13 +125,15 @@ const Wrapper = styled.article`
   }
 
   .img-container {
+    display: flex;
+    justify-content: center;
     position: relative;
     background-color: ${props => props.theme.blackColor};
-  }
-  img {
-    display: block;
-    width: 100%;
-    object-fit: cover;
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   .info {
@@ -185,20 +195,24 @@ const Wrapper = styled.article`
   }
 
   footer {
-    margin-top: 0.8rem;
-    div {
+    margin-top: 12px;
+    .my-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      .project-title {
-        font-size: 1.8rem;
-        font-weight: 600;
-        padding: 0;
+      width: 100%;
+      .my-column {
+        width: calc(100% - 48px);
+        .project-title {
+          margin-bottom: 8px;
+          font-size: 0.8rem;
+          font-weight: 900;
+        }
+        p {
+          font-size: 1rem;
+          line-height: 1rem;
+          color: ${props => props.theme.blackColor};
+        }
       }
-    }
-    p {
-      padding: 0.5rem 0;
-      color: ${props => props.theme.blackColor};
     }
   }
 

@@ -4,6 +4,7 @@ export type TProject = {
   description: string;
   builtWith: string[];
   url: string;
+  videoUrl?: string;
   thumbnail: string;
   learnings: string;
   repo: string;
@@ -29,6 +30,7 @@ const data: TProject[] = [
     description: "A CMS that allows a user to create basic websites.",
     builtWith: ["React", "Bootstrap"],
     url: "https://menu-site-builder.netlify.app/",
+    videoUrl: "/portfolio-v2/images/menuweb.mp4",
     thumbnail: "apply.png",
     learnings: "learned alot",
     repo: "https://github.com/a-stepanian/restaurant-site-builder"
@@ -288,4 +290,83 @@ export const education = [
     instructor: "John Smigla",
     logo: "udemy.bmp"
   }
+];
+
+export const webDevSkills = [
+  "HTML5",
+  "CSS3",
+  "Responsive Design",
+  "JavaScript (all 2022 modern syntax, ES6, ES2018, etc.)",
+  "Asynchronous JavaScript - Promises, async/await, etc.",
+  "AJAX and single page apps",
+  "Bootstrap 4 and 5",
+  "DOM Manipulation",
+  "Unix(Command Line) Commands",
+  "NodeJS",
+  "NPM",
+  "ExpressJS",
+  "Templating",
+  "REST",
+  "SQL vs. NoSQL databases",
+  "MongoDB",
+  "Database Associations",
+  "Schema Design",
+  "Mongoose",
+  "Authentication From Scratch",
+  "Cookies & Sessions",
+  "Authorization",
+  "Common Security Issues - SQL Injection, XSS, etc.",
+  "Developer Best Practices",
+  "Deploying Apps",
+  "Cloud Databases",
+  "Image Upload and Storage",
+  "Maps and Geocoding"
+];
+
+export const gitSkills = [
+  "Understand how Git works behind the scenes",
+  "Explain the difference Git objects: trees, blobs, commits, and annotated tags",
+  "Master the essential Git workflow: adding & committing",
+  "Work with Git branches",
+  "Perform Git merges and resolve merge conflicts",
+  "Use Git diff to reveal changes over time",
+  "Master Git stashing",
+  "Undo changes using git restore, git revert, and git reset",
+  "Work with local and remote repositories",
+  'Master collaboration workflows: pull requests, "fork & clone", etc.',
+  "Squash, clean up, and rewrite history using interactive rebase",
+  'Retrieve "lost" work using git reflogs',
+  "Write custom and powerful Git aliases",
+  "Mark releases and versions using Git tags"
+];
+
+export const reactSkills = [
+  "JSX",
+  "Props",
+  "Hooks - useState, useEffect, useRef, useReducer, useContext, etc...",
+  "Creating custom hooks",
+  "Conditional Rendering",
+  "React Router 6",
+  "useNavigate",
+  "Pagination on server and client side",
+  "styled-components"
+];
+
+export const fcc1Skills = [
+  "HTML5",
+  "Basic CSS",
+  "Applied Visual Design",
+  "Applied Accessibility",
+  "Responsive Web Design Principles",
+  "CSS Flexbox & Grid"
+];
+
+export const fcc2Skills = [
+  "Basic fundamental programing concepts with Javascript",
+  "ES6",
+  "RegEx",
+  "Debugging",
+  "Basic Data Structures",
+  "Basic & Intermediate Algorithm Scripting",
+  "OOP & Functional Programming"
 ];

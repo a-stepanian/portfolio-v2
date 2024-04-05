@@ -1,91 +1,16 @@
 import styled from "styled-components";
+import { fcc1Skills, fcc2Skills, gitSkills, reactSkills, webDevSkills } from "../../data";
 
 const OnlineSchool = () => {
-  const webDevSkills = [
-    "HTML5",
-    "CSS3",
-    "Responsive Design",
-    "JavaScript (all 2022 modern syntax, ES6, ES2018, etc.)",
-    "Asynchronous JavaScript - Promises, async/await, etc.",
-    "AJAX and single page apps",
-    "Bootstrap 4 and 5",
-    "DOM Manipulation",
-    "Unix(Command Line) Commands",
-    "NodeJS",
-    "NPM",
-    "ExpressJS",
-    "Templating",
-    "REST",
-    "SQL vs. NoSQL databases",
-    "MongoDB",
-    "Database Associations",
-    "Schema Design",
-    "Mongoose",
-    "Authentication From Scratch",
-    "Cookies & Sessions",
-    "Authorization",
-    "Common Security Issues - SQL Injection, XSS, etc.",
-    "Developer Best Practices",
-    "Deploying Apps",
-    "Cloud Databases",
-    "Image Upload and Storage",
-    "Maps and Geocoding"
-  ];
-
-  const gitSkills = [
-    "Understand how Git works behind the scenes",
-    "Explain the difference Git objects: trees, blobs, commits, and annotated tags",
-    "Master the essential Git workflow: adding & committing",
-    "Work with Git branches",
-    "Perform Git merges and resolve merge conflicts",
-    "Use Git diff to reveal changes over time",
-    "Master Git stashing",
-    "Undo changes using git restore, git revert, and git reset",
-    "Work with local and remote repositories",
-    'Master collaboration workflows: pull requests, "fork & clone", etc.',
-    "Squash, clean up, and rewrite history using interactive rebase",
-    'Retrieve "lost" work using git reflogs',
-    "Write custom and powerful Git aliases",
-    "Mark releases and versions using Git tags"
-  ];
-
-  const reactSkills = [
-    "JSX",
-    "Props",
-    "Hooks - useState, useEffect, useRef, useReducer, useContext, etc...",
-    "Creating custom hooks",
-    "Conditional Rendering",
-    "React Router 6",
-    "useNavigate",
-    "Pagination on server and client side",
-    "styled-components"
-  ];
-
-  const fcc1Skills = [
-    "HTML5",
-    "Basic CSS",
-    "Applied Visual Design",
-    "Applied Accessibility",
-    "Responsive Web Design Principles",
-    "CSS Flexbox & Grid"
-  ];
-
-  const fcc2Skills = [
-    "Basic fundamental programing concepts with Javascript",
-    "ES6",
-    "RegEx",
-    "Debugging",
-    "Basic Data Structures",
-    "Basic & Intermediate Algorithm Scripting",
-    "OOP & Functional Programming"
-  ];
-
   return (
     <Wrapper>
       <header className="school-header">
-        <div className="title-company">
-          <h3>Independent Courses</h3>
-        </div>
+        <h4 className="school-name">
+          <a href="/" target="_blank" rel="noreferrer">
+            udemy
+          </a>
+        </h4>
+        <h3 className="school-title">Independent Courses</h3>
       </header>
       <div className="courses">
         <p className="course">React Tutorial and Projects Course</p>
@@ -93,12 +18,12 @@ const OnlineSchool = () => {
           <img src="/portfolio-v2/images/react.jpg" alt="React Course Certificate of Completion" loading="lazy" />
         </div>
         <ul>
-          {reactSkills.map((skill, index) => {
-            return <li key={index}>{skill}</li>;
-          })}
+          {reactSkills.map((skill, index) => (
+            <li key={index} className="duty">
+              {skill}
+            </li>
+          ))}
         </ul>
-        <div className="line"></div>
-
         <p className="course">The Git and Github Bootcamp</p>
         <div className="certificate-wrapper">
           <img
@@ -108,12 +33,12 @@ const OnlineSchool = () => {
           />
         </div>
         <ul>
-          {gitSkills.map((skill, index) => {
-            return <li key={index}>{skill}</li>;
-          })}
+          {gitSkills.map((skill, index) => (
+            <li key={index} className="duty">
+              {skill}
+            </li>
+          ))}
         </ul>
-        <div className="line"></div>
-
         <p className="course">The Web Developer Bootcamp</p>
         <div className="certificate-wrapper">
           <img
@@ -123,31 +48,33 @@ const OnlineSchool = () => {
           />
         </div>
         <ul>
-          {webDevSkills.map((skill, index) => {
-            return <li key={index}>{skill}</li>;
-          })}
+          {webDevSkills.map((skill, index) => (
+            <li key={index} className="duty">
+              {skill}
+            </li>
+          ))}
         </ul>
-        <div className="line"></div>
-
         <p className="course">JavaScript Algorithms and Data Structures</p>
         <div className="certificate-wrapper">
           <img src="/portfolio-v2/images/fcc2.png" alt="Free code camp certificate" loading="lazy" />
         </div>
         <ul>
-          {fcc2Skills.map((skill, index) => {
-            return <li key={index}>{skill}</li>;
-          })}
+          {fcc2Skills.map((skill, index) => (
+            <li key={index} className="duty">
+              {skill}
+            </li>
+          ))}
         </ul>
-        <div className="line"></div>
-
         <p className="course">Responsive Web Design</p>
         <div className="certificate-wrapper">
           <img src="/portfolio-v2/images/fcc1.png" alt="Free code camp certificate" loading="lazy" />
         </div>
         <ul>
-          {fcc1Skills.map((skill, index) => {
-            return <li key={index}>{skill}</li>;
-          })}
+          {fcc1Skills.map((skill, index) => (
+            <li key={index} className="duty">
+              {skill}
+            </li>
+          ))}
         </ul>
       </div>
     </Wrapper>
@@ -155,27 +82,43 @@ const OnlineSchool = () => {
 };
 
 const Wrapper = styled.article`
+  position: relative;
+  z-index: 999;
+  width: 100%;
   color: ${props => props.theme.primaryColor};
   .school-header {
+    z-index: 999;
+    & * {
+      z-index: 999;
+    }
     position: sticky;
     top: 10px;
-    height: 6.6rem;
-    z-index: 1;
-    background: ${props => props.theme.blackColor};
-    padding-right: 7.5rem;
-    padding-left: 0.3rem;
-    .title-company {
-      padding: 0.5rem 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
+    background: #393850e6;
+    padding: 4px 1rem 8px;
+    margin: 0 34px 0 8px;
+    box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
+    .school-title {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
-    h3 {
-      margin-top: 0.5rem;
-      font-size: 1.8rem;
-      line-height: 1.8rem;
+    .school-name {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      line-height: 10px;
+      a {
+        text-decoration: none;
+        color: ${props => props.theme.primaryColor};
+        font-size: 0.6rem;
+        letter-spacing: -0.02rem;
+        white-space: nowrap;
+      }
     }
   }
+
   .courses {
     display: flex;
     flex-direction: column;
@@ -202,19 +145,16 @@ const Wrapper = styled.article`
   ul {
     padding: 3rem;
     list-style-type: square;
-    li {
-      margin-right: 2rem;
-      font-size: 0.8rem;
+    .duty {
+      color: ${props => props.theme.jobInfoTextColor};
+      padding-bottom: 3rem;
+      font-size: 1rem;
     }
   }
 
   .line {
     width: 90%;
   }
-
-  /* ------------- */
-  /* MEDIA QUERIES */
-  /* ------------- */
 
   @media (min-width: 480px) {
     .school-header {
