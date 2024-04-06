@@ -82,7 +82,7 @@ const Wrapper = styled.section`
     border-width: ${props => props.theme.lineWidth};
     border-style: ${props => props.theme.lineStyle};
     border-color: ${props => props.theme.primaryColor};
-    border-radius: 3px;
+    border-radius: ${props => props.theme.panelRadius};
     .contents-button-wrapper {
       display: block;
       position: sticky;

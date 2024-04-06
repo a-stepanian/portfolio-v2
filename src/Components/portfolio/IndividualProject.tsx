@@ -249,6 +249,7 @@ const Wrapper = styled.article`
   }
   @media (min-width: 768px) {
     padding: 2rem;
+    margin: 48px 12px;
   }
 `;
 

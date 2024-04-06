@@ -250,9 +250,9 @@ const Wrapper = styled.form`
     border-radius: 3px;
     &:hover {
       cursor: pointer;
-      color: #633a4a;
+      color: white;
       opacity: 1;
-      box-shadow: 0 0 5px #be6f6c;
+      box-shadow: 0 0 5px white;
     }
   }
   .disabled-btn {

@@ -10,7 +10,7 @@ export const LittleDiv = () => {
         <button
           className={`clip-border btn-shrink`}
           title="toggle dark and light mode"
-          style={{ backgroundColor: `${colorScheme.blackColor === "#29222a" ? "#3f313194" : "#f2e3e3"}` }}>
+          style={{ backgroundColor: `${colorScheme.blackColor === "#29222a" ? "#3f313194" : "#d5bcbc"}` }}>
           <div className={`blue-overlay dark-mode-button-blue-overlay`}></div>
         </button>
         <div className={`line dark-mode-button-line`}></div>

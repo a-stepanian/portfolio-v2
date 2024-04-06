@@ -200,6 +200,22 @@ export const App = () => {
       <Wrapper>
         <div id="site-wrapper">
           <h1 className="title">Designed and Built by Alex Stepanian &copy;2024</h1>
+          <div
+            style={{
+              position: "absolute",
+              left: `${colorScheme.siteBg === "#29222a" ? "-5px" : "8px"}`,
+              top: `${colorScheme.siteBg === "#29222a" ? "90px" : "95px"}`
+            }}>
+            <LittleDiv />
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              left: `${colorScheme.siteBg === "#29222a" ? "0px" : "0px"}`,
+              top: `${colorScheme.siteBg === "#29222a" ? "135px" : "135px"}`
+            }}>
+            <LittleDiv2 />
+          </div>
           <svg
             className="squiggle"
             width="300px"
