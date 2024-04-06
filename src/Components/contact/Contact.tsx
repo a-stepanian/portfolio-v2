@@ -24,7 +24,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     .background-card {
-      margin-top: 7px;
+      margin-top: 2rem;
       height: 370px;
       display: flex;
       flex-direction: column;
