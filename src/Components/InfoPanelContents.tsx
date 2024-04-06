@@ -17,7 +17,7 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 
   const scrollTarget = useRef<HTMLDivElement>(null);
 
-  if (text === btnClicked) {
+  if (btnClicked === "") {
     scrollTarget?.current?.scrollIntoView();
   }
 
@@ -97,7 +97,7 @@ const Wrapper = styled.section`
         align-items: center;
         padding: 0;
         border: none;
-        border-radius: 3px;
+        border-radius: ${props => props.theme.infoPanelContentsCloseRadius};
         transition: 0.1s;
         background-color: #29222a;
         z-index: 1;

@@ -33,7 +33,7 @@ export const DarkModeButton = (props: IDarkModeButtonProps) => {
 const Wrapper = styled.div`
   .hexagon-wrapper {
     position: relative;
-    height: 75px;
+    height: 70px;
     transition: filter 0.2s linear 0.2s, transform 0.2s linear 0.2s;
     filter: drop-shadow(0 0 0 ${props => props.theme.primaryColor});
     .clip-border {
@@ -43,8 +43,8 @@ const Wrapper = styled.div`
       position: relative;
       clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
       background: ${props => props.theme.buttonBorderColor};
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
       color: ${props => props.theme.primaryColor};
       /* Button outline un-selected */
       .blue-overlay {
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
       /* Button outline selected */
       .clicked-blue-overlay {
         transition: height 0.4s linear 0.2s, background-color 0.2s linear 0.2s;
-        height: 75px;
+        height: 70px;
       }
       .blue-text {
         color: ${props => props.theme.primaryColor};
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
         right: 4px;
         bottom: 4px;
         margin: 0 auto;
-        background-color: #b5d2ccb8;
+        background-color: ${props => props.theme.blackColor};
         clip-path: polygon(5% 25%, 50% 5%, 95% 25%, 95% 75%, 50% 95%, 5% 75%);
         z-index: 2;
       }

@@ -12,6 +12,9 @@ export interface IColorScheme {
   infoPanelContentsBackground: string;
   jobInfoTextColor: string;
   siteBg: string;
+  formTextColor: string;
+  formInputBg: string;
+  infoPanelContentsCloseRadius: String;
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "";
@@ -53,7 +56,10 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     lineStyle: "solid",
     infoPanelContentsBackground: "#eee",
     jobInfoTextColor: "#e8ff94",
-    siteBg: "#29222a"
+    siteBg: "#29222a",
+    formTextColor: "#1dd3b0",
+    formInputBg: "#3d5752",
+    infoPanelContentsCloseRadius: "3px"
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);

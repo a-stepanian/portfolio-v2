@@ -10,20 +10,27 @@ import { LittleDiv } from "./Components/LittleDiv";
 import { LittleDiv2 } from "./Components/LittleDiv2";
 
 export const App = () => {
-  const { btnClicked, updateBtnClicked, colorScheme, updateColorScheme } = useAppContext();
+  const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
 
   // Runs when a button is clicked
   useEffect(() => {
     const darkMode = document.querySelector(".clip-border-circle") !== null;
-
-    // Select background for the InfoPanelContents
-    let customBackground = darkMode
-      ? "#eee"
-      : btnClicked === "contact"
-      ? "url('/portfolio-v2/images/red-bg-lg.jpg') center center / cover"
-      : btnClicked === "background"
-      ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
-      : "url('/portfolio-v2/images/portfolio-bg-lg.png') center center / cover";
+    let customBackground = "";
+    if (darkMode) {
+      customBackground =
+        btnClicked === "contact"
+          ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
+          : btnClicked === "background"
+          ? "url('/portfolio-v2/images/background-bg-sm-light.jpg') center center / cover"
+          : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
+    } else {
+      customBackground =
+        btnClicked === "contact"
+          ? "url('/portfolio-v2/images/contact-bg-lg.jpg') center center / cover"
+          : btnClicked === "background"
+          ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+          : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
+    }
     // Select primary color
     let primaryColor = "";
     switch (btnClicked) {
@@ -32,7 +39,8 @@ export const App = () => {
         break;
       }
       case "portfolio": {
-        primaryColor = darkMode ? "#555" : "#affc41";
+        primaryColor = darkMode ? "#555" : "#a0a4c5";
+        // primaryColor = darkMode ? "#555" : "#affc41";
         break;
       }
       default: {
@@ -59,16 +67,14 @@ export const App = () => {
       });
     }
 
+    // style other buttons (not clicked)
     const otherBtns = ["background", "contact", "portfolio"].filter(x => x !== btnClicked);
-    // remove styles from other buttons
     otherBtns.forEach((text: string) => {
       document?.querySelector(`.${text}-hexagon-wrapper`)?.classList.add("btn-shrink");
       document?.querySelector(`.${text}-hexagon-wrapper`)?.classList.remove("extra-drop-shadow");
       document?.querySelector(`.${text}-blue-overlay`)?.classList.remove("clicked-blue-overlay");
       document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text");
-      // document?.querySelector(`.${text}-clip-caption`)?.classList.remove("blue-text", "skewed-text");
       document?.querySelector(`.${text}-icon`)?.classList.remove("blue-text");
-      // document?.querySelector(`.${text}-icon`)?.classList.remove("blue-text", "skewed-text");
       document
         ?.querySelector(`.${text}-line`)
         ?.classList.remove(`clicked-line-${["portfolio"].includes(text) ? "bottom" : "top"}-row`);
@@ -80,9 +86,7 @@ export const App = () => {
       document?.querySelector(`.${btnClicked}-hexagon-wrapper`)?.classList.add("extra-drop-shadow");
       document?.querySelector(`.${btnClicked}-blue-overlay`)?.classList.add("clicked-blue-overlay");
       document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text");
-      // document?.querySelector(`.${btnClicked}-clip-caption`)?.classList.add("blue-text", "skewed-text");
       document?.querySelector(`.${btnClicked}-icon`)?.classList.add("blue-text");
-      // document?.querySelector(`.${btnClicked}-icon`)?.classList.add("blue-text", "skewed-text");
       document
         ?.querySelector(`.${btnClicked}-line`)
         ?.classList.add(`clicked-line-${["portfolio"].includes(btnClicked) ? "bottom" : "top"}-row`);
@@ -97,8 +101,6 @@ export const App = () => {
   }, [btnClicked]);
 
   const toggleDarkMode = () => {
-    const darkMode = document.querySelector(".clip-border-circle") !== null;
-
     const clipBorders = document?.querySelectorAll(".clip-border");
     const actionButtons = document?.querySelectorAll(".hexagon-wrapper");
     const lines = document?.querySelectorAll(".line");
@@ -106,6 +108,7 @@ export const App = () => {
     const panelContents = document?.querySelectorAll(".info-panel-contents");
     const contactHexagon = document?.querySelector(".contact-hexagon-wrapper");
 
+    const darkMode = document.querySelector(".clip-border-circle") !== null;
     if (darkMode) {
       clipBorders?.forEach(x => x?.classList.remove("clip-border-circle"));
       actionButtons?.forEach(x => x?.classList.remove("no-shadow"));
@@ -121,7 +124,8 @@ export const App = () => {
             break;
           }
           case "portfolio": {
-            primaryColor = "#affc41";
+            primaryColor = "#a0a4c5";
+            // primaryColor = "#affc41";
             break;
           }
           default: {
@@ -130,19 +134,26 @@ export const App = () => {
           }
         }
       }
+      let customBackground =
+        btnClicked === "contact"
+          ? "url('/portfolio-v2/images/contact-bg-lg.jpg') center center / cover"
+          : btnClicked === "background"
+          ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+          : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
       updateColorScheme({
         ...colorScheme,
         primaryColor,
         blackColor: "#29222a",
-        infoPanelContentsBackground: "#eee",
+        infoPanelContentsBackground: customBackground,
+        infoPanelContentsCloseRadius: "3px",
         panelRadius: "4px",
         buttonBorderColor: "#29222a",
         lineWidth: "4px",
         lineStyle: "solid",
         jobInfoTextColor: "#e8ff94",
-        siteBg: "#29222a"
-        // "url('https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
-        // "url('https://images.unsplash.com/photo-1611659934318-06fd70ced53c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
+        siteBg: "#29222a",
+        formTextColor: "#1dd3b0",
+        formInputBg: "#3d5752"
       });
     } else {
       clipBorders?.forEach(x => x?.classList.add("clip-border-circle"));
@@ -151,26 +162,37 @@ export const App = () => {
       panels?.forEach(x => x?.classList.add("no-shadow"));
       panelContents?.forEach(x => x?.classList.add("no-shadow"));
       contactHexagon?.classList.add("move-right");
+      let customBackground =
+        btnClicked === "contact"
+          ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
+          : btnClicked === "background"
+          ? "url('/portfolio-v2/images/background-bg-sm-light.jpg') center center / cover"
+          : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
+      // : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
       updateColorScheme({
         ...colorScheme,
         primaryColor: "#555",
         blackColor: "#e9e8e0",
+        infoPanelContentsBackground: customBackground,
+        infoPanelContentsCloseRadius: "50%",
         panelRadius: "8px",
         buttonBorderColor: "#7e767f",
         lineWidth: "4px",
         lineStyle: "dashed",
         jobInfoTextColor: "#2e370c",
         siteBg:
-          "url('https://images.unsplash.com/photo-1612538498613-35c5c8d675c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover"
+          "url('https://images.unsplash.com/photo-1612538498613-35c5c8d675c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover",
+        formTextColor: "#3f4c49",
+        formInputBg: "#b4ede2"
       });
     }
-    if (btnClicked.length > 0) {
-      let btnClickedSaved = btnClicked;
-      updateBtnClicked("");
-      setTimeout(() => {
-        updateBtnClicked(btnClickedSaved);
-      }, 450);
-    }
+    // if (btnClicked.length > 0) {
+    //   let btnClickedSaved = btnClicked;
+    //   updateBtnClicked("");
+    //   setTimeout(() => {
+    //     updateBtnClicked(btnClickedSaved);
+    //   }, 450);
+    // }
   };
 
   return (
@@ -237,16 +259,14 @@ export const App = () => {
                 }}>
                 <DarkModeButton toggleDarkMode={toggleDarkMode} />
               </div>
-              {colorScheme.siteBg !== "#29222a" && (
-                <div
-                  style={{
-                    position: "relative",
-                    left: "20px",
-                    top: "10px"
-                  }}>
-                  <LittleDiv2 />
-                </div>
-              )}
+              <div
+                style={{
+                  position: "relative",
+                  left: `${colorScheme.siteBg === "#29222a" ? "0px" : "20px"}`,
+                  top: "10px"
+                }}>
+                <LittleDiv2 />
+              </div>
             </div>
           </nav>
           {btnClicked !== "" && (
@@ -302,21 +322,16 @@ const Wrapper = styled.div`
         stroke-opacity: 0.2;
         stroke-dasharray: 640;
         stroke-dashoffset: 0;
-        /* animation: dash 4s linear; */
       }
     }
     .squiggle2 {
       transform: rotate(210deg) scale(4) translateX(100px);
       .path {
-        /* stroke-dashoffset: 640; */
-        /* animation: dash 4s linear 1s forwards; */
       }
     }
     .squiggle3 {
       transform: rotate(210deg) scale(5) translateX(50px);
       .path {
-        /* stroke-dashoffset: 640; */
-        /* animation: dash 4s linear 1s forwards; */
       }
     }
     @keyframes dash {
@@ -350,10 +365,6 @@ const Wrapper = styled.div`
       animation: site-appear 1.8s forwards;
     }
   }
-  /* Used for dark/light mode transition speed */
-  .fast-transition * {
-    transition: 0.2s linear 0s !important;
-  }
   .move-right {
     left: 10px;
   }
@@ -366,7 +377,6 @@ const Wrapper = styled.div`
       display: none;
     }
   }
-  /* Animations */
   @keyframes site-appear {
     0% {
       opacity: 0.001;

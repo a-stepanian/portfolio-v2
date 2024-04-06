@@ -11,17 +11,7 @@ const TwoDimensionsMobile = () => {
   return (
     <Wrapper>
       <div className="icon-wrapper-2d">
-        <TiStarburst
-          style={{
-            position: "absolute",
-            top: "calc(50% - 105px)",
-            left: "0",
-            zIndex: "-1",
-            color: "#ecd397",
-            width: "100%",
-            height: "210px"
-          }}
-        />
+        <TiStarburst className="starburst" />
         {btnClicked === "portfolio" && <FaLaptopCode className="icon-2d" />}
         {btnClicked === "background" && <BiBriefcase className="icon-2d" />}
         {btnClicked === "contact" && <MdMailOutline className="icon-2d" />}
@@ -45,6 +35,16 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 120px;
+    .starburst {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      color: #ecd397;
+      width: 120px;
+      height: 120px;
+    }
     .icon-2d {
       color: ${props => props.theme.primaryColor};
       height: 100%;
@@ -58,6 +58,13 @@ const Wrapper = styled.div`
     }
     100% {
       opacity: 1 !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .icon-wrapper-2d {
+      .starburst {
+        top: calc(50% - 105px);
+      }
     }
   }
 `;

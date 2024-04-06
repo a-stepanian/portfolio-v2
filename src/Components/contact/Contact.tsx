@@ -33,10 +33,10 @@ const Wrapper = styled.section`
       padding: 0 0.5rem 1rem;
       width: calc(100% - 10px);
       background-color: ${props => props.theme.blackColor};
-      box-shadow: 0 0 20px #ff5d572b;
+      box-shadow: 12px 18px 5px #0000006b;
       transition: 0.5s;
       .lets-connect {
-        color: #1dd3b0;
+        color: ${props => props.theme.formTextColor};
         margin: 1rem 0;
         font-size: 2rem;
       }

@@ -20,6 +20,7 @@ export const LittleDiv = () => {
 };
 
 const Wrapper = styled.div`
+  opacity: 0.5;
   .hexagon-wrapper {
     position: relative;
     height: 50px;

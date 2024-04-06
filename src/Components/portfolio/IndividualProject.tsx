@@ -19,13 +19,6 @@ const IndividualProject = (props: IIndividualProjectProps) => {
 
   return (
     <Wrapper>
-      {site.repo2 && (
-        <div className="featured">
-          <BsFillStarFill className="star" />
-          <h4>Featured Project</h4>
-          <BsFillStarFill className="star" />
-        </div>
-      )}
       <div className="img-container">
         {site.videoUrl ? (
           <video id="menuwebVideo" width="320" controls>
@@ -90,45 +83,21 @@ const Wrapper = styled.article`
   position: relative;
   color: ${props => props.theme.blackColor};
   background-color: ${props => props.theme.primaryColor};
-  border: 3px solid ${props => props.theme.blackColor};
+  border-radius: ${props => props.theme.panelRadius};
   padding: 1rem;
-  max-width: 25rem;
-  margin: 3rem 1rem;
-  .featured {
-    position: absolute;
-    top: calc(-2rem - 3px);
-    left: calc(50% - 7.5rem - 3px);
-    width: 15rem;
-    background-color: ${props => props.theme.blackColor};
-    color: goldenrod;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h4 {
-      font-size: 1.2rem;
-    }
-    .star {
-      margin: 0 0.5rem;
-      font-size: 1rem;
-      color: gold;
-      animation: rotate 20s linear infinite;
-    }
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  }
-
+  margin: 36px 12px;
+  box-shadow: 0 0 50px ${props => props.theme.blackColor};
   .img-container {
     display: flex;
     justify-content: center;
     position: relative;
     background-color: ${props => props.theme.blackColor};
+    border-radius: ${props => props.theme.panelRadius};
+    overflow: hidden;
+    video {
+      width: 100% !important;
+      height: auto !important;
+    }
     img {
       display: block;
       width: 100%;
@@ -277,6 +246,9 @@ const Wrapper = styled.article`
         }
       }
     }
+  }
+  @media (min-width: 768px) {
+    padding: 2rem;
   }
 `;
 

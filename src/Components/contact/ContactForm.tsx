@@ -50,15 +50,6 @@ const ContactForm = () => {
           <span className="dot">.</span>
           <span className="dot">.</span>
           <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
-          <span className="dot">.</span>
         </h3>
       </Thanks>
     );
@@ -86,7 +77,16 @@ const ContactForm = () => {
       <input
         type="text"
         name="name"
-        style={{ backgroundColor: values.name.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        style={{
+          backgroundColor:
+            values.name.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "#91d1c5"
+              : values.name.length > 0
+              ? "#3d5752"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "rgb(184, 159, 152)"
+              : "rgb(74, 43, 56)"
+        }}
         id="full-name"
         required={true}
         onChange={e =>
@@ -97,7 +97,16 @@ const ContactForm = () => {
       />
       <label htmlFor="email">Email</label>
       <input
-        style={{ backgroundColor: values.email.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        style={{
+          backgroundColor:
+            values.email.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "#91d1c5"
+              : values.email.length > 0
+              ? "#3d5752"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "rgb(184, 159, 152)"
+              : "rgb(74, 43, 56)"
+        }}
         id="email"
         type="email"
         name="email"
@@ -114,7 +123,16 @@ const ContactForm = () => {
         id="message"
         name="message"
         rows={3}
-        style={{ backgroundColor: values.message.length > 0 ? "#3d5752" : "rgb(74, 43, 56)" }}
+        style={{
+          backgroundColor:
+            values.message.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "#91d1c5"
+              : values.message.length > 0
+              ? "#3d5752"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "rgb(184, 159, 152)"
+              : "rgb(74, 43, 56)"
+        }}
         onChange={e =>
           setValues(prev => {
             return { ...prev, message: e.target.value };
@@ -146,7 +164,7 @@ const Thanks = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   h3 {
-    color: #affc41;
+    color: ${props => props.theme.formTextColor};
     font-size: 2.3rem;
     font-weight: 100;
     display: flex;
@@ -177,7 +195,6 @@ const Thanks = styled.div`
 `;
 
 const Wrapper = styled.form`
-  border: var(--small-border);
   width: 95%;
   max-width: 20rem;
   display: flex;
@@ -187,7 +204,7 @@ const Wrapper = styled.form`
     font-size: 0.9rem;
     line-height: 1.2rem;
     font-weight: 500;
-    color: #1dd3b0;
+    color: ${props => props.theme.formTextColor};
   }
   input {
     margin-bottom: 8px;
@@ -197,9 +214,9 @@ const Wrapper = styled.form`
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: #1dd3b0;
+    -webkit-text-fill-color: ${props => props.theme.formTextColor};
     transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #3d5752;
+    box-shadow: inset 0 0 20px 20px ${props => props.theme.formInputBg};
   }
   input,
   textarea {
@@ -208,7 +225,7 @@ const Wrapper = styled.form`
     appearance: none;
     padding: 4px 8px;
     border: 0.15rem solid ${props => props.theme.blackColor};
-    color: #1dd3b0;
+    color: ${props => props.theme.formTextColor};
     border-radius: 5px;
     background-color: rgb(74 43 56);
     font-size: 16px;
@@ -216,8 +233,8 @@ const Wrapper = styled.form`
     &:focus {
       border-radius: 1px;
       outline: none;
-      outline: 0.15rem solid #1dd3b0;
-      background-color: #3d5752;
+      outline: 0.15rem solid ${props => props.theme.formTextColor};
+      background-color: ${props => props.theme.formInputBg};
     }
   }
 
@@ -226,7 +243,7 @@ const Wrapper = styled.form`
     padding: 1rem;
     border: var(--small-border);
     color: ${props => props.theme.blackColor};
-    background-color: #1dd3b0;
+    background-color: ${props => props.theme.formTextColor};
     font-size: 1.2rem;
     opacity: 0.9;
     transition: 0.2s;
