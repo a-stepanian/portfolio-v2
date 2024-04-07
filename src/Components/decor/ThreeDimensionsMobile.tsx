@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAppContext } from "../AppContext";
+import { useAppContext } from "../../AppContext";
 import { FaLaptopCode } from "react-icons/fa";
 import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";

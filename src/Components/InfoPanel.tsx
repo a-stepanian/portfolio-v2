@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
-import ThreeDimensions from "./ThreeDimensions";
+import ThreeDimensions from "./decor/ThreeDimensions";
 import InfoPanelContents from "./InfoPanelContents";
 import { PiXThin } from "react-icons/pi";
-import TwoDimensions from "./TwoDimensions";
+import TwoDimensions from "./decor/TwoDimensions";
 
 interface IInfoPanelProps {
   text: string;

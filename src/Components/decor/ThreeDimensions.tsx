@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAppContext } from "../AppContext";
+import { useAppContext } from "../../AppContext";
 import { PiBriefcaseBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
 
 const ThreeDimensions = () => {

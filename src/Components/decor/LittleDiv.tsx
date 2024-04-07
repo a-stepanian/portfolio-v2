@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAppContext } from "../AppContext";
+import { useAppContext } from "../../AppContext";
 
 export const LittleDiv = () => {
   const { colorScheme } = useAppContext();
