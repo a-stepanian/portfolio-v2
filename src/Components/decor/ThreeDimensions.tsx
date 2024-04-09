@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppContext } from "../../AppContext";
-import { PiBriefcaseBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
+import { PiCodeBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
 
 const ThreeDimensions = () => {
   const { btnClicked } = useAppContext();
@@ -29,7 +29,7 @@ const ThreeDimensions = () => {
       </div>
       {btnClicked !== "" && (
         <div className="big-icon-wrapper">
-          {btnClicked === "portfolio" && <PiBriefcaseBold className="icon" />}
+          {btnClicked === "portfolio" && <PiCodeBold className="icon" />}
           {btnClicked === "background" && <PiCertificateBold className="icon" />}
           {btnClicked === "contact" && <PiEnvelopeSimpleBold className="icon" />}
         </div>
@@ -123,7 +123,6 @@ const Wrapper = styled.div`
       transform: scale(1.2);
       animation: big-shadow-pulse 8s ease-in-out infinite;
     }
-    /* Animations */
     @keyframes appear {
       0% {
         opacity: 0 !important;
@@ -151,13 +150,11 @@ const Wrapper = styled.div`
       100% {
         filter: blur(30px);
       }
-      /* facing right */
       25% {
         filter: blur(10px);
         transform: scale(1.2) rotate(-10deg);
         left: calc(50% - 30px);
       }
-      /* facing left */
       75% {
         filter: blur(10px);
         transform: scale(1.2) rotate(10deg);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppContext } from "../../AppContext";
-import { FaLaptopCode } from "react-icons/fa";
+import { PiCodeBold } from "react-icons/pi";
 import { BiBriefcase } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
 
@@ -30,7 +30,7 @@ const ThreeDimensionsMobile = () => {
         </div>
       </div>
       <div className="icon-wrapper">
-        {btnClicked === "portfolio" && <FaLaptopCode className="icon" />}
+        {btnClicked === "portfolio" && <PiCodeBold className="icon" />}
         {btnClicked === "background" && <BiBriefcase className="icon" />}
         {btnClicked === "contact" && <MdMailOutline className="icon" />}
       </div>
@@ -121,7 +121,6 @@ const Wrapper = styled.div`
     transform: scale(1.2);
     animation: shadow-pulse 6s ease-in-out infinite 0.2s;
   }
-  /* Animations */
   @keyframes appear {
     0% {
       opacity: 0 !important;
@@ -149,12 +148,10 @@ const Wrapper = styled.div`
     100% {
       filter: blur(30px);
     }
-    /* facing right */
     25% {
       filter: blur(20px);
       left: calc(50% - 25px);
     }
-    /* facing left */
     75% {
       filter: blur(20px);
       left: calc(50% - 15px);

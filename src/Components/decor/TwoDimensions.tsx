@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppContext } from "../../AppContext";
-import { PiBriefcaseBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
+import { PiCodeBold, PiCertificateBold, PiEnvelopeSimpleBold } from "react-icons/pi";
 import { TiStarburst } from "react-icons/ti";
 
 const TwoDimensions = () => {
@@ -21,7 +21,7 @@ const TwoDimensions = () => {
               height: "180px"
             }}
           />
-          {btnClicked === "portfolio" && <PiBriefcaseBold className="icon" />}
+          {btnClicked === "portfolio" && <PiCodeBold className="icon" />}
           {btnClicked === "background" && <PiCertificateBold className="icon" />}
           {btnClicked === "contact" && <PiEnvelopeSimpleBold className="icon" />}
         </div>
@@ -55,7 +55,6 @@ const Wrapper = styled.div`
         width: 90%;
       }
     }
-    /* Animations */
     @keyframes appear {
       0% {
         opacity: 0 !important;

@@ -1,5 +1,5 @@
 import InfoPanel from "./InfoPanel";
-import { PiBriefcaseThin, PiEnvelopeSimpleThin, PiCertificateThin } from "react-icons/pi";
+import { PiCodeThin, PiEnvelopeSimpleThin, PiCertificateThin } from "react-icons/pi";
 import styled from "styled-components";
 import { TButtonText, useAppContext } from "../AppContext";
 
@@ -20,7 +20,7 @@ export const Hexagon = (props: IHexagonProps) => {
           title={text}>
           <div className={`blue-overlay ${text}-blue-overlay`}></div>
           <h2 className={`clip-caption ${text}-clip-caption`}>{text}</h2>
-          {text === "portfolio" && <PiBriefcaseThin className={`icon ${text}-icon`} />}
+          {text === "portfolio" && <PiCodeThin className={`icon ${text}-icon`} />}
           {text === "background" && <PiCertificateThin className={`icon ${text}-icon`} />}
           {text === "contact" && <PiEnvelopeSimpleThin className={`icon ${text}-icon`} />}
         </button>
@@ -129,9 +129,9 @@ const Wrapper = styled.div`
       border-left-style: ${props => props.theme.lineStyle};
       border-left-color: ${props => props.theme.primaryColor};
       height: 0;
-      transition: bottom 0.2s linear 0.2s, height 0.2s linear 0.2s, background-color 0.2s linear 0.4s,
-        filter 0.2s linear 0.4s;
       filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
+      transition: bottom 0.2s linear 0.2s, height 0.2s linear 0.2s, background-color 0.2s linear 0.4s,
+        filter 0.2s linear 0.4s, border-left-color 0.2s linear 0.4s;
     }
     .clicked-line-top-row {
       bottom: calc(100px - 100vh);

@@ -44,7 +44,6 @@ const Wrapper = styled.article`
       line-height: 1.8rem;
     }
   }
-
   .major,
   .minor {
     font-size: 2.6rem;
@@ -55,11 +54,9 @@ const Wrapper = styled.article`
     width: 5rem;
     margin-bottom: 1rem;
   }
-
   .major {
     padding: 8rem 0 1rem;
   }
-
   .psu-seal {
     padding: 5rem 5%;
     width: 70%;
@@ -67,7 +64,6 @@ const Wrapper = styled.article`
       width: 100%;
     }
   }
-
   ul {
     padding: 3rem;
     list-style-type: square;
@@ -76,11 +72,6 @@ const Wrapper = styled.article`
       font-size: 0.8rem;
     }
   }
-
-  /* ------------- */
-  /* MEDIA QUERIES */
-  /* ------------- */
-
   @media (min-width: 480px) {
     .school-header {
       h3 {
@@ -98,7 +89,6 @@ const Wrapper = styled.article`
       width: 60%;
     }
   }
-
   @media (min-width: 768px) {
     margin-bottom: 5rem;
     border-right: none;
@@ -112,14 +102,12 @@ const Wrapper = styled.article`
         line-height: 2rem;
       }
     }
-
     ul {
       .duty {
         font-size: 1.1rem;
       }
     }
   }
-
   @media (min-width: 992px) {
     .school-header {
       h3 {

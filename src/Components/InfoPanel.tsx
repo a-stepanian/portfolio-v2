@@ -28,7 +28,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
                 <PiXThin className="close-icon" />
               </button>
             </div>
-            <InfoPanelContents text={text} />
+            <InfoPanelContents />
             {text !== "" && (
               <div className="big-three-d-object-wrapper">
                 {colorScheme.siteBg === "#29222a" ? <ThreeDimensions /> : <TwoDimensions />}
@@ -43,9 +43,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
 
 const Wrapper = styled.section`
   .panel {
-    /* background: url("https://images.unsplash.com/photo-1435224668334-0f82ec57b605?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") */
-    /* background: url("https://images.unsplash.com/photo-1617565085015-13cb9d366120?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-      center center / cover; */
+    background-color: ${props => props.theme.blackColor};
     filter: drop-shadow(0 0 5px ${props => props.theme.primaryColor});
     position: fixed;
     top: 200px;
@@ -67,8 +65,10 @@ const Wrapper = styled.section`
     border-style: ${props => props.theme.lineStyle};
     border-color: ${props => props.theme.primaryColor};
     & .info-panel-contents-wrapper {
-      transition: opacity 0.1s linear 0.4s;
+      transition: 0.05s;
       opacity: 0;
+      height: 0;
+      width: 0;
     }
   }
   .glow {
@@ -110,13 +110,14 @@ const Wrapper = styled.section`
     left: 0 !important;
     width: 100vw;
     opacity: 1;
-    padding: 1rem;
     transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s,
       border-radius 0.2s linear 0.6s;
     border-radius: ${props => props.theme.panelRadius};
     & .info-panel-contents-wrapper {
-      transition: opacity 0.1s linear 0.6s;
+      transition: opacity 0.2s linear 0.8s;
       opacity: 1;
+      height: 100%;
+      width: 100%;
     }
     .open-tall {
       transition: width 0.2s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
@@ -127,6 +128,8 @@ const Wrapper = styled.section`
       background-color: ${props => props.theme.blackColor};
       & .info-panel-contents-wrapper {
         transition: 0.05s;
+        width: auto;
+        height: auto;
       }
     }
     .button-wrapper {
@@ -141,6 +144,8 @@ const Wrapper = styled.section`
       & .info-panel-contents-wrapper {
         transition: opacity 0.6s linear 0.6s;
         opacity: 1;
+        width: auto;
+        height: auto;
         .big-three-d-object-wrapper {
           width: 240px;
           position: absolute;

@@ -23,7 +23,7 @@ export const App = () => {
           btnClicked === "contact"
             ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
             : btnClicked === "background"
-            ? "url('/portfolio-v2/images/background-bg-sm-light.jpg') center center / cover"
+            ? "rgb(236 211 151)"
             : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       } else {
         customBackground =
@@ -63,9 +63,6 @@ export const App = () => {
         panels?.forEach(x => x?.classList.add("no-shadow"));
         panelContents?.forEach(x => x?.classList.add("no-shadow"));
       }
-      ["background", "contact", "portfolio"].forEach(() => {
-        document.querySelector(`.info-panel-contents-${btnClicked}`)?.classList.add("open-tall");
-      });
     }
 
     // style other buttons (not clicked)
@@ -97,7 +94,6 @@ export const App = () => {
       }, 500);
     } else {
       document?.querySelector(".information-panel")?.classList.remove("information-panel-open");
-      document.querySelector(".info-panel-contents")?.classList.remove("open-tall");
     }
   }, [btnClicked]);
 
@@ -167,7 +163,7 @@ export const App = () => {
         btnClicked === "contact"
           ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
           : btnClicked === "background"
-          ? "url('/portfolio-v2/images/background-bg-sm-light.jpg') center center / cover"
+          ? "rgb(236 211 151)"
           : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       // : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
       updateColorScheme({
@@ -275,7 +271,6 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  /* background: url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") */
   background: ${props => props.theme.siteBg};
   transition: 0.2s;
   .btn-shrink {

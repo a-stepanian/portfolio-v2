@@ -6,13 +6,7 @@ import Projects from "./portfolio/Projects";
 import Contact from "./contact/Contact";
 import Experience from "./experience/Experience";
 
-interface IInfoPanelContentsProps {
-  text: string;
-}
-
-const InfoPanelContents = (props: IInfoPanelContentsProps) => {
-  const { text } = props;
-
+const InfoPanelContents = () => {
   const { btnClicked, updateBtnClicked, colorScheme } = useAppContext();
 
   const scrollTarget = useRef<HTMLDivElement>(null);
@@ -22,10 +16,7 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
   }
 
   return (
-    <Wrapper
-      className={`info-panel-contents info-panel-contents-${text} open-tall ${
-        colorScheme.blackColor === "#29222a" ? "glow" : ""
-      }`}>
+    <Wrapper className={`open-tall ${colorScheme.blackColor === "#29222a" ? "glow" : ""}`}>
       <div ref={scrollTarget}></div>
       <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
@@ -41,11 +32,8 @@ const InfoPanelContents = (props: IInfoPanelContentsProps) => {
 
 const Wrapper = styled.section`
   background: ${props => props.theme.infoPanelContentsBackground};
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -75,6 +63,8 @@ const Wrapper = styled.section`
   @media (min-width: 768px) {
     position: absolute;
     bottom: calc((100vh - 200px) / 2);
+    height: auto;
+    width: auto;
     left: 250px;
     right: 20px;
     top: unset;
