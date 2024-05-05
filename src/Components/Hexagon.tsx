@@ -143,9 +143,6 @@ const Wrapper = styled.div`
       height: calc(100vh - 92px);
       transition: bottom 0.2s linear 0.4s, height 0.2s linear 0.4s, background-color 0.2s linear, filter 0.2s linear;
     }
-    .skewed-text {
-      transform: rotateY(45deg) skew(0deg, -20deg) translate(28px, 14px) !important;
-    }
   }
   .extra-drop-shadow {
     filter: drop-shadow(0 0 8px ${props => props.theme.primaryColor});
