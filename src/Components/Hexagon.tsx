@@ -5,15 +5,17 @@ import { TButtonText, useAppContext } from "../AppContext";
 
 interface IHexagonProps {
   text: TButtonText;
+  buttonRef?: React.MutableRefObject<HTMLButtonElement | null>;
 }
 
 export const Hexagon = (props: IHexagonProps) => {
-  const { text } = props;
+  const { text, buttonRef } = props;
   const { btnClicked, updateBtnClicked } = useAppContext();
   return (
     <Wrapper>
       <div className={`hexagon-wrapper ${text}-hexagon-wrapper`}>
         <button
+          ref={buttonRef ?? undefined}
           className={`clip-border ${text}-clip-border`}
           onClick={() => updateBtnClicked(btnClicked !== text ? text : "")}
           aria-label={`Open ${text}`}

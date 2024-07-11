@@ -103,6 +103,35 @@ export default data;
 
 export const experience: TExperience[] = [
   {
+    id: "claritymid",
+    company: "Clarity Ventures, Inc.",
+    location: "Remote",
+    stateImg: "or.png",
+    companyUrl: "https://www.clarity-ventures.com/",
+    logo: "usglogobw.bmp",
+    title: "Front-End Developer - Contract",
+    date: "2024-present",
+    description: [
+      "Developed company CMS application from scratch to create, update, and deploy webpages directly to our live servers"
+    ]
+  },
+  {
+    id: "clarityjr",
+    company: "Clarity Ventures, Inc.",
+    location: "Remote",
+    stateImg: "or.png",
+    companyUrl: "https://www.clarity-ventures.com/",
+    logo: "usglogobw.bmp",
+    title: "Jr. Front-End Developer",
+    date: "2022-2024",
+    description: [
+      "Hand selected to work directly with the CEO as the sole marketing developer",
+      "Developed company CMS application from scratch to create, update, and deploy webpages directly to our live servers",
+      "Developed new SEO solutions to double site traffic.",
+      "Innovate and maintain the company production website."
+    ]
+  },
+  {
     id: "rainier",
     company: "United States Gypsum",
     location: "Rainier, OR",

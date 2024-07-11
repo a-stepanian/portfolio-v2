@@ -3,43 +3,59 @@ import { experience } from "../../data";
 import OnlineSchool from "./OnlineSchool";
 import Job from "./Job";
 import School from "./School";
-import { VscDebugBreakpointDataUnverified } from "react-icons/vsc";
+import { VscDebugBreakpointData, VscDebugBreakpointDataUnverified } from "react-icons/vsc";
+import { useEffect, useState } from "react";
 
 const Experience = () => {
+  const [activeTab, setActiveTab] = useState<string>("claritymid");
+
+  useEffect(() => {
+    document.getElementById(activeTab)?.scrollIntoView({ behavior: "smooth" });
+    experience.forEach(job => {
+      if (job.id === activeTab) {
+        document.querySelector(`.${job.id}-h3`)?.classList?.add("active");
+        document.querySelector(`.${job.id}-button`)?.classList?.add("active");
+      } else {
+        document.querySelector(`.${job.id}-h3`)?.classList?.remove("active");
+        document.querySelector(`.${job.id}-button`)?.classList?.remove("active");
+      }
+    });
+  }, [activeTab]);
+
+  let used: string[] = [];
+
   return (
     <Wrapper>
       <aside className="table-of-contents-wrapper">
         <div className="table-of-contents">
           <h2>Work History</h2>
-          <h3 className="active">Clarity Ventures</h3>
-
-          <h4 className="active">
-            <VscDebugBreakpointDataUnverified />
-            Front End Developer
-          </h4>
-          <h3>United States Gypsum (USG)</h3>
-          <h4>
-            <VscDebugBreakpointDataUnverified />
-            Engineering And Mill Manager
-          </h4>
-          <h4>
-            <VscDebugBreakpointDataUnverified />
-            Engineering And Operations Manager
-          </h4>
-          <h4>
-            <VscDebugBreakpointDataUnverified />
-            Reliability And Project Engineer
-          </h4>
+          {experience.map((job, index) => {
+            let active = index === 0 ? "active" : "";
+            if (!used.includes(job?.company ?? "")) used.push(job?.company ?? "");
+            return (
+              <>
+                {!used.includes(job?.company ?? "_") && <h3 className={`${job.id}-h3 ${active}`}>{job.company}</h3>}
+                <button
+                  className={`scroll-button ${job.id}-button ${active}`}
+                  type="button"
+                  onClick={() => setActiveTab(job.id)}>
+                  {job.id === activeTab ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
+                  {job.title}
+                </button>
+              </>
+            );
+          })}
           <h2>Education</h2>
-          <h3>Penn State University</h3>
-          <h4>
+          <button className="scroll-button" type="button" onClick={() => console.log("clicked")}>
+            <h3 onClick={() => console.log("clicked")}>Penn State University</h3>
             <VscDebugBreakpointDataUnverified />
             B.S. Industrial Engineering
-          </h4>
-          <h4>
+          </button>
+          <button className="scroll-button" type="button" onClick={() => console.log("clicked")}>
+            <h3 onClick={() => console.log("clicked")}>Penn State University</h3>
             <VscDebugBreakpointDataUnverified />
             Six Sigma Minor
-          </h4>
+          </button>
         </div>
       </aside>
       <section className="work-history-container">
@@ -83,9 +99,9 @@ const Wrapper = styled.section`
         max-width: 40rem;
       }
     }
-  }
+    /* }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1200px) { */
     display: flex;
     justify-content: center;
     .table-of-contents-wrapper {
@@ -99,9 +115,10 @@ const Wrapper = styled.section`
         display: flex;
         flex-direction: column;
         h3,
-        h4 {
+        h4,
+        button {
+          font-weight: bold;
           color: ${props => props.theme.primaryColor};
-          opacity: 0.5;
         }
         h2 {
           font-size: 14px;
@@ -112,9 +129,6 @@ const Wrapper = styled.section`
         }
         h3 {
           font-size: 14px;
-          &:nth-of-type(2) {
-            margin-top: 12px;
-          }
         }
         h4 {
           display: flex;
@@ -124,10 +138,21 @@ const Wrapper = styled.section`
             font-size: 24px;
           }
         }
+        .scroll-button {
+          border: none;
+          padding: 1rem;
+          background: transparent;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
     .table-of-contents-wrapper .table-of-contents .active {
-      opacity: 1;
+      text-shadow: 0 0 8px #92eedc75;
     }
   }
 `;

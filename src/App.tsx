@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import { Hexagon } from "./Components/Hexagon";
@@ -12,6 +12,18 @@ import Squiggles from "./Components/decor/Squiggles";
 
 export const App = () => {
   const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleClick = () => {
+    if (buttonRef.current) {
+      buttonRef.current.click();
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => handleClick(), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Runs when a button is clicked
   useEffect(() => {
@@ -220,7 +232,7 @@ export const App = () => {
           <Squiggles />
           <nav>
             <div className="top-row">
-              <Hexagon text={"background"} />
+              <Hexagon text={"background"} buttonRef={buttonRef} />
               <Hexagon text={"contact"} />
               <div
                 style={{

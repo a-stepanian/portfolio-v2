@@ -22,11 +22,13 @@ const Wrapper = styled.section`
     padding: 1rem;
     max-width: 580px;
   }
-  @media (min-width: 1200px) {
-  }
-  .project-wrapper {
-    padding: 1rem;
-    max-width: 992px;
+  @media (min-width: 922px) {
+    .project-wrapper {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      padding: 1rem;
+      max-width: 992px;
+    }
   }
 `;
 

@@ -10,8 +10,8 @@ const Job = (props: IJobProps) => {
   const { company, companyUrl, title, description, id, logo } = job;
 
   return (
-    <Wrapper>
-      <header className={`job-header ${id}`}>
+    <Wrapper id={id}>
+      <header className={"job-header"}>
         <h4 className="company-name">
           <a href={companyUrl} target="_blank" rel="noreferrer">
             {company}
