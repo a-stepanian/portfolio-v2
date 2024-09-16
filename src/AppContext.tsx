@@ -47,7 +47,8 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [emailSent, setEmailSent] = useState<boolean>(false);
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#29222a",
-    primaryColor: "#1dd3b0",
+    // primaryColor: "#1dd3b0",
+    primaryColor: "#a0a4c5",
     hexagonOutlineColor: "#edf2f4",
     threeDimensionsBackground: "#80b5d23a",
     panelRadius: "4px",

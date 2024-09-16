@@ -14,14 +14,10 @@ export const App = () => {
   const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const handleClick = () => {
-    if (buttonRef.current) {
-      buttonRef.current.click();
-    }
-  };
+  const handleClick = () => buttonRef.current && buttonRef.current.click();
 
   useEffect(() => {
-    const timer = setTimeout(() => handleClick(), 1500);
+    const timer = setTimeout(() => handleClick(), 1200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -214,6 +210,7 @@ export const App = () => {
             Alex Stepanian &copy;2024
           </h1>
           <div
+            className="decor-wrapper"
             style={{
               position: "absolute",
               left: `${colorScheme.siteBg === "#29222a" ? "-5px" : "8px"}`,
@@ -222,6 +219,7 @@ export const App = () => {
             <LittleDiv />
           </div>
           <div
+            className="decor-wrapper"
             style={{
               position: "absolute",
               left: `${colorScheme.siteBg === "#29222a" ? "0px" : "0px"}`,
@@ -232,9 +230,10 @@ export const App = () => {
           <Squiggles />
           <nav>
             <div className="top-row">
-              <Hexagon text={"background"} buttonRef={buttonRef} />
+              <Hexagon text={"background"} />
               <Hexagon text={"contact"} />
               <div
+                className="decor-wrapper"
                 style={{
                   position: "relative",
                   left: `${colorScheme.siteBg === "#29222a" ? "-5px" : "15px"}`,
@@ -244,8 +243,9 @@ export const App = () => {
               </div>
             </div>
             <div className="bottom-hexagon">
-              <Hexagon text={"portfolio"} />
+              <Hexagon text={"portfolio"} buttonRef={buttonRef} />
               <div
+                className="decor-wrapper"
                 style={{
                   position: "relative",
                   left: `${colorScheme.siteBg === "#29222a" ? "0" : "10px"}`,
@@ -254,6 +254,7 @@ export const App = () => {
                 <DarkModeButton toggleDarkMode={toggleDarkMode} />
               </div>
               <div
+                className="decor-wrapper"
                 style={{
                   position: "absolute",
                   left: `${colorScheme.siteBg === "#29222a" ? "170px" : "170px"}`,
@@ -308,12 +309,18 @@ const Wrapper = styled.div`
         stroke-dashoffset: 0;
       }
     }
+    .decor-wrapper {
+      animation: site-appear 3s forwards;
+    }
     nav {
       animation: site-appear 1s forwards;
       transition: filter 1s linear;
       position: relative;
       width: 206px;
       height: 200px;
+      .decor-wrapper {
+        animation: site-appear 3s forwards;
+      }
       .top-row {
         display: flex;
       }

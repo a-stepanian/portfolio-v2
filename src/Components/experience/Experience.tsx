@@ -4,7 +4,7 @@ import OnlineSchool from "./OnlineSchool";
 import Job from "./Job";
 import School from "./School";
 import { VscDebugBreakpointData, VscDebugBreakpointDataUnverified } from "react-icons/vsc";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState<string>("claritymid");
@@ -31,10 +31,11 @@ const Experience = () => {
           <h2>Work History</h2>
           {experience.map((job, index) => {
             let active = index === 0 ? "active" : "";
-            if (!used.includes(job?.company ?? "")) used.push(job?.company ?? "");
             return (
-              <>
-                {!used.includes(job?.company ?? "_") && <h3 className={`${job.id}-h3 ${active}`}>{job.company}</h3>}
+              <Fragment key={job.id}>
+                {!used.includes(job?.company ?? "_") && used.push(job?.company ?? "") && (
+                  <h3 className={`${job.id}-h3 ${active}`}>{job.company}</h3>
+                )}
                 <button
                   className={`scroll-button ${job.id}-button ${active}`}
                   type="button"
@@ -42,7 +43,7 @@ const Experience = () => {
                   {job.id === activeTab ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
                   {job.title}
                 </button>
-              </>
+              </Fragment>
             );
           })}
           <h2>Education</h2>

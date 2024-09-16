@@ -30,7 +30,7 @@ const data: TProject[] = [
     description: "A CMS that allows a user to create basic websites.",
     builtWith: ["React", "Bootstrap"],
     url: "https://menu-site-builder.netlify.app/",
-    videoUrl: "/portfolio-v2/images/menuweb.mp4",
+    videoUrl: "/portfolio-v2/images/menuwebsm.mp4",
     thumbnail: "apply.png",
     learnings: "learned alot",
     repo: "https://github.com/a-stepanian/restaurant-site-builder"
@@ -42,6 +42,7 @@ const data: TProject[] = [
       "Full stack MERN app that helps you to manage the job application status and gain insights to your application process.",
     builtWith: ["MongoDB", "Express.js", "React", "Node.js", "styled-components", "charts.js", "bcrypt"],
     url: "https://client-apply-yourself.netlify.app/",
+    videoUrl: "/portfolio-v2/images/applyyourselfsm.mp4",
     thumbnail: "apply.png",
     learnings: "learned alot",
     repo: "https://github.com/a-stepanian/apply-yourself-client",
@@ -105,30 +106,31 @@ export const experience: TExperience[] = [
   {
     id: "claritymid",
     company: "Clarity Ventures, Inc.",
-    location: "Remote",
-    stateImg: "or.png",
+    location: "Austin, TX (remote)",
+    stateImg: "tx.png",
     companyUrl: "https://www.clarity-ventures.com/",
-    logo: "usglogobw.bmp",
-    title: "Front-End Developer - Contract",
+    logo: "cv.png",
+    title: "Front-End Developer",
     date: "2024-present",
     description: [
-      "Developed company CMS application from scratch to create, update, and deploy webpages directly to our live servers"
+      "Led the front-end development process for multiple concurrent client projects from discovery to production.",
+      "Selected by the CEO to be the sole developer for the company's marketing website, working directly on high-visibility projects to improve our marketing employee efficiency and improve SEO / performance.",
+      "Provided support on legacy codebase projects by rapidly ramping up to fix bugs and build new features."
     ]
   },
   {
     id: "clarityjr",
     company: "Clarity Ventures, Inc.",
-    location: "Remote",
-    stateImg: "or.png",
+    location: "Austin, TX (remote)",
+    stateImg: "tx.png",
     companyUrl: "https://www.clarity-ventures.com/",
-    logo: "usglogobw.bmp",
+    logo: "cv.png",
     title: "Jr. Front-End Developer",
     date: "2022-2024",
     description: [
-      "Hand selected to work directly with the CEO as the sole marketing developer",
-      "Developed company CMS application from scratch to create, update, and deploy webpages directly to our live servers",
-      "Developed new SEO solutions to double site traffic.",
-      "Innovate and maintain the company production website."
+      "Work directly with the CEO to design and develop a custom CMS from scratch for internal and client use.",
+      "Integrate AI features into the CMS to automate content creation and enhance results with user feedback.",
+      "Build back-end endpoints as needed to support various front-end features of the CMS."
     ]
   },
   {
