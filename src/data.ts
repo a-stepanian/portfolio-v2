@@ -6,7 +6,6 @@ export type TProject = {
   url: string;
   videoUrl?: string;
   thumbnail: string;
-  learnings: string;
   repo: string;
   repo2?: string;
 };
@@ -32,7 +31,6 @@ const data: TProject[] = [
     url: "https://menu-site-builder.netlify.app/",
     videoUrl: "/portfolio-v2/images/menuwebsm.mp4",
     thumbnail: "apply.png",
-    learnings: "learned alot",
     repo: "https://github.com/a-stepanian/restaurant-site-builder"
   },
   {
@@ -44,20 +42,18 @@ const data: TProject[] = [
     url: "https://client-apply-yourself.netlify.app/",
     videoUrl: "/portfolio-v2/images/applyyourselfsm.mp4",
     thumbnail: "apply.png",
-    learnings: "learned alot",
     repo: "https://github.com/a-stepanian/apply-yourself-client",
     repo2: "https://github.com/a-stepanian/apply-yourself-server"
   },
-  {
-    id: "5",
-    title: "BookWorm",
-    description: "Full stack CRUD application to join a club, add books, and leave reviews.",
-    builtWith: ["Javascript", "EJS Templating", "css", "MongoDB", "Express", "Node", "Open Library API"],
-    url: "https://evening-shore-85582.herokuapp.com/",
-    thumbnail: "bookshelf.png",
-    learnings: "learned alot",
-    repo: "https://github.com/a-stepanian/BookShelf"
-  },
+  // {
+  //   id: "5",
+  //   title: "BookWorm",
+  //   description: "Full stack CRUD application to join a club, add books, and leave reviews.",
+  //   builtWith: ["Javascript", "EJS Templating", "css", "MongoDB", "Express", "Node", "Open Library API"],
+  //   url: "https://evening-shore-85582.herokuapp.com/",
+  //   thumbnail: "bookshelf.png",
+  //   repo: "https://github.com/a-stepanian/BookShelf"
+  // },
   {
     id: "1",
     title: "BeerSource",
@@ -65,7 +61,6 @@ const data: TProject[] = [
     builtWith: ["React", "React-Router", "Javascript", "css", "Open Brewery API", "Mapbox API", "Unsplash API"],
     url: "https://beersource.netlify.app/",
     thumbnail: "beersource.png",
-    learnings: "learned alot",
     repo: "https://github.com/a-stepanian/beersource"
   },
   {
@@ -75,7 +70,6 @@ const data: TProject[] = [
     builtWith: ["React", "React-Router", "styled-components", "html", "css"],
     url: "https://all-the-views.netlify.app/",
     thumbnail: "alltheviews.png",
-    learnings: "learned alot",
     repo: "https://github.com/a-stepanian/all-the-views"
   },
   {
@@ -85,19 +79,17 @@ const data: TProject[] = [
     builtWith: ["React", "TypeScript", "css", "Unsplash API"],
     url: "https://minimal-wallpaper-finder.netlify.app/",
     thumbnail: "wallpaperfinder.png",
-    learnings: "learned alot",
     repo: "https://github.com/a-stepanian/wallpaper-finder"
-  },
-  {
-    id: "4",
-    title: "just the weather",
-    description: "Just the weather, none of the ads.  Disclaimer: Forecast is only as accurate as the API data.",
-    builtWith: ["React", "TypeScript", "styled-components", "OpenWeatherMapAPI", "WeatherAPI"],
-    url: "https://just-the-weather.netlify.app/",
-    thumbnail: "justtheweather.png",
-    learnings: "learned alot",
-    repo: "https://github.com/a-stepanian/just-weather"
   }
+  // {
+  //   id: "4",
+  //   title: "just the weather",
+  //   description: "Just the weather, none of the ads.  Disclaimer: Forecast is only as accurate as the API data.",
+  //   builtWith: ["React", "TypeScript", "styled-components", "OpenWeatherMapAPI", "WeatherAPI"],
+  //   url: "https://just-the-weather.netlify.app/",
+  //   thumbnail: "justtheweather.png",
+  //   repo: "https://github.com/a-stepanian/just-weather"
+  // }
 ];
 
 export default data;

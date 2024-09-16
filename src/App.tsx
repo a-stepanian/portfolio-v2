@@ -64,13 +64,12 @@ export const App = () => {
         primaryColor,
         infoPanelContentsBackground: customBackground
       });
-    } else {
-      if (darkMode) {
-        const panels = document?.querySelectorAll(".panel");
-        const panelContents = document?.querySelectorAll(".info-panel-contents");
-        panels?.forEach(x => x?.classList.add("no-shadow"));
-        panelContents?.forEach(x => x?.classList.add("no-shadow"));
-      }
+    }
+    if (darkMode) {
+      const panels = document?.querySelectorAll(".panel");
+      const panelContents = document?.querySelectorAll(".info-panel-contents");
+      panels?.forEach(x => x?.classList.add("no-shadow"));
+      panelContents?.forEach(x => x?.classList.add("no-shadow"));
     }
 
     // style other buttons (not clicked)
@@ -301,14 +300,14 @@ const Wrapper = styled.div`
       font-weight: 100;
       opacity: 0.5;
     }
-    @keyframes dash {
+    /* @keyframes dash {
       from {
         stroke-dashoffset: 640;
       }
       to {
         stroke-dashoffset: 0;
       }
-    }
+    } */
     .decor-wrapper {
       animation: site-appear 3s forwards;
     }

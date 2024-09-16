@@ -1,6 +1,6 @@
 import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
-import { IoIosCheckboxOutline, IoIosSquareOutline } from "react-icons/io";
+import { IoIosCheckboxOutline } from "react-icons/io";
 import { useAppContext } from "../../AppContext";
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ const ContactForm = () => {
   const [state, handleSubmit] = useForm("xqknjpzd");
 
   useEffect(() => {
-    setReadyToSubmit(values.name?.length > 0 && values.email?.length > 0);
+    setReadyToSubmit(values.name?.length > 0 && values.email?.length > 0 && values.message?.length > 0);
   }, [values]);
 
   useEffect(() => {

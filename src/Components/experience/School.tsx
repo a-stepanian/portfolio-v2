@@ -25,7 +25,7 @@ const Wrapper = styled.article`
   align-items: center;
   .school-header {
     position: sticky;
-    top: 10px;
+    top: 0;
     width: 100%;
     height: 6.6rem;
     z-index: 1;

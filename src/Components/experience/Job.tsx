@@ -43,10 +43,9 @@ const Wrapper = styled.article`
       z-index: 999;
     }
     position: sticky;
-    top: 10px;
-    background: #393850e6;
-    padding: 4px 1rem 8px;
-    margin: 0 34px 0 8px;
+    top: 0;
+    background: #393850ef;
+    padding: 4px 34px 8px 1rem;
     box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
     .job-title {
       position: relative;
