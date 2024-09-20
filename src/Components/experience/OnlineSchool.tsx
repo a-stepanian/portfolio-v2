@@ -13,69 +13,29 @@ const OnlineSchool = () => {
         <h3 className="school-title">Independent Courses</h3>
       </header>
       <div className="courses">
-        <p className="course">React Tutorial and Projects Course</p>
         <div className="certificate-wrapper">
-          <img src="/portfolio-v2/images/react.jpg" alt="React Course Certificate of Completion" loading="lazy" />
+          <p className="course">React Tutorial and Projects Course</p>
+          <img src="/portfolio-v2/images/react.jpg" alt="React Course Certificate of Completion" />
         </div>
-        <ul>
-          {reactSkills.map((skill, index) => (
-            <li key={index} className="duty">
-              {skill}
-            </li>
-          ))}
-        </ul>
-        <p className="course">The Git and Github Bootcamp</p>
         <div className="certificate-wrapper">
-          <img
-            src="/portfolio-v2/images/gitbootcamplarge.png"
-            alt="Web Developer Bootcamp Certificate of Completion"
-            loading="lazy"
-          />
+          <p className="course">The Git and Github Bootcamp</p>
+          <img src="/portfolio-v2/images/gitbootcamplarge.png" alt="Web Developer Bootcamp Certificate of Completion" />
         </div>
-        <ul>
-          {gitSkills.map((skill, index) => (
-            <li key={index} className="duty">
-              {skill}
-            </li>
-          ))}
-        </ul>
-        <p className="course">The Web Developer Bootcamp</p>
         <div className="certificate-wrapper">
+          <p className="course">The Web Developer Bootcamp</p>
           <img
             src="/portfolio-v2/images/webdevcertificatelarge.png"
             alt="Web Developer Bootcamp Certificate of Completion"
-            loading="lazy"
           />
         </div>
-        <ul>
-          {webDevSkills.map((skill, index) => (
-            <li key={index} className="duty">
-              {skill}
-            </li>
-          ))}
-        </ul>
-        <p className="course">JavaScript Algorithms and Data Structures</p>
         <div className="certificate-wrapper">
-          <img src="/portfolio-v2/images/fcc2.png" alt="Free code camp certificate" loading="lazy" />
+          <p className="course">JavaScript Algorithms and Data Structures</p>
+          <img src="/portfolio-v2/images/fcc2.png" alt="Free code camp certificate" />
         </div>
-        <ul>
-          {fcc2Skills.map((skill, index) => (
-            <li key={index} className="duty">
-              {skill}
-            </li>
-          ))}
-        </ul>
-        <p className="course">Responsive Web Design</p>
         <div className="certificate-wrapper">
-          <img src="/portfolio-v2/images/fcc1.png" alt="Free code camp certificate" loading="lazy" />
+          <p className="course">Responsive Web Design</p>
+          <img src="/portfolio-v2/images/fcc1.png" alt="Free code camp certificate" />
         </div>
-        <ul>
-          {fcc1Skills.map((skill, index) => (
-            <li key={index} className="duty">
-              {skill}
-            </li>
-          ))}
-        </ul>
       </div>
     </Wrapper>
   );
@@ -119,39 +79,28 @@ const Wrapper = styled.article`
   }
 
   .courses {
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 34px;
-  }
-
-  .course {
-    width: 100%;
-    text-align: center;
-    padding: 7.5rem 0.5rem 2.5rem;
-    font-size: 2.6rem;
-    line-height: 2.6rem;
-  }
-  .certificate-wrapper {
-    margin: 0 5%;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 3px 3px 8px black;
-    img {
-      width: 100%;
+    .certificate-wrapper {
+      background-color: rgba(0, 0, 0, 0.3);
+      margin: 3rem 1rem;
+      box-shadow: 3px 3px 8px black;
+      border-radius: 3px;
+      padding: 1rem;
+      max-width: 400px;
+      .course {
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 900;
+        margin-bottom: 12px;
+      }
+      img {
+        width: 100%;
+      }
     }
   }
-
-  ul {
-    padding: 3rem;
-    list-style-type: square;
-    .duty {
-      color: ${props => props.theme.jobInfoTextColor};
-      padding-bottom: 3rem;
-      font-size: 1rem;
-    }
-  }
-
   .line {
     width: 90%;
   }
@@ -161,11 +110,6 @@ const Wrapper = styled.article`
       h3 {
         font-size: 1.9rem;
         line-height: 1.8rem;
-      }
-    }
-    ul {
-      .duty {
-        font-size: 1rem;
       }
     }
   }
@@ -190,6 +134,18 @@ const Wrapper = styled.article`
     .school-header {
       h3 {
         font-size: 2.5rem;
+      }
+    }
+    .courses {
+      display: grid;
+      grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+      grid-gap: 24px;
+      align-items: unset;
+      .certificate-wrapper {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
     }
   }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const School = () => {
   return (
-    <Wrapper id="psu-min-button">
+    <Wrapper id="psu-button">
       <header className="school-header">
         <div className="title-company">
           <h3>The Pennsylvania State University</h3>
@@ -11,8 +11,9 @@ const School = () => {
       <p className="major">B.S. Industrial Engineering</p>
       <div className="line"></div>
       <p className="minor">Six Sigma Minor</p>
-      <div className="psu-seal">
-        <img src="/portfolio-v2/images/psucrestcutout.png" alt="The Pennsylvania State University Seal" />
+      <div className="old-main">
+        {/* <img src="/portfolio-v2/images/oldmain.png" alt="Old Main Building at PSU" /> */}
+        <img src="/portfolio-v2/images/oldmain-dark.png" alt="Old Main Building at PSU" />
       </div>
     </Wrapper>
   );
@@ -23,6 +24,16 @@ const Wrapper = styled.article`
   z-index: 999;
   width: 100%;
   color: ${props => props.theme.primaryColor};
+  .old-main {
+    background-color: rgba(248, 219, 255, 0.585);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    img {
+      width: 100%;
+    }
+  }
   .school-header {
     z-index: 999;
     & * {

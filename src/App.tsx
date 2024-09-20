@@ -29,18 +29,13 @@ export const App = () => {
       let customBackground = "";
       if (darkMode) {
         customBackground = "#efefef";
-        // btnClicked === "contact"
-        //   ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
-        //   : btnClicked === "background"
-        //   ? "rgb(236 211 151)"
-        //   : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       } else {
         customBackground =
           btnClicked === "contact"
-            ? "url('/portfolio-v2/images/contact-bg-lg.jpg') center center / cover"
+            ? "url('/portfolio-v2/images/contact-bg-lg.jpg') top left / cover"
             : btnClicked === "background"
-            ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
-            : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
+            ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') top left / cover"
+            : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
       }
       // Select primary color
       let primaryColor = "";
@@ -268,7 +263,11 @@ export const App = () => {
               {colorScheme.siteBg === "#29222a" ? <ThreeDimensionsMobile /> : <TwoDimensionsMobile />}
             </div>
           )}
-          {btnClicked === "background" && <TableOfContents />}
+          {btnClicked === "background" && (
+            <div className="toc-wrapper">
+              <TableOfContents />
+            </div>
+          )}
         </div>
       </Wrapper>
     </ThemeProvider>

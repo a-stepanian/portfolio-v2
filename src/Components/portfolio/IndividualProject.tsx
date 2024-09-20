@@ -25,7 +25,8 @@ const IndividualProject = (props: IIndividualProjectProps) => {
             width="320"
             controls
             controlsList="nodownload"
-            autoPlay={site.videoUrl.includes("applyyourself")}>
+            autoPlay={site.videoUrl.includes("applyyourself")}
+            muted>
             <source src={site.videoUrl} type="video/mp4" />
           </video>
         ) : (

@@ -178,18 +178,14 @@ const Wrapper = styled.section`
           display: flex;
           justify-content: center;
           align-items: center;
-          opacity: 0;
-          animation: blurIn 0.3s forwards linear 1.1s;
+          transform: scale(0);
+          animation: scaleIn 0.3s forwards linear 1.1s;
         }
-        @keyframes blurIn {
+        @keyframes scaleIn {
           0% {
-            opacity: 0;
-            filter: blur(100px);
             transform: scale(0);
           }
           100% {
-            opacity: 1;
-            filter: blur(0);
             transform: scale(1);
           }
         }

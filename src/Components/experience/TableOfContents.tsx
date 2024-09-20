@@ -6,8 +6,6 @@ import { Fragment, useEffect, useState } from "react";
 const TableOfContents = () => {
   const [activeTab, setActiveTab] = useState<string>("claritymid");
 
-  // not working activeTab = "psu-min-button"
-  // working when activeTab = "manitowocpa-button"
   useEffect(() => {
     document.getElementById(activeTab)?.scrollIntoView({ behavior: "smooth" });
     experience.forEach(job => {
@@ -27,15 +25,15 @@ const TableOfContents = () => {
         document.querySelector(".independent-h3")?.classList?.add("active");
         document.querySelector(".independent-button")?.classList?.add("active");
         document.querySelector(".psu-h3")?.classList?.remove("active");
-        document.querySelector(".psu-min-button")?.classList?.remove("active");
-      } else if (activeTab.includes("psu-min-button")) {
+        document.querySelector(".psu-button")?.classList?.remove("active");
+      } else if (activeTab.includes("psu-button")) {
         document.querySelector(".psu-h3")?.classList?.add("active");
-        document.querySelector(".psu-min-button")?.classList?.add("active");
+        document.querySelector(".psu-button")?.classList?.add("active");
         document.querySelector(".independent-h3")?.classList?.remove("active");
         document.querySelector(".independent-button")?.classList?.remove("active");
       } else {
         document.querySelector(".psu-h3")?.classList?.remove("active");
-        document.querySelector(".psu-min-button")?.classList?.remove("active");
+        document.querySelector(".psu-button")?.classList?.remove("active");
         document.querySelector(".independent-h3")?.classList?.remove("active");
         document.querySelector(".independent-button")?.classList?.remove("active");
       }
@@ -76,8 +74,8 @@ const TableOfContents = () => {
         <span>Courses</span>
       </button>
       <h3 className="psu-h3">Penn State University</h3>
-      <button className="scroll-button psu-min-button" type="button" onClick={() => setActiveTab("psu-min-button")}>
-        {activeTab === "psu-min-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
+      <button className="scroll-button psu-button" type="button" onClick={() => setActiveTab("psu-button")}>
+        {activeTab === "psu-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
         <span>
           B.S. Industrial Engineering
           <br />
@@ -91,18 +89,43 @@ const TableOfContents = () => {
 const Wrapper = styled.nav`
   display: none;
   @media (min-width: 768px) {
-    filter: blur(100px);
     transform: scale(0);
-    animation: appearSlowly 0.3s forwards linear 1.1s;
     position: fixed;
     bottom: 0;
     left: 0;
     padding: 16px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     z-index: 999;
     height: calc(100vh - 200px);
     width: 300px;
+    overflow: auto;
+    animation: scaleIn 0.3s forwards linear 1.1s;
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props => props.theme.primaryColor};
+      box-shadow: 0 0 5px ${props => props.theme.primaryColor};
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-track {
+      width: 8px;
+      background-color: transparent;
+      border-radius: 4px;
+    }
     h2 {
       font-size: 14px;
       color: #777;
@@ -147,16 +170,6 @@ const Wrapper = styled.nav`
       color: ${props => (props.theme.siteBg === "#29222a" ? "" : "black")};
       text-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 0 4px #29ad9391" : "none")};
       opacity: 1;
-    }
-    @keyframes appearSlowly {
-      0% {
-        filter: blur(100px);
-        transform: scale(0);
-      }
-      100% {
-        filter: blur(0);
-        transform: scale(1);
-      }
     }
   }
 `;
