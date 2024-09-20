@@ -42,8 +42,6 @@ const ThreeDimensions = () => {
 const Wrapper = styled.div`
   display: none;
   @media (min-width: 768px) {
-    animation: asdklfhkadjshfaskjdhasfk 0.3s forwards linear 1.1s;
-    opacity: 0;
     display: block;
     width: 120px;
     left: 60px;
@@ -68,10 +66,10 @@ const Wrapper = styled.div`
         align-items: center;
         justify-content: space-between;
         z-index: 0;
-        animation-name: appear, shift-face-z-index;
-        animation-duration: 1s, 30s;
-        animation-timing-function: linear, linear;
-        animation-delay: 0.6s, 0s;
+        animation-name: shift-face-z-index;
+        animation-duration: 30s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
         .nav-text {
           font-size: 0.6rem;
           color: ${props => props.theme.primaryColor};
@@ -125,14 +123,6 @@ const Wrapper = styled.div`
       transform: scale(1.2);
       animation: big-shadow-pulse 8s ease-in-out infinite;
     }
-    @keyframes appear {
-      0% {
-        opacity: 0 !important;
-      }
-      100% {
-        opacity: 1 !important;
-      }
-    }
     @keyframes big-icon-bounce {
       0%,
       50%,
@@ -180,18 +170,6 @@ const Wrapper = styled.div`
       }
       100% {
         transform: translateZ(calc(120px / 2 / -0.5774)) rotateY(360deg);
-      }
-    }
-    @keyframes asdklfhkadjshfaskjdhasfk {
-      0% {
-        opacity: 0;
-        filter: blur(100px);
-        transform: scale(0);
-      }
-      100% {
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1);
       }
     }
   }

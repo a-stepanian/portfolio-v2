@@ -204,7 +204,7 @@ const Thanks = styled.div`
       margin-right: 5px;
     }
   }
-  p {
+  .thanks {
     background-color: rgba(127, 191, 240, 0.084);
     padding: 12px;
     border-radius: 3px;

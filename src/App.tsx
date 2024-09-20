@@ -28,12 +28,12 @@ export const App = () => {
     if (btnClicked !== "") {
       let customBackground = "";
       if (darkMode) {
-        customBackground =
-          btnClicked === "contact"
-            ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
-            : btnClicked === "background"
-            ? "rgb(236 211 151)"
-            : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
+        customBackground = "#efefef";
+        // btnClicked === "contact"
+        //   ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
+        //   : btnClicked === "background"
+        //   ? "rgb(236 211 151)"
+        //   : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       } else {
         customBackground =
           btnClicked === "contact"
@@ -167,13 +167,12 @@ export const App = () => {
       panels?.forEach(x => x?.classList.add("no-shadow"));
       panelContents?.forEach(x => x?.classList.add("no-shadow"));
       contactHexagon?.classList.add("move-right");
-      let customBackground =
-        btnClicked === "contact"
-          ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
-          : btnClicked === "background"
-          ? "rgb(236 211 151)"
-          : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
-      // : "url('/portfolio-v2/images/gray-bg-sm.jpg') center center / cover";
+      let customBackground = "#efefef";
+      //   btnClicked === "contact"
+      //     ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
+      //     : btnClicked === "background"
+      //     ? "rgb(236 211 151)"
+      //     : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       updateColorScheme({
         ...colorScheme,
         primaryColor: "#555",

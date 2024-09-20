@@ -26,16 +26,6 @@ export type TExperience = {
 const data: TProject[] = [
   {
     id: "7",
-    title: "MenuWeb",
-    description: "A CMS that allows a user to create basic websites.",
-    builtWith: ["React", "Bootstrap"],
-    url: "https://menu-site-builder.netlify.app/",
-    videoUrl: "/portfolio-v2/images/menuwebsm.mp4",
-    thumbnail: "apply.png",
-    repo: "https://github.com/a-stepanian/restaurant-site-builder"
-  },
-  {
-    id: "6",
     title: "Apply Yourself",
     description:
       "Full stack MERN app that helps you to manage the job application status and gain insights to your application process.",
@@ -45,6 +35,16 @@ const data: TProject[] = [
     thumbnail: "apply.png",
     repo: "https://github.com/a-stepanian/apply-yourself-client",
     repo2: "https://github.com/a-stepanian/apply-yourself-server"
+  },
+  {
+    id: "6",
+    title: "MenuWeb",
+    description: "A CMS that allows a user to create basic websites.",
+    builtWith: ["React", "Bootstrap"],
+    url: "https://menu-site-builder.netlify.app/",
+    videoUrl: "/portfolio-v2/images/menuwebsm.mp4",
+    thumbnail: "apply.png",
+    repo: "https://github.com/a-stepanian/restaurant-site-builder"
   },
   // {
   //   id: "5",

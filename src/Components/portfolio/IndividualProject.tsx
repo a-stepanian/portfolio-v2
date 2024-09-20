@@ -20,7 +20,12 @@ const IndividualProject = (props: IIndividualProjectProps) => {
     <Wrapper style={{ gridColumn: `${site?.videoUrl ? "1/3" : ""}` }}>
       <div className="img-container">
         {site.videoUrl ? (
-          <video id="menuwebVideo" width="320" controls controlsList="nodownload">
+          <video
+            id="menuwebVideo"
+            width="320"
+            controls
+            controlsList="nodownload"
+            autoPlay={site.videoUrl.includes("applyyourself")}>
             <source src={site.videoUrl} type="video/mp4" />
           </video>
         ) : (

@@ -48,10 +48,16 @@ const InfoPanel = (props: IInfoPanelProps) => {
               </button>
             </div>
             <InfoPanelContents />
-            {text !== "" && text !== "background" && (
+            {text !== "" && text !== "background" && colorScheme.siteBg === "#29222a" ? (
               <div className="big-three-d-object-wrapper">
-                {colorScheme.siteBg === "#29222a" ? <ThreeDimensions /> : <TwoDimensions />}
+                <ThreeDimensions />
               </div>
+            ) : text !== "" && text !== "background" ? (
+              <div className="big-three-d-object-wrapper">
+                <TwoDimensions />
+              </div>
+            ) : (
+              <></>
             )}
           </div>
         )}
@@ -157,12 +163,10 @@ const Wrapper = styled.section`
     .open {
       left: 0 !important;
       width: 100vw;
-      opacity: 1;
       padding: 1rem;
       transition: width 0.4s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
       & .info-panel-contents-wrapper {
         transition: opacity 0.6s linear 0.6s;
-        opacity: 1;
         width: auto;
         height: auto;
         .big-three-d-object-wrapper {
@@ -174,6 +178,20 @@ const Wrapper = styled.section`
           display: flex;
           justify-content: center;
           align-items: center;
+          opacity: 0;
+          animation: blurIn 0.3s forwards linear 1.1s;
+        }
+        @keyframes blurIn {
+          0% {
+            opacity: 0;
+            filter: blur(100px);
+            transform: scale(0);
+          }
+          100% {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+          }
         }
       }
       .open-tall {
