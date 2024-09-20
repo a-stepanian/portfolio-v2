@@ -13,6 +13,7 @@ export type TProject = {
 export type TExperience = {
   id: string;
   company?: string;
+  companyKey?: string;
   location?: string;
   stateImg?: string;
   companyUrl?: string;
@@ -98,6 +99,7 @@ export const experience: TExperience[] = [
   {
     id: "claritymid",
     company: "Clarity Ventures, Inc.",
+    companyKey: "clarity",
     location: "Austin, TX (remote)",
     stateImg: "tx.png",
     companyUrl: "https://www.clarity-ventures.com/",
@@ -105,29 +107,32 @@ export const experience: TExperience[] = [
     title: "Front-End Developer",
     date: "2024-present",
     description: [
-      "Led the front-end development process for multiple concurrent client projects from discovery to production.",
-      "Selected by the CEO to be the sole developer for the company's marketing website, working directly on high-visibility projects to improve our marketing employee efficiency and improve SEO / performance.",
-      "Provided support on legacy codebase projects by rapidly ramping up to fix bugs and build new features."
-    ]
-  },
-  {
-    id: "clarityjr",
-    company: "Clarity Ventures, Inc.",
-    location: "Austin, TX (remote)",
-    stateImg: "tx.png",
-    companyUrl: "https://www.clarity-ventures.com/",
-    logo: "cv.png",
-    title: "Jr. Front-End Developer",
-    date: "2022-2024",
-    description: [
       "Work directly with the CEO to design and develop a custom CMS from scratch for internal and client use.",
       "Integrate AI features into the CMS to automate content creation and enhance results with user feedback.",
       "Build back-end endpoints as needed to support various front-end features of the CMS."
     ]
   },
   {
-    id: "rainier",
+    id: "clarityjr",
+    company: "Clarity Ventures, Inc.",
+    companyKey: "clarity",
+    location: "Austin, TX (remote)",
+    stateImg: "tx.png",
+    companyUrl: "https://www.clarity-ventures.com/",
+    logo: "cv.png",
+    title: "Jr. Front-End Developer",
+    date: "2022-2024",
+
+    description: [
+      "Led the front-end development process for multiple concurrent client projects from discovery to production.",
+      "Selected by the CEO to be the sole developer for the company's marketing website, working directly on high-visibility projects to improve our marketing employee efficiency and improve SEO / performance.",
+      "Provided support on legacy codebase projects by rapidly ramping up to fix bugs and build new features."
+    ]
+  },
+  {
+    id: "usgrainier",
     company: "United States Gypsum",
+    companyKey: "usg",
     location: "Rainier, OR",
     stateImg: "or.png",
     companyUrl: "https://www.usg.com/",
@@ -141,8 +146,9 @@ export const experience: TExperience[] = [
     ]
   },
   {
-    id: "chamblee",
+    id: "usgchamblee",
     company: "United States Gypsum",
+    companyKey: "usg",
     location: "Chamblee, GA",
     stateImg: "ga.png",
     companyUrl: "https://www.usg.com/",
@@ -159,8 +165,9 @@ export const experience: TExperience[] = [
     ]
   },
   {
-    id: "baltimore",
+    id: "usgbaltimore",
     company: "United States Gypsum",
+    companyKey: "usg",
     location: "Baltimore, MD",
     stateImg: "md.png",
     companyUrl: "https://www.usg.com/",
@@ -177,8 +184,9 @@ export const experience: TExperience[] = [
     ]
   },
   {
-    id: "pa",
+    id: "manitowocpa",
     company: "Manitowoc",
+    companyKey: "manitowoc",
     location: "Shady Grove, PA",
     stateImg: "md.png",
     companyUrl: "https://www.manitowoc.com/",
@@ -195,7 +203,7 @@ export const experience: TExperience[] = [
 
 export const education = [
   {
-    id: "pennsylvania",
+    id: "psu",
     company: "The Pennsylvania State University",
     schoolUrl: "https://www.psu.edu/",
     location: "State College, PA",

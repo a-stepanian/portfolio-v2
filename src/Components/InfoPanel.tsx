@@ -4,6 +4,9 @@ import ThreeDimensions from "./decor/ThreeDimensions";
 import InfoPanelContents from "./InfoPanelContents";
 import { PiXThin } from "react-icons/pi";
 import TwoDimensions from "./decor/TwoDimensions";
+import { useEffect, useState } from "react";
+import { experience } from "../data";
+import TableOfContents from "./experience/TableOfContents";
 
 interface IInfoPanelProps {
   text: string;
@@ -11,12 +14,28 @@ interface IInfoPanelProps {
 
 const InfoPanel = (props: IInfoPanelProps) => {
   const { text } = props;
+  const [activeTab, setActiveTab] = useState<string>("claritymid");
   const { btnClicked, updateBtnClicked, colorScheme } = useAppContext();
 
   const isOpen = text === btnClicked;
 
   const leftOffset =
     text === "background" ? "48.5px" : text === "contact" ? "148.5px" : text === "portfolio" ? "98.5px" : "";
+
+  useEffect(() => {
+    document.getElementById(activeTab)?.scrollIntoView({ behavior: "smooth" });
+    experience.forEach(job => {
+      if (job.id === activeTab) {
+        document.querySelector(`.${job.id}-h3`)?.classList?.add("active");
+        document.querySelector(`.${job.id}-button`)?.classList?.add("active");
+      } else {
+        document.querySelector(`.${job.id}-h3`)?.classList?.remove("active");
+        document.querySelector(`.${job.id}-button`)?.classList?.remove("active");
+      }
+    });
+  }, [activeTab]);
+
+  let used: string[] = [];
 
   return (
     <Wrapper>
@@ -29,7 +48,7 @@ const InfoPanel = (props: IInfoPanelProps) => {
               </button>
             </div>
             <InfoPanelContents />
-            {text !== "" && (
+            {text !== "" && text !== "background" && (
               <div className="big-three-d-object-wrapper">
                 {colorScheme.siteBg === "#29222a" ? <ThreeDimensions /> : <TwoDimensions />}
               </div>

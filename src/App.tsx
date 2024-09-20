@@ -9,6 +9,7 @@ import { DarkModeButton } from "./Components/DarkModeButton";
 import { LittleDiv } from "./Components/decor/LittleDiv";
 import { LittleDiv2 } from "./Components/decor/LittleDiv2";
 import Squiggles from "./Components/decor/Squiggles";
+import TableOfContents from "./Components/experience/TableOfContents";
 
 export const App = () => {
   const { btnClicked, colorScheme, updateColorScheme } = useAppContext();
@@ -227,7 +228,7 @@ export const App = () => {
             <LittleDiv2 />
           </div>
           <Squiggles />
-          <nav>
+          <nav className="primary-nav">
             <div className="top-row">
               <Hexagon text={"background"} />
               <Hexagon text={"contact"} />
@@ -268,6 +269,7 @@ export const App = () => {
               {colorScheme.siteBg === "#29222a" ? <ThreeDimensionsMobile /> : <TwoDimensionsMobile />}
             </div>
           )}
+          {btnClicked === "background" && <TableOfContents />}
         </div>
       </Wrapper>
     </ThemeProvider>
@@ -311,7 +313,7 @@ const Wrapper = styled.div`
     .decor-wrapper {
       animation: site-appear 3s forwards;
     }
-    nav {
+    .primary-nav {
       animation: site-appear 1s forwards;
       transition: filter 1s linear;
       position: relative;

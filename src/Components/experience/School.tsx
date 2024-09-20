@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const School = () => {
   return (
-    <Wrapper>
+    <Wrapper id="psu-min-button">
       <header className="school-header">
         <div className="title-company">
           <h3>The Pennsylvania State University</h3>

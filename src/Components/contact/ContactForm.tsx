@@ -185,7 +185,7 @@ const Thanks = styled.div`
     padding: 12px;
     border-radius: 3px;
     font-size: 1.2rem;
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.formTextColor};
     span {
       display: inline-block;
       width: 100%;

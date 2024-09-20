@@ -3,7 +3,6 @@ import styled from "styled-components";
 import InfoToggleButton from "./InfoToggleButton";
 import { RiExternalLinkFill } from "react-icons/ri";
 import { BsGithub } from "react-icons/bs";
-import { BsFillStarFill } from "react-icons/bs";
 import { TProject } from "../../data";
 
 interface IIndividualProjectProps {
@@ -18,10 +17,10 @@ const IndividualProject = (props: IIndividualProjectProps) => {
   const toggleInfo = () => setIsInfoOpen(prev => !prev);
 
   return (
-    <Wrapper>
+    <Wrapper style={{ gridColumn: `${site?.videoUrl ? "1/3" : ""}` }}>
       <div className="img-container">
         {site.videoUrl ? (
-          <video id="menuwebVideo" width="320" controls>
+          <video id="menuwebVideo" width="320" controls controlsList="nodownload">
             <source src={site.videoUrl} type="video/mp4" />
           </video>
         ) : (
@@ -84,16 +83,17 @@ const Wrapper = styled.article`
   color: ${props => props.theme.blackColor};
   background-color: ${props => props.theme.primaryColor};
   border-radius: ${props => props.theme.panelRadius};
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 36px 12px;
-  box-shadow: 0 0 50px ${props => props.theme.blackColor};
+  box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 0 10px #a0a4c5" : "0 0 16px #294a5a")};
   .img-container {
     display: flex;
     justify-content: center;
     position: relative;
     background-color: ${props => props.theme.blackColor};
-    border-radius: ${props => props.theme.panelRadius};
+    border-radius: 4px;
     overflow: hidden;
+    box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 3px 12px #000d83b2" : "0 0 16px #294a5a")};
     video {
       width: 100% !important;
       height: auto !important;
@@ -248,7 +248,7 @@ const Wrapper = styled.article`
     }
   }
   @media (min-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
     margin: 48px 12px;
   }
 `;

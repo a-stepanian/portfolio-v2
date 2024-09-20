@@ -3,8 +3,8 @@ import { fcc1Skills, fcc2Skills, gitSkills, reactSkills, webDevSkills } from "..
 
 const OnlineSchool = () => {
   return (
-    <Wrapper>
-      <header className="school-header">
+    <Wrapper id="psu-ie-button">
+      <header className="school-header" id="school-header">
         <h4 className="school-name">
           <a href="/" target="_blank" rel="noreferrer">
             udemy
