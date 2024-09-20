@@ -3,7 +3,7 @@ import { fcc1Skills, fcc2Skills, gitSkills, reactSkills, webDevSkills } from "..
 
 const OnlineSchool = () => {
   return (
-    <Wrapper id="psu-ie-button">
+    <Wrapper id="independent-button">
       <header className="school-header" id="school-header">
         <h4 className="school-name">
           <a href="/" target="_blank" rel="noreferrer">
@@ -159,7 +159,6 @@ const Wrapper = styled.article`
   @media (min-width: 480px) {
     .school-header {
       h3 {
-        margin-top: 0.4rem;
         font-size: 1.9rem;
         line-height: 1.8rem;
       }
@@ -175,10 +174,11 @@ const Wrapper = styled.article`
     margin-bottom: 5rem;
     border-right: none;
     .school-header {
-      padding-right: 0.3rem;
-      padding-left: 0.3rem;
+      padding: 1.1rem;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
       h3 {
         font-size: 2.4rem;
         line-height: 2rem;

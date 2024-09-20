@@ -6,6 +6,8 @@ import { Fragment, useEffect, useState } from "react";
 const TableOfContents = () => {
   const [activeTab, setActiveTab] = useState<string>("claritymid");
 
+  // not working activeTab = "psu-min-button"
+  // working when activeTab = "manitowocpa-button"
   useEffect(() => {
     document.getElementById(activeTab)?.scrollIntoView({ behavior: "smooth" });
     experience.forEach(job => {
@@ -19,6 +21,23 @@ const TableOfContents = () => {
         document.querySelector(`.${job.companyKey}-h3`)?.classList?.add("active");
       } else {
         document.querySelector(`.${job.companyKey}-h3`)?.classList?.remove("active");
+      }
+
+      if (activeTab.includes("independent-button")) {
+        document.querySelector(".independent-h3")?.classList?.add("active");
+        document.querySelector(".independent-button")?.classList?.add("active");
+        document.querySelector(".psu-h3")?.classList?.remove("active");
+        document.querySelector(".psu-min-button")?.classList?.remove("active");
+      } else if (activeTab.includes("psu-min-button")) {
+        document.querySelector(".psu-h3")?.classList?.add("active");
+        document.querySelector(".psu-min-button")?.classList?.add("active");
+        document.querySelector(".independent-h3")?.classList?.remove("active");
+        document.querySelector(".independent-button")?.classList?.remove("active");
+      } else {
+        document.querySelector(".psu-h3")?.classList?.remove("active");
+        document.querySelector(".psu-min-button")?.classList?.remove("active");
+        document.querySelector(".independent-h3")?.classList?.remove("active");
+        document.querySelector(".independent-button")?.classList?.remove("active");
       }
     });
   }, [activeTab]);
@@ -48,14 +67,17 @@ const TableOfContents = () => {
         );
       })}
       <h2>Education</h2>
-      <h3 className="psu-h3">Independent Studies</h3>
-      <button className="scroll-button psu-ie-button" type="button" onClick={() => setActiveTab("psu-ie-button")}>
-        <VscDebugBreakpointDataUnverified />
+      <h3 className="independent-h3">Independent Studies</h3>
+      <button
+        className="scroll-button independent-button"
+        type="button"
+        onClick={() => setActiveTab("independent-button")}>
+        {activeTab === "independent-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
         <span>Courses</span>
       </button>
       <h3 className="psu-h3">Penn State University</h3>
       <button className="scroll-button psu-min-button" type="button" onClick={() => setActiveTab("psu-min-button")}>
-        <VscDebugBreakpointDataUnverified />
+        {activeTab === "psu-min-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
         <span>
           B.S. Industrial Engineering
           <br />
@@ -80,7 +102,7 @@ const Wrapper = styled.nav`
     flex-direction: column;
     z-index: 999;
     height: calc(100vh - 200px);
-    width: 250px;
+    width: 300px;
     h2 {
       font-size: 14px;
       color: #777;

@@ -42,6 +42,8 @@ const ThreeDimensions = () => {
 const Wrapper = styled.div`
   display: none;
   @media (min-width: 768px) {
+    animation: asdklfhkadjshfaskjdhasfk 0.3s forwards linear 1.1s;
+    opacity: 0;
     display: block;
     width: 120px;
     left: 60px;
@@ -178,6 +180,18 @@ const Wrapper = styled.div`
       }
       100% {
         transform: translateZ(calc(120px / 2 / -0.5774)) rotateY(360deg);
+      }
+    }
+    @keyframes asdklfhkadjshfaskjdhasfk {
+      0% {
+        opacity: 0;
+        filter: blur(100px);
+        transform: scale(0);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
       }
     }
   }

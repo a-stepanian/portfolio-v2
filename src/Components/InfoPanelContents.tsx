@@ -65,7 +65,7 @@ const Wrapper = styled.section`
     bottom: calc((100vh - 200px) / 2);
     height: auto;
     width: auto;
-    left: 250px;
+    left: 300px;
     right: 20px;
     top: unset;
     height: 0;

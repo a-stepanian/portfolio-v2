@@ -19,59 +19,80 @@ const School = () => {
 };
 
 const Wrapper = styled.article`
+  position: relative;
+  z-index: 999;
+  width: 100%;
   color: ${props => props.theme.primaryColor};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   .school-header {
+    z-index: 999;
+    & * {
+      z-index: 999;
+    }
     position: sticky;
     top: 0;
-    width: 100%;
-    height: 6.6rem;
-    z-index: 1;
-    background: ${props => props.theme.blackColor};
-    padding-right: 6.5rem;
-    padding-left: 0.3rem;
-    .title-company {
-      padding: 0.5rem 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
+    background: #393850ef;
+    padding: 4px 34px 8px 1rem;
+    box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
+    .school-title {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
-    h3 {
-      margin-top: 0.5rem;
-      font-size: 1.8rem;
-      line-height: 1.8rem;
+    .school-name {
+      position: relative;
+      z-index: 999;
+      background-color: #3938507a;
+      line-height: 10px;
+      a {
+        text-decoration: none;
+        color: ${props => props.theme.primaryColor};
+        font-size: 0.6rem;
+        letter-spacing: -0.02rem;
+        white-space: nowrap;
+      }
     }
   }
-  .major,
-  .minor {
+
+  .courses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 34px;
+  }
+
+  .course {
+    width: 100%;
+    text-align: center;
+    padding: 7.5rem 0.5rem 2.5rem;
     font-size: 2.6rem;
     line-height: 2.6rem;
-    text-align: center;
   }
-  .line {
-    width: 5rem;
-    margin-bottom: 1rem;
-  }
-  .major {
-    padding: 8rem 0 1rem;
-  }
-  .psu-seal {
-    padding: 5rem 5%;
-    width: 70%;
+  .certificate-wrapper {
+    margin: 0 5%;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 3px 3px 8px black;
     img {
       width: 100%;
     }
   }
+
   ul {
     padding: 3rem;
     list-style-type: square;
     .duty {
+      color: ${props => props.theme.jobInfoTextColor};
       padding-bottom: 3rem;
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
+
+  .line {
+    width: 90%;
+  }
+
   @media (min-width: 480px) {
     .school-header {
       h3 {
@@ -85,10 +106,8 @@ const Wrapper = styled.article`
         font-size: 1rem;
       }
     }
-    .psu-seal {
-      width: 60%;
-    }
   }
+
   @media (min-width: 768px) {
     margin-bottom: 5rem;
     border-right: none;
@@ -102,12 +121,8 @@ const Wrapper = styled.article`
         line-height: 2rem;
       }
     }
-    ul {
-      .duty {
-        font-size: 1.1rem;
-      }
-    }
   }
+
   @media (min-width: 992px) {
     .school-header {
       h3 {

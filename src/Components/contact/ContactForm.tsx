@@ -84,8 +84,16 @@ const ContactForm = () => {
               : values.name.length > 0
               ? "#3d5752"
               : document.querySelector(".clip-border-circle") !== null
-              ? "rgb(184, 159, 152)"
-              : "rgb(74, 43, 56)"
+              ? "#efefef"
+              : "rgb(74, 43, 56)",
+          border:
+            values.name.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "2px solid green"
+              : values.name.length > 0
+              ? "2px solid green"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "2px solid red"
+              : "2px solid red"
         }}
         id="full-name"
         required={true}
@@ -104,8 +112,16 @@ const ContactForm = () => {
               : values.email.length > 0
               ? "#3d5752"
               : document.querySelector(".clip-border-circle") !== null
-              ? "rgb(184, 159, 152)"
-              : "rgb(74, 43, 56)"
+              ? "#efefef"
+              : "rgb(74, 43, 56)",
+          border:
+            values.email.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "2px solid green"
+              : values.email.length > 0
+              ? "2px solid green"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "2px solid red"
+              : "2px solid red"
         }}
         id="email"
         type="email"
@@ -130,8 +146,16 @@ const ContactForm = () => {
               : values.message.length > 0
               ? "#3d5752"
               : document.querySelector(".clip-border-circle") !== null
-              ? "rgb(184, 159, 152)"
-              : "rgb(74, 43, 56)"
+              ? "#efefef"
+              : "rgb(74, 43, 56)",
+          border:
+            values.message.length > 0 && document.querySelector(".clip-border-circle") !== null
+              ? "2px solid green"
+              : values.message.length > 0
+              ? "2px solid green"
+              : document.querySelector(".clip-border-circle") !== null
+              ? "2px solid red"
+              : "2px solid red"
         }}
         onChange={e =>
           setValues(prev => {
@@ -243,7 +267,7 @@ const Wrapper = styled.form`
     padding: 1rem;
     border: var(--small-border);
     color: ${props => props.theme.blackColor};
-    background-color: ${props => props.theme.formTextColor};
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.formTextColor : "#111")};
     font-size: 1.2rem;
     opacity: 0.9;
     transition: 0.2s;
@@ -256,7 +280,7 @@ const Wrapper = styled.form`
     }
   }
   .disabled-btn {
-    background-color: #1dd3ae3d;
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#1dd3ae3d" : "#777")};
     &:hover {
       cursor: unset;
       color: ${props => props.theme.blackColor};

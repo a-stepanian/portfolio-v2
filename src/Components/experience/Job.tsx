@@ -83,7 +83,7 @@ const Wrapper = styled.article`
     margin-bottom: 5rem;
     border-right: none;
     .job-header {
-      padding: 0.3rem;
+      padding: 1.1rem;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;

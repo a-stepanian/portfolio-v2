@@ -166,7 +166,7 @@ const Wrapper = styled.section`
         width: auto;
         height: auto;
         .big-three-d-object-wrapper {
-          width: 240px;
+          width: 300px;
           position: absolute;
           left: 0;
           bottom: 0;
