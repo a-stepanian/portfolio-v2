@@ -125,7 +125,6 @@ export const App = () => {
           }
           case "portfolio": {
             primaryColor = "#a0a4c5";
-            // primaryColor = "#affc41";
             break;
           }
           default: {
@@ -163,11 +162,6 @@ export const App = () => {
       panelContents?.forEach(x => x?.classList.add("no-shadow"));
       contactHexagon?.classList.add("move-right");
       let customBackground = "#efefef";
-      //   btnClicked === "contact"
-      //     ? "url('/portfolio-v2/images/contact-bg-lg-light.jpg') center center / cover"
-      //     : btnClicked === "background"
-      //     ? "rgb(236 211 151)"
-      //     : "url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover";
       updateColorScheme({
         ...colorScheme,
         primaryColor: "#555",
@@ -179,19 +173,11 @@ export const App = () => {
         lineWidth: "4px",
         lineStyle: "dashed",
         jobInfoTextColor: "#2e370c",
-        siteBg:
-          "url('https://images.unsplash.com/photo-1612538498613-35c5c8d675c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover",
+        siteBg: "url('/portfolio-v2/images/lightbg.jpg') top left / cover",
         formTextColor: "#3f4c49",
         formInputBg: "#b4ede2"
       });
     }
-    // if (btnClicked.length > 0) {
-    //   let btnClickedSaved = btnClicked;
-    //   updateBtnClicked("");
-    //   setTimeout(() => {
-    //     updateBtnClicked(btnClickedSaved);
-    //   }, 450);
-    // }
   };
 
   return (
