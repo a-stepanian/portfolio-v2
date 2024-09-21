@@ -37,48 +37,82 @@ const IndividualProject = (props: IIndividualProjectProps) => {
             loading="lazy"
           />
         )}
-        <div className={`${isInfoOpen ? "info info-open" : "info"}`}>
-          <div>
-            <h4>Built with:</h4>
-            <div className="tech">
+        {!site.videoUrl && (
+          <div className={`info ${isInfoOpen ? "info-open" : ""}`}>
+            <div>
+              <h4>Built with:</h4>
+              <div className="tech">
+                {site.builtWith.map((tech, index) => {
+                  return <p key={index}>{tech}</p>;
+                })}
+              </div>
+            </div>
+            <div className="links">
+              <a href={site.url} target="_blank" rel="noreferrer">
+                <RiExternalLinkFill className="web" />
+                <span>Website</span>
+              </a>
+              {site.repo2 ? (
+                <>
+                  <a href={site.repo} target="_blank" rel="noreferrer">
+                    <BsGithub />
+                    <span>Client</span>
+                  </a>
+                  <a href={site.repo2} target="_blank" rel="noreferrer">
+                    <BsGithub />
+                    <span>Server</span>
+                  </a>
+                </>
+              ) : (
+                <a href={site.repo} target="_blank" rel="noreferrer">
+                  <BsGithub />
+                  <span>Git Repo</span>
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+      <footer>
+        <div className="my-row">
+          <div className="my-column" style={{ width: site.videoUrl ? "100%" : "calc(100% - 48px)" }}>
+            <h3 className="project-title">{site.title}</h3>
+            <p>{site.description}</p>
+          </div>
+          {!site.videoUrl && <InfoToggleButton isInfoOpen={isInfoOpen} toggleInfo={toggleInfo} />}
+        </div>
+        {site.videoUrl && (
+          <div className="link-wrapper">
+            <div className="tech-list">
               {site.builtWith.map((tech, index) => {
                 return <p key={index}>{tech}</p>;
               })}
             </div>
-          </div>
-          <div className="links">
-            <a href={site.url} target="_blank" rel="noreferrer">
-              <RiExternalLinkFill className="web" />
-              <span>Website</span>
-            </a>
-            {site.repo2 ? (
-              <>
-                <a href={site.repo} target="_blank" rel="noreferrer">
-                  <BsGithub />
-                  <span>Client</span>
+            <div className="links">
+              {site.repo2 ? (
+                <>
+                  <a href={site.repo} target="_blank" rel="noreferrer" title="Client Repo">
+                    <BsGithub className="repo" />
+                    <span>Client</span>
+                  </a>
+                  <a href={site.repo2} target="_blank" rel="noreferrer" title="Server Repo">
+                    <BsGithub className="repo" />
+                    <span>Server</span>
+                  </a>
+                </>
+              ) : (
+                <a href={site.repo} target="_blank" rel="noreferrer" title="Git Repo">
+                  <BsGithub className="repo" />
+                  <span>Repo</span>
                 </a>
-                <a href={site.repo2} target="_blank" rel="noreferrer">
-                  <BsGithub />
-                  <span>Server</span>
-                </a>
-              </>
-            ) : (
-              <a href={site.repo} target="_blank" rel="noreferrer">
-                <BsGithub />
-                <span>Git Repo</span>
+              )}
+              <a href={site.url} target="_blank" rel="noreferrer" title="Go to Website">
+                <RiExternalLinkFill className="web" />
+                <span>Go</span>
               </a>
-            )}
+            </div>
           </div>
-        </div>
-      </div>
-      <footer onClick={toggleInfo}>
-        <div className="my-row">
-          <div className="my-column">
-            <h3 className="project-title">{site.title}</h3>
-            <p>{site.description}</p>
-          </div>
-          <InfoToggleButton isInfoOpen={isInfoOpen} />
-        </div>
+        )}
       </footer>
     </Wrapper>
   );
@@ -86,8 +120,8 @@ const IndividualProject = (props: IIndividualProjectProps) => {
 
 const Wrapper = styled.article`
   position: relative;
-  color: ${props => props.theme.blackColor};
-  background-color: ${props => props.theme.primaryColor};
+  color: #333;
+  background-color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#ecd397")};
   border-radius: ${props => props.theme.panelRadius};
   padding: 0.5rem;
   margin: 36px 12px;
@@ -110,7 +144,6 @@ const Wrapper = styled.article`
       object-fit: cover;
     }
   }
-
   .info {
     position: absolute;
     bottom: 0;
@@ -135,7 +168,7 @@ const Wrapper = styled.article`
       p {
         font-size: 0.7rem;
         margin: 0.2rem;
-        background-color: ${props => props.theme.primaryColor};
+        background-color: #333;
         color: ${props => props.theme.blackColor};
         padding: 0 0.3rem 0.2rem;
         white-space: nowrap;
@@ -157,7 +190,7 @@ const Wrapper = styled.article`
       justify-content: center;
       text-decoration: none;
       .web {
-        font-size: 1.3rem;
+        font-size: 2rem;
       }
       span {
         font-size: 0.8rem;
@@ -168,15 +201,14 @@ const Wrapper = styled.article`
   .info-open {
     height: 100%;
   }
-
   footer {
     margin-top: 12px;
     .my-row {
       display: flex;
       justify-content: space-between;
       width: 100%;
+      align-items: flex-end;
       .my-column {
-        width: calc(100% - 48px);
         .project-title {
           margin-bottom: 8px;
           font-size: 0.8rem;
@@ -185,12 +217,54 @@ const Wrapper = styled.article`
         p {
           font-size: 1rem;
           line-height: 1rem;
-          color: ${props => props.theme.blackColor};
+          color: #333;
+        }
+      }
+    }
+    .tech-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0 12px;
+
+      p {
+        font-size: 0.7rem;
+        margin: 0.2rem;
+        background-color: #333;
+        color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#ecd397")};
+        padding: 3px 5px;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+    }
+    .link-wrapper {
+      margin-bottom: 8px;
+      .links {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      a {
+        margin: 0 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #333;
+        .repo {
+          font-size: 1.8rem;
+        }
+        .web {
+          font-size: 2rem;
+        }
+        span {
+          font-size: 0.7rem;
+          font-weight: 900;
         }
       }
     }
   }
-
   @media (min-width: 330px) {
     .info {
       .tech {
@@ -209,8 +283,17 @@ const Wrapper = styled.article`
       }
     }
   }
-
   @media (min-width: 480px) {
+    footer {
+      .link-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .tech-list {
+        justify-content: start;
+      }
+    }
     img:hover {
       cursor: pointer;
     }
@@ -255,7 +338,11 @@ const Wrapper = styled.article`
   }
   @media (min-width: 768px) {
     padding: 1rem;
-    margin: 48px 12px;
+    margin: 36px;
+  }
+  @media (min-width: 992px) {
+    padding: 1rem;
+    margin: 24px;
   }
 `;
 

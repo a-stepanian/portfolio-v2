@@ -38,7 +38,8 @@ const Wrapper = styled.section`
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  &::-webkit-scrollbar {
+  scrollbar-color: ${props => props.theme.primaryColor} ${props => props.theme.blackColor};
+  /* &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
   &::-webkit-scrollbar:vertical {
@@ -53,7 +54,7 @@ const Wrapper = styled.section`
     width: 8px;
     background-color: transparent;
     border-radius: 4px;
-  }
+  } */
   .contents-button-wrapper {
     display: none;
   }

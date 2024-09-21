@@ -192,8 +192,11 @@ const Wrapper = styled.section`
       }
       .open-tall {
         transition: height 0.3s linear 1.1s, bottom 0.3s linear 1.1s;
-        bottom: 20px;
-        height: calc(100vh - 50px) !important;
+        /* bottom: 20px;
+        height: calc(100vh - 50px) !important; */
+        bottom: -4px;
+        right: -4px;
+        height: 100vh !important;
       }
     }
   }

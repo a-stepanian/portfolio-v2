@@ -32,7 +32,10 @@ const Wrapper = styled.section`
       border-radius: 4px;
       padding: 0 0.5rem 1rem;
       width: calc(100% - 10px);
-      background-color: ${props => props.theme.blackColor};
+      background: ${props =>
+        props.theme.siteBg === "#29222a"
+          ? props.theme.blackColor
+          : "url('/portfolio-v2/images/lightbg.jpg') center center / cover"};
       box-shadow: 12px 18px 5px #0000006b;
       transition: 0.5s;
       .lets-connect {

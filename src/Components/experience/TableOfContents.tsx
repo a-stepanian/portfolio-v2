@@ -110,7 +110,7 @@ const Wrapper = styled.nav`
         transform: scale(1);
       }
     }
-    &::-webkit-scrollbar {
+    /* &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
     &::-webkit-scrollbar:vertical {
@@ -125,7 +125,7 @@ const Wrapper = styled.nav`
       width: 8px;
       background-color: transparent;
       border-radius: 4px;
-    }
+    } */
     h2 {
       font-size: 14px;
       color: #777;

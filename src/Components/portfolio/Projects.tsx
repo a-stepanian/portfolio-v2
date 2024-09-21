@@ -19,7 +19,6 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   .project-wrapper {
-    padding: 1rem 3rem;
     max-width: 580px;
   }
   @media (min-width: 922px) {
@@ -27,7 +26,7 @@ const Wrapper = styled.section`
       display: grid;
       grid-template-columns: 50% 50%;
       padding: 1rem 5rem;
-      max-width: 992px;
+      max-width: 850px;
     }
   }
 `;
