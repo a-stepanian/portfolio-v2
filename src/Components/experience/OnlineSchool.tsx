@@ -22,10 +22,7 @@ const OnlineSchool = () => {
         </div>
         <div className="certificate-wrapper">
           <p className="course">The Web Developer Bootcamp</p>
-          <img
-            src="/portfolio-v2/images/webdevcertificatelarge.png"
-            alt="Web Developer Bootcamp Certificate of Completion"
-          />
+          <img src="/portfolio-v2/images/webdevcert.png" alt="Web Developer Bootcamp Certificate of Completion" />
         </div>
         <div className="certificate-wrapper">
           <p className="course">JavaScript Algorithms and Data Structures</p>
