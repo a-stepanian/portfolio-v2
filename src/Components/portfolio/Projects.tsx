@@ -22,7 +22,7 @@ const Wrapper = styled.section`
     max-width: 580px;
     padding: 18px;
   }
-  @media (min-width: 922px) {
+  @media (min-width: 1200px) {
     .project-wrapper {
       display: grid;
       grid-template-columns: 50% 50%;

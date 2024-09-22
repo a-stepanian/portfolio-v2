@@ -160,7 +160,8 @@ const Wrapper = styled.section`
       left: 0 !important;
       width: 100vw;
       padding: 1rem;
-      transition: width 0.4s linear 0.6s, padding 0.4s linear 0.6s, left 0.4s linear 0.6s, opacity 0.01s linear 0.6s;
+      transition: width 0.4s linear 0.6s, padding 0.4s linear 0.6s, left 0.4s linear 0.6s, opacity 0.01s linear 0.6s,
+        background-color 0.2s linear;
       & .info-panel-contents-wrapper {
         transition: opacity 0.4s linear 0.6s;
         width: auto;

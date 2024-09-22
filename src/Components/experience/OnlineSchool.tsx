@@ -52,20 +52,23 @@ const Wrapper = styled.article`
     }
     position: sticky;
     top: 0;
-    background: #393850ef;
     padding: 4px 34px 8px 1rem;
-    box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
+    box-shadow: ${props =>
+      props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset" : "none"};
+    border: 2px solid ${props => (props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176)" : "#555")};
+    border-radius: ${props => (props.theme.siteBg === "#29222a" ? "0" : "3px")};
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
     .school-title {
       position: relative;
       z-index: 999;
-      background-color: #3938507a;
+      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
       font-size: 1.5rem;
       line-height: 1.5rem;
     }
     .school-name {
       position: relative;
       z-index: 999;
-      background-color: #3938507a;
+      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
       line-height: 10px;
       a {
         text-decoration: none;

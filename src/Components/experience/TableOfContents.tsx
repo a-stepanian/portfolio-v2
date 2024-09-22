@@ -45,44 +45,46 @@ const TableOfContents = () => {
 
   return (
     <Wrapper>
-      <h2>Work History</h2>
-      {experience.map((job, index) => {
-        let active = index === 0 ? "active" : "";
-        return (
-          <Fragment key={job.id}>
-            {!used.includes(job?.company ?? "_") && used.push(job?.company ?? "") && (
-              <h3 className={`${job.companyKey}-h3`}>{job.company}</h3>
-            )}
-            <button
-              className={`scroll-button ${job.id}-button`}
-              type="button"
-              onClick={() => {
-                updateActiveTab(job.id);
-              }}>
-              {activeTab === job.id ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
-              <span>{job.title}</span>
-            </button>
-          </Fragment>
-        );
-      })}
-      <h2>Education</h2>
-      <h3 className="independent-h3">Independent Studies</h3>
-      <button
-        className="scroll-button independent-button"
-        type="button"
-        onClick={() => updateActiveTab("independent-button")}>
-        {activeTab === "independent-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
-        <span>Courses</span>
-      </button>
-      <h3 className="psu-h3">Penn State University</h3>
-      <button className="scroll-button psu-button" type="button" onClick={() => updateActiveTab("psu-button")}>
-        {activeTab === "psu-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
-        <span>
-          B.S. Industrial Engineering
-          <br />
-          &gt; Six Sigma Minor
-        </span>
-      </button>
+      <div className="scrolling-window">
+        <h2>Work History</h2>
+        {experience.map((job, index) => {
+          let active = index === 0 ? "active" : "";
+          return (
+            <Fragment key={job.id}>
+              {!used.includes(job?.company ?? "_") && used.push(job?.company ?? "") && (
+                <h3 className={`${job.companyKey}-h3`}>{job.company}</h3>
+              )}
+              <button
+                className={`scroll-button ${job.id}-button`}
+                type="button"
+                onClick={() => {
+                  updateActiveTab(job.id);
+                }}>
+                {activeTab === job.id ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
+                <span>{job.title}</span>
+              </button>
+            </Fragment>
+          );
+        })}
+        <h2>Education</h2>
+        <h3 className="independent-h3">Independent Studies</h3>
+        <button
+          className="scroll-button independent-button"
+          type="button"
+          onClick={() => updateActiveTab("independent-button")}>
+          {activeTab === "independent-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
+          <span>Courses</span>
+        </button>
+        <h3 className="psu-h3">Penn State University</h3>
+        <button className="scroll-button psu-button" type="button" onClick={() => updateActiveTab("psu-button")}>
+          {activeTab === "psu-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
+          <span>
+            B.S. Industrial Engineering
+            <br />
+            &gt; Six Sigma Minor
+          </span>
+        </button>
+      </div>
     </Wrapper>
   );
 };
@@ -94,15 +96,20 @@ const Wrapper = styled.nav`
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     z-index: 999;
     height: calc(100vh - 200px);
-    width: 300px;
-    overflow: auto;
+    width: 304px;
+    overflow: hidden;
+    padding: 4px 0;
     animation: scaleIn 0.3s forwards linear 1.2s;
+    .scrolling-window {
+      padding: 16px;
+      overflow-y: auto;
+      scrollbar-color: ${props => props.theme.primaryColor} ${props => props.theme.blackColor};
+    }
     @keyframes scaleIn {
       0% {
         transform: scale(0);

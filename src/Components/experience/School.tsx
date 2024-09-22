@@ -8,13 +8,18 @@ const School = () => {
           <h3>The Pennsylvania State University</h3>
         </div>
       </header>
-      <p className="major">B.S. Industrial Engineering</p>
-      <div className="line"></div>
-      <p className="minor">Six Sigma Minor</p>
+      <div>
+        <p className="major">B.S. Industrial Engineering</p>
+        <div className="line-wrapper">
+          <div className="line"></div>
+        </div>
+        <p className="major">Six Sigma Minor</p>
+      </div>
       <div className="old-main">
         <img className="old-main-light" src="/portfolio-v2/images/oldmain.png" alt="Old Main Building at PSU" />
         <img className="old-main-dark" src="/portfolio-v2/images/oldmaindark.png" alt="Old Main Building at PSU" />
       </div>
+      <p className="activities">Activities: Society of Manufacturing Engineers (SME), Dean's List</p>
     </Wrapper>
   );
 };
@@ -24,13 +29,19 @@ const Wrapper = styled.article`
   z-index: 999;
   width: 100%;
   color: ${props => props.theme.primaryColor};
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   .old-main {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    overflow: hidden;
     img {
-      width: 100%;
-      transform: translateY(100px);
+      max-width: 100%;
+      max-height: 100%;
     }
     .old-main-light {
       display: ${props => (props.theme.siteBg === "#29222a" ? "none" : "block")};
@@ -47,67 +58,39 @@ const Wrapper = styled.article`
     }
     position: sticky;
     top: 0;
-    background: #393850ef;
     padding: 4px 34px 8px 1rem;
-    box-shadow: rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset;
+    box-shadow: ${props =>
+      props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset" : "none"};
+    border: 2px solid ${props => (props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176)" : "#555")};
+    border-radius: ${props => (props.theme.siteBg === "#29222a" ? "0" : "3px")};
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
     .school-title {
       position: relative;
       z-index: 999;
-      background-color: #3938507a;
+      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
+
       font-size: 1.5rem;
       line-height: 1.5rem;
     }
-    .school-name {
-      position: relative;
-      z-index: 999;
-      background-color: #3938507a;
-      line-height: 10px;
-      a {
-        text-decoration: none;
-        color: ${props => props.theme.primaryColor};
-        font-size: 0.6rem;
-        letter-spacing: -0.02rem;
-        white-space: nowrap;
-      }
-    }
   }
-
-  .courses {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 34px;
-  }
-
-  .course {
-    width: 100%;
+  .major {
+    font-size: 1.2rem;
     text-align: center;
-    padding: 7.5rem 0.5rem 2.5rem;
-    font-size: 2.6rem;
-    line-height: 2.6rem;
+    margin: 1rem;
   }
-  .certificate-wrapper {
-    margin: 0 5%;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 3px 3px 8px black;
-    img {
-      width: 100%;
+  .activities {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .line-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .line {
+      content: "";
+      border-top: 4px solid ${props => props.theme.primaryColor};
+      width: 10%;
     }
-  }
-
-  ul {
-    padding: 3rem;
-    list-style-type: square;
-    .duty {
-      color: ${props => props.theme.jobInfoTextColor};
-      padding-bottom: 3rem;
-      font-size: 1rem;
-    }
-  }
-
-  .line {
-    width: 90%;
   }
 
   @media (min-width: 480px) {
@@ -118,10 +101,9 @@ const Wrapper = styled.article`
         line-height: 1.8rem;
       }
     }
-    ul {
-      .duty {
-        font-size: 1rem;
-      }
+    .major {
+      font-size: 1.8rem;
+      margin: 2.8rem 0;
     }
   }
 
