@@ -1,3 +1,5 @@
+import { TActiveTab } from "./AppContext";
+
 export type TProject = {
   id: string;
   title: string;
@@ -11,7 +13,7 @@ export type TProject = {
 };
 
 export type TExperience = {
-  id: string;
+  id: TActiveTab;
   company?: string;
   companyKey?: string;
   location?: string;

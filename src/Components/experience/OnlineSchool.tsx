@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { fcc1Skills, fcc2Skills, gitSkills, reactSkills, webDevSkills } from "../../data";
 
 const OnlineSchool = () => {
   return (

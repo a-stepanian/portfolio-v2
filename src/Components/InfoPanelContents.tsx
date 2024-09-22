@@ -1,28 +1,63 @@
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
 import { PiXThin } from "react-icons/pi";
-import { useRef } from "react";
 import Projects from "./portfolio/Projects";
 import Contact from "./contact/Contact";
 import Experience from "./experience/Experience";
+import { useEffect, useRef } from "react";
+import { experience } from "../data";
 
 const InfoPanelContents = () => {
-  const { btnClicked, updateBtnClicked, colorScheme } = useAppContext();
+  const { btnClicked, updateBtnClicked, colorScheme, activeTab } = useAppContext();
 
-  const scrollTarget = useRef<HTMLDivElement>(null);
+  // useEffect(() => {
+  //   const container = document.querySelector("section.open-tall");
+  //   const updateToc = () => {
+  //     experience.forEach(job => {
+  //       let jobElement = document?.getElementById(job.id);
 
-  if (btnClicked === "") {
-    scrollTarget?.current?.scrollIntoView();
-  }
+  //       if (!jobElement) return;
+
+  //       let elementTop = jobElement.getBoundingClientRect()?.top;
+
+  //       if (elementTop < 200) {
+  //         document.querySelector(`.${job.id}-button`)?.classList?.add("active");
+  //         document.querySelector(`.${job.companyKey}-h3`)?.classList?.add("active");
+  //       } else {
+  //         document.querySelector(`.${job.id}-button`)?.classList?.remove("active");
+  //         document.querySelector(`.${job.companyKey}-h3`)?.classList?.remove("active");
+  //       }
+
+  //       if (activeTab.includes("independent-button")) {
+  //         document.querySelector(".independent-h3")?.classList?.add("active");
+  //         document.querySelector(".independent-button")?.classList?.add("active");
+  //         document.querySelector(".psu-h3")?.classList?.remove("active");
+  //         document.querySelector(".psu-button")?.classList?.remove("active");
+  //       } else if (activeTab.includes("psu-button")) {
+  //         document.querySelector(".psu-h3")?.classList?.add("active");
+  //         document.querySelector(".psu-button")?.classList?.add("active");
+  //         document.querySelector(".independent-h3")?.classList?.remove("active");
+  //         document.querySelector(".independent-button")?.classList?.remove("active");
+  //       } else {
+  //         document.querySelector(".psu-h3")?.classList?.remove("active");
+  //         document.querySelector(".psu-button")?.classList?.remove("active");
+  //         document.querySelector(".independent-h3")?.classList?.remove("active");
+  //         document.querySelector(".independent-button")?.classList?.remove("active");
+  //       }
+  //     });
+  //   };
+  //   container?.addEventListener("scroll", updateToc);
+  //   return () => container?.removeEventListener("scroll", updateToc);
+  // }, []);
 
   return (
     <Wrapper className={`open-tall ${colorScheme.blackColor === "#29222a" ? "glow" : ""}`}>
-      <div ref={scrollTarget}></div>
       <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
           <PiXThin className="close-icon" />
         </button>
       </div>
+      <h1 className="title">{btnClicked}</h1>
       {btnClicked === "portfolio" && <Projects />}
       {btnClicked === "contact" && <Contact />}
       {btnClicked === "background" && <Experience />}
@@ -39,27 +74,8 @@ const Wrapper = styled.section`
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: ${props => props.theme.primaryColor} ${props => props.theme.blackColor};
-  /* &::-webkit-scrollbar {
-    -webkit-appearance: none;
-  }
-  &::-webkit-scrollbar:vertical {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.primaryColor};
-    box-shadow: 0 0 5px ${props => props.theme.primaryColor};
-    border-radius: 2px;
-  }
-  &::-webkit-scrollbar-track {
-    width: 8px;
-    background-color: transparent;
-    border-radius: 4px;
-  } */
   .contents-button-wrapper {
     display: none;
-  }
-  p {
-    color: ${props => props.theme.primaryColor};
   }
   @media (min-width: 768px) {
     position: absolute;
@@ -74,6 +90,11 @@ const Wrapper = styled.section`
     border-style: ${props => props.theme.lineStyle};
     border-color: ${props => props.theme.primaryColor};
     border-radius: ${props => props.theme.panelRadius};
+    .title {
+      color: white;
+      background-color: black;
+      font-size: 8rem;
+    }
     .contents-button-wrapper {
       display: block;
       position: sticky;

@@ -118,7 +118,6 @@ const Wrapper = styled.div`
       width: 100%;
       font-size: 0.8rem;
       text-align: center;
-      font-weight: 100;
       transform: rotateY(0) skew(0, 0) translate(0, 0);
       transition: 0.2s linear 0.2s;
     }
@@ -148,9 +147,6 @@ const Wrapper = styled.div`
   }
   .extra-drop-shadow {
     filter: drop-shadow(0 0 8px ${props => props.theme.primaryColor});
-    .clip-caption {
-      font-weight: 500;
-    }
     .icon {
       filter: drop-shadow(0 0 3px ${props => props.theme.primaryColor});
     }

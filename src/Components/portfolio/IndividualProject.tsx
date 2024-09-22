@@ -125,7 +125,8 @@ const Wrapper = styled.article`
   border-radius: ${props => props.theme.panelRadius};
   padding: 0.5rem;
   margin: 36px 12px;
-  box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 0 10px #a0a4c5" : "0 0 16px #294a5a")};
+  box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 0 10px #a0a4c5" : "3px 3px 7px #96a59e")};
+  border: ${props => (props.theme.siteBg === "#29222a" ? "none" : "2px dashed #bbb")};
   .img-container {
     display: flex;
     justify-content: center;

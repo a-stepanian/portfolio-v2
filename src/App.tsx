@@ -35,7 +35,7 @@ export const App = () => {
             ? "url('/portfolio-v2/images/contact-bg-lg.jpg') top left / cover"
             : btnClicked === "background"
             ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') top left / cover"
-            : "url('/portfolio-v2/images/darkpurple.jpg') top left / cover";
+            : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
       }
       // Select primary color
       let primaryColor = "";
@@ -138,7 +138,7 @@ export const App = () => {
           ? "url('/portfolio-v2/images/contact-bg-lg.jpg') center center / cover"
           : btnClicked === "background"
           ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
-          : "url('/portfolio-v2/images/darkpurple.jpg') top left / cover";
+          : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
       updateColorScheme({
         ...colorScheme,
         primaryColor,
@@ -249,11 +249,7 @@ export const App = () => {
               {colorScheme.siteBg === "#29222a" ? <ThreeDimensionsMobile /> : <TwoDimensionsMobile />}
             </div>
           )}
-          {btnClicked === "background" && (
-            <div className="toc-wrapper">
-              <TableOfContents />
-            </div>
-          )}
+          {btnClicked === "background" && <TableOfContents />}
         </div>
       </Wrapper>
     </ThemeProvider>
@@ -272,7 +268,8 @@ const Wrapper = styled.div`
   background: ${props => props.theme.siteBg};
   transition: 0.2s;
   .btn-shrink {
-    transform: scale(0.95) !important;
+    font-weight: 100 !important;
+    transform: scale(0.9) !important;
   }
   #site-wrapper {
     display: flex;

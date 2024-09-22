@@ -4,9 +4,8 @@ import ThreeDimensions from "./decor/ThreeDimensions";
 import InfoPanelContents from "./InfoPanelContents";
 import { PiXThin } from "react-icons/pi";
 import TwoDimensions from "./decor/TwoDimensions";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { experience } from "../data";
-import TableOfContents from "./experience/TableOfContents";
 
 interface IInfoPanelProps {
   text: string;
@@ -14,8 +13,7 @@ interface IInfoPanelProps {
 
 const InfoPanel = (props: IInfoPanelProps) => {
   const { text } = props;
-  const [activeTab, setActiveTab] = useState<string>("claritymid");
-  const { btnClicked, updateBtnClicked, colorScheme } = useAppContext();
+  const { btnClicked, updateBtnClicked, colorScheme, activeTab } = useAppContext();
 
   const isOpen = text === btnClicked;
 
@@ -34,8 +32,6 @@ const InfoPanel = (props: IInfoPanelProps) => {
       }
     });
   }, [activeTab]);
-
-  let used: string[] = [];
 
   return (
     <Wrapper>
@@ -164,9 +160,9 @@ const Wrapper = styled.section`
       left: 0 !important;
       width: 100vw;
       padding: 1rem;
-      transition: width 0.4s linear 0.6s, padding 0.1s linear 0.6s, left 0.2s linear 0.6s, opacity 0.01s linear 0.6s;
+      transition: width 0.4s linear 0.6s, padding 0.4s linear 0.6s, left 0.4s linear 0.6s, opacity 0.01s linear 0.6s;
       & .info-panel-contents-wrapper {
-        transition: opacity 0.6s linear 0.6s;
+        transition: opacity 0.4s linear 0.6s;
         width: auto;
         height: auto;
         .big-three-d-object-wrapper {
@@ -179,7 +175,7 @@ const Wrapper = styled.section`
           justify-content: center;
           align-items: center;
           transform: scale(0);
-          animation: scaleIn 0.3s forwards linear 1.1s;
+          animation: scaleIn 0.3s forwards linear 1.2s;
         }
         @keyframes scaleIn {
           0% {
@@ -191,7 +187,7 @@ const Wrapper = styled.section`
         }
       }
       .open-tall {
-        transition: height 0.3s linear 1.1s, bottom 0.3s linear 1.1s;
+        transition: height 0.3s linear 1.2s, bottom 0.3s linear 1.2s;
         /* bottom: 20px;
         height: calc(100vh - 50px) !important; */
         bottom: -4px;

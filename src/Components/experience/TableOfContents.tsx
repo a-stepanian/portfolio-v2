@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { experience } from "../../data";
 import { VscDebugBreakpointData, VscDebugBreakpointDataUnverified } from "react-icons/vsc";
 import { Fragment, useEffect, useState } from "react";
+import { useAppContext } from "../../AppContext";
 
 const TableOfContents = () => {
-  const [activeTab, setActiveTab] = useState<string>("claritymid");
+  const { activeTab, updateActiveTab } = useAppContext();
 
   useEffect(() => {
     document.getElementById(activeTab)?.scrollIntoView({ behavior: "smooth" });
@@ -56,7 +57,7 @@ const TableOfContents = () => {
               className={`scroll-button ${job.id}-button`}
               type="button"
               onClick={() => {
-                setActiveTab(job.id);
+                updateActiveTab(job.id);
               }}>
               {activeTab === job.id ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
               <span>{job.title}</span>
@@ -69,12 +70,12 @@ const TableOfContents = () => {
       <button
         className="scroll-button independent-button"
         type="button"
-        onClick={() => setActiveTab("independent-button")}>
+        onClick={() => updateActiveTab("independent-button")}>
         {activeTab === "independent-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
         <span>Courses</span>
       </button>
       <h3 className="psu-h3">Penn State University</h3>
-      <button className="scroll-button psu-button" type="button" onClick={() => setActiveTab("psu-button")}>
+      <button className="scroll-button psu-button" type="button" onClick={() => updateActiveTab("psu-button")}>
         {activeTab === "psu-button" ? <VscDebugBreakpointData /> : <VscDebugBreakpointDataUnverified />}
         <span>
           B.S. Industrial Engineering
@@ -101,7 +102,7 @@ const Wrapper = styled.nav`
     height: calc(100vh - 200px);
     width: 300px;
     overflow: auto;
-    animation: scaleIn 0.3s forwards linear 1.1s;
+    animation: scaleIn 0.3s forwards linear 1.2s;
     @keyframes scaleIn {
       0% {
         transform: scale(0);

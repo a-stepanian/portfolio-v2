@@ -18,6 +18,15 @@ export interface IColorScheme {
 }
 
 export type TButtonText = "portfolio" | "background" | "contact" | "";
+export type TActiveTab =
+  | "claritymid"
+  | "clarityjr"
+  | "usgrainier"
+  | "usgchamblee"
+  | "usgbaltimore"
+  | "independent-button"
+  | "manitowocpa"
+  | "psu-button";
 
 interface IAppState {
   btnClicked: TButtonText;
@@ -26,6 +35,8 @@ interface IAppState {
   updateBtnClicked: (info: TButtonText) => void;
   updateEmailSent: (info: boolean) => void;
   updateColorScheme: (info: IColorScheme) => void;
+  activeTab: TActiveTab;
+  updateActiveTab: (info: TActiveTab) => void;
 }
 
 interface Props {
@@ -44,6 +55,7 @@ const useAppContext = () => {
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [btnClicked, setBtnClicked] = useState<TButtonText>("");
+  const [activeTab, setActiveTab] = useState<TActiveTab>("claritymid");
   const [emailSent, setEmailSent] = useState<boolean>(false);
   const [colorScheme, setColorScheme] = useState<IColorScheme>({
     blackColor: "#29222a",
@@ -63,6 +75,7 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   });
 
   const updateBtnClicked = (info: TButtonText) => setBtnClicked(info);
+  const updateActiveTab = (info: TActiveTab) => setActiveTab(info);
   const updateEmailSent = (info: boolean) => setEmailSent(info);
   const updateColorScheme = (info: IColorScheme) => setColorScheme(info);
 
@@ -70,6 +83,8 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     btnClicked,
     emailSent,
     colorScheme,
+    activeTab,
+    updateActiveTab,
     updateBtnClicked,
     updateEmailSent,
     updateColorScheme
