@@ -57,7 +57,6 @@ const InfoPanelContents = () => {
           <PiXThin className="close-icon" />
         </button>
       </div>
-      <h1 className="title">{btnClicked}</h1>
       {btnClicked === "portfolio" && <Projects />}
       {btnClicked === "contact" && <Contact />}
       {btnClicked === "background" && <Experience />}

@@ -32,7 +32,7 @@ export const App = () => {
       } else {
         customBackground =
           btnClicked === "contact"
-            ? "url('/portfolio-v2/images/contact-bg-lg.jpg') top left / cover"
+            ? "url('/portfolio-v2/images/contact-bg-sm.jpg') top left / cover"
             : btnClicked === "background"
             ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') top left / cover"
             : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
@@ -135,7 +135,7 @@ export const App = () => {
       }
       let customBackground =
         btnClicked === "contact"
-          ? "url('/portfolio-v2/images/contact-bg-lg.jpg') center center / cover"
+          ? "url('/portfolio-v2/images/contact-bg-sm.jpg') center center / cover"
           : btnClicked === "background"
           ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
           : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";

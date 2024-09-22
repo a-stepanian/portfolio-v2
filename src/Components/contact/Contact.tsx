@@ -64,7 +64,8 @@ const Wrapper = styled.section`
   @media (min-width: 990px) {
     .form-wrapper {
       .background-card {
-        padding: 2rem 0 4rem;
+        height: 560px;
+        padding: 4rem;
         width: 480px;
       }
     }
