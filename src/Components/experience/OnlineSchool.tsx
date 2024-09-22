@@ -91,6 +91,7 @@ const Wrapper = styled.article`
         font-size: 1rem;
         font-weight: 900;
         margin-bottom: 12px;
+        color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#111")};
       }
       img {
         width: 100%;

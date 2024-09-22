@@ -73,7 +73,7 @@ const Wrapper = styled.article`
     padding: 3rem;
     list-style-type: square;
     .duty {
-      color: ${props => (props.theme.siteBg === "#29222a" ? "#ddd" : "#222")};
+      color: ${props => (props.theme.siteBg === "#29222a" ? "#ddd" : "#111")};
       padding-bottom: 3rem;
       font-size: 1rem;
     }

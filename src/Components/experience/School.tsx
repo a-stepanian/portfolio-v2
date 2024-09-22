@@ -74,10 +74,12 @@ const Wrapper = styled.article`
     font-size: 1.2rem;
     text-align: center;
     margin: 1rem;
+    color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#111")};
   }
   .activities {
     font-size: 1.2rem;
     text-align: center;
+    color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#111")};
   }
   .line-wrapper {
     width: 100%;
