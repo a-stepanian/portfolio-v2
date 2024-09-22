@@ -20,6 +20,7 @@ const Wrapper = styled.section`
   align-items: center;
   .project-wrapper {
     max-width: 580px;
+    padding: 18px;
   }
   @media (min-width: 922px) {
     .project-wrapper {

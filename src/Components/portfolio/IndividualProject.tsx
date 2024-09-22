@@ -108,7 +108,7 @@ const IndividualProject = (props: IIndividualProjectProps) => {
               )}
               <a href={site.url} target="_blank" rel="noreferrer" title="Go to Website">
                 <RiExternalLinkFill className="web" />
-                <span>Go</span>
+                <span>Site</span>
               </a>
             </div>
           </div>
@@ -119,14 +119,16 @@ const IndividualProject = (props: IIndividualProjectProps) => {
 };
 
 const Wrapper = styled.article`
+  /* transition: all 0.3s linear; */
   position: relative;
   color: #333;
   background-color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#ecd397")};
   border-radius: ${props => props.theme.panelRadius};
   padding: 0.5rem;
   margin: 36px 12px;
-  box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 0 10px #a0a4c5" : "3px 3px 7px #96a59e")};
-  border: ${props => (props.theme.siteBg === "#29222a" ? "none" : "2px dashed #bbb")};
+  box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0px 0px 0px #0000009b" : "-3px 8px 3px #0000006b")};
+  transition: transform 0.5s, box-shadow 0.5s;
+  border: ${props => (props.theme.siteBg === "#29222a" ? "none" : "8px dashed #666")};
   .img-container {
     display: flex;
     justify-content: center;
@@ -134,7 +136,7 @@ const Wrapper = styled.article`
     background-color: ${props => props.theme.blackColor};
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 3px 12px #000d83b2" : "0 0 16px #294a5a")};
+    box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0 3px 12px #000d83b2" : "none")};
     video {
       width: 100% !important;
       height: auto !important;
@@ -162,6 +164,7 @@ const Wrapper = styled.article`
     h4 {
       font-size: 0.8rem;
       font-weight: 900;
+      color: ${props => (props.theme.siteBg === "#29222a" ? "#eee" : "#222")};
     }
     .tech {
       display: flex;
@@ -170,8 +173,9 @@ const Wrapper = styled.article`
         font-size: 0.7rem;
         margin: 0.2rem;
         background-color: #333;
-        color: ${props => props.theme.blackColor};
-        padding: 0 0.3rem 0.2rem;
+        color: ${props => (props.theme.siteBg === "#29222a" ? "#eee" : props.theme.blackColor)};
+        border: ${props => (props.theme.siteBg === "#29222a" ? "1px solid #eee" : "none")};
+        padding: 0 0.3rem;
         white-space: nowrap;
       }
     }
@@ -227,7 +231,6 @@ const Wrapper = styled.article`
       justify-content: center;
       flex-wrap: wrap;
       margin: 16px 0 12px;
-
       p {
         font-size: 0.7rem;
         margin: 0.2rem;
@@ -266,24 +269,6 @@ const Wrapper = styled.article`
       }
     }
   }
-  @media (min-width: 330px) {
-    .info {
-      .tech {
-        p {
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
-  @media (min-width: 360px) {
-    .info {
-      .tech {
-        p {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
   @media (min-width: 480px) {
     footer {
       .link-wrapper {
@@ -308,10 +293,6 @@ const Wrapper = styled.article`
       .tech {
         display: flex;
         flex-wrap: wrap;
-        p {
-          padding: 0 0.3rem 0.2rem;
-          font-size: 1.1rem;
-        }
       }
       a {
         font-size: 2rem;
@@ -340,6 +321,8 @@ const Wrapper = styled.article`
   @media (min-width: 768px) {
     padding: 1rem;
     margin: 36px;
+    transform: ${props =>
+      props.theme.siteBg === "#29222a" ? "translate(0, 0) rotate(0)" : "translate(0, -2px) rotate(-1deg)"};
   }
   @media (min-width: 992px) {
     padding: 1rem;

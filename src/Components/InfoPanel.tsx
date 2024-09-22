@@ -98,12 +98,12 @@ const Wrapper = styled.section`
   .button-wrapper {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 24px;
     display: flex;
     justify-content: flex-end;
     button {
-      height: 30px;
-      width: 30px;
+      height: 26px;
+      width: 26px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -111,11 +111,11 @@ const Wrapper = styled.section`
       border: none;
       border-radius: 3px;
       transition: 0.1s;
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: 1000;
       .close-icon {
         font-size: 1.4rem;
-        color: ${props => props.theme.primaryColor};
+        color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#eee")};
         transition: 0.1s;
       }
       &:hover {

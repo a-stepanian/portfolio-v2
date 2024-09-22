@@ -36,8 +36,8 @@ const Wrapper = styled.section`
         props.theme.siteBg === "#29222a"
           ? props.theme.blackColor
           : "url('/portfolio-v2/images/lightbg.jpg') center center / cover"};
-      box-shadow: 12px 18px 5px #0000006b;
-      transition: 0.5s;
+      box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "0px 0px 0px #0000009b" : "-6px 14px 5px #0000006b")};
+      transition: transform 0.5s, box-shadow 0.5s;
       .lets-connect {
         color: ${props => props.theme.formTextColor};
         margin: 1rem 0;
@@ -62,11 +62,15 @@ const Wrapper = styled.section`
     }
   }
   @media (min-width: 990px) {
+    transition: 0.1s;
     .form-wrapper {
       .background-card {
         height: 560px;
         padding: 4rem;
         width: 480px;
+        transform: ${props =>
+          props.theme.siteBg === "#29222a" ? "translate(0, 0) rotate(0)" : "translate(5px, -10px) rotate(-2deg)"};
+        border: ${props => (props.theme.siteBg === "#29222a" ? "" : "12px dashed #444")};
       }
     }
   }

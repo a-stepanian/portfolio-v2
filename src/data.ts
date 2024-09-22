@@ -42,7 +42,7 @@ const data: TProject[] = [
     id: "6",
     title: "MenuWeb",
     description: "A CMS that allows a user to create basic websites.",
-    builtWith: ["React", "Bootstrap"],
+    builtWith: ["React", "React-Router", "React-Bootstrap"],
     url: "https://menu-site-builder.netlify.app/",
     videoUrl: "/portfolio-v2/images/menuwebsm.mp4",
     thumbnail: "apply.png",

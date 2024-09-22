@@ -48,7 +48,7 @@ const Wrapper = styled.div`
       justify-content: center;
       align-items: center;
       padding: 22px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      box-shadow: ${props => (props.theme.siteBg === "#29222a" ? "" : "-2px 12px 3px #0000006b")};
       .icon {
         color: ${props => props.theme.primaryColor};
         height: 90%;

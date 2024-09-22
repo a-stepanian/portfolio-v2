@@ -40,7 +40,7 @@ const Wrapper = styled.button`
   background-color: rgba(255, 255, 255, 0.5);
   .line {
     position: absolute;
-    right: 11px;
+    right: 12px;
     width: 16px;
     border-radius: 1px;
     height: 3px;
@@ -49,17 +49,17 @@ const Wrapper = styled.button`
   }
 
   .vertical {
-    top: 21px;
+    top: 20px;
     transform: rotate(90deg);
   }
   .vertical-open {
     transform: rotate(180deg);
     width: 0;
-    right: 23px;
+    right: 24px;
   }
 
   .horizontal {
-    top: 21px;
+    top: 20px;
   }
   .horizontal-open {
     transform: rotate(90deg);

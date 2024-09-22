@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppContext } from "../AppContext";
-import { PiXThin } from "react-icons/pi";
+import { PiX, PiXThin } from "react-icons/pi";
 import Projects from "./portfolio/Projects";
 import Contact from "./contact/Contact";
 import Experience from "./experience/Experience";
@@ -54,7 +54,7 @@ const InfoPanelContents = () => {
     <Wrapper className={`open-tall ${colorScheme.blackColor === "#29222a" ? "glow" : ""}`}>
       <div className="contents-button-wrapper">
         <button type="button" onClick={() => updateBtnClicked("")} aria-label="Close" title="Close">
-          <PiXThin className="close-icon" />
+          <PiX className="close-icon" />
         </button>
       </div>
       {btnClicked === "portfolio" && <Projects />}
@@ -110,13 +110,13 @@ const Wrapper = styled.section`
         border: none;
         border-radius: ${props => props.theme.infoPanelContentsCloseRadius};
         transition: 0.1s;
-        background-color: #29222a;
+        background-color: ${props => (props.theme.siteBg === "#29222a" ? "#29222a" : "#746177")};
         z-index: 1;
         margin-top: 16px;
         margin-right: 16px;
         .close-icon {
           font-size: 1.4rem;
-          color: ${props => props.theme.primaryColor};
+          color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#eee")};
           transition: 0.1s;
         }
         &:hover {

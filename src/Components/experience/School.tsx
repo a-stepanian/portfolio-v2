@@ -12,8 +12,8 @@ const School = () => {
       <div className="line"></div>
       <p className="minor">Six Sigma Minor</p>
       <div className="old-main">
-        {/* <img src="/portfolio-v2/images/oldmain.png" alt="Old Main Building at PSU" /> */}
-        <img src="/portfolio-v2/images/oldmain-dark.png" alt="Old Main Building at PSU" />
+        <img className="old-main-light" src="/portfolio-v2/images/oldmain.png" alt="Old Main Building at PSU" />
+        <img className="old-main-dark" src="/portfolio-v2/images/oldmaindark.png" alt="Old Main Building at PSU" />
       </div>
     </Wrapper>
   );
@@ -25,13 +25,19 @@ const Wrapper = styled.article`
   width: 100%;
   color: ${props => props.theme.primaryColor};
   .old-main {
-    background-color: rgba(248, 219, 255, 0.585);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
     img {
       width: 100%;
+      transform: translateY(100px);
+    }
+    .old-main-light {
+      display: ${props => (props.theme.siteBg === "#29222a" ? "none" : "block")};
+    }
+    .old-main-dark {
+      display: ${props => (props.theme.siteBg === "#29222a" ? "block" : "none")};
+      filter: drop-shadow(3px 3px 3px rgba(29, 211, 174, 1));
     }
   }
   .school-header {
