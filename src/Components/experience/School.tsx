@@ -65,7 +65,7 @@ const Wrapper = styled.article`
     .school-title {
       position: relative;
       z-index: 10;
-      color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#eee")};
+      color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.jobInfoTextColor : "#eee")};
       font-size: 1.5rem;
       line-height: 1.5rem;
     }
