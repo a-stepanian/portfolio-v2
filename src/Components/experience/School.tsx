@@ -4,7 +4,7 @@ const School = () => {
   return (
     <Wrapper id="psu-button">
       <header className="school-header">
-        <div className="title-company">
+        <div className="school-title">
           <h3>The Pennsylvania State University</h3>
         </div>
       </header>
@@ -26,10 +26,10 @@ const School = () => {
 
 const Wrapper = styled.article`
   position: relative;
-  z-index: 999;
+  z-index: 10;
   width: 100%;
   color: ${props => props.theme.primaryColor};
-  height: calc(100vh - 150px);
+  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -52,10 +52,7 @@ const Wrapper = styled.article`
     }
   }
   .school-header {
-    z-index: 999;
-    & * {
-      z-index: 999;
-    }
+    z-index: 10;
     position: sticky;
     top: 0;
     padding: 4px 34px 8px 1rem;
@@ -63,12 +60,12 @@ const Wrapper = styled.article`
       props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset" : "none"};
     border: 2px solid ${props => (props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176)" : "#555")};
     border-radius: ${props => (props.theme.siteBg === "#29222a" ? "0" : "3px")};
-    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#333")};
+    color: ${props => props.theme.jobInfoTextColor};
     .school-title {
       position: relative;
-      z-index: 999;
-      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
-
+      z-index: 10;
+      color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#eee")};
       font-size: 1.5rem;
       line-height: 1.5rem;
     }
@@ -93,31 +90,23 @@ const Wrapper = styled.article`
     }
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
+    border-right: none;
+    height: calc(100vh - 40px);
     .school-header {
+      top: 55px;
+      padding: 1rem 3rem;
+      display: flex;
+      flex-direction: column;
       h3 {
-        margin-top: 0.4rem;
-        font-size: 1.9rem;
-        line-height: 1.8rem;
+        font-size: 2.4rem;
+        line-height: 2rem;
       }
     }
     .major {
       font-size: 1.8rem;
-      margin: 2.8rem 0;
-    }
-  }
-
-  @media (min-width: 768px) {
-    margin-bottom: 5rem;
-    border-right: none;
-    .school-header {
-      padding-right: 0.3rem;
-      padding-left: 0.3rem;
-      display: flex;
-      justify-content: center;
-      h3 {
-        font-size: 2.4rem;
-        line-height: 2rem;
+      &:first-of-type {
+        margin-top: 1rem;
       }
     }
   }

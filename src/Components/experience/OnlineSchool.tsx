@@ -4,12 +4,12 @@ const OnlineSchool = () => {
   return (
     <Wrapper id="independent-button">
       <header className="school-header" id="school-header">
+        <h3 className="school-title">Independent Courses</h3>
         <h4 className="school-name">
           <a href="/" target="_blank" rel="noreferrer">
             udemy
           </a>
         </h4>
-        <h3 className="school-title">Independent Courses</h3>
       </header>
       <div className="courses">
         <div className="certificate-wrapper">
@@ -39,14 +39,11 @@ const OnlineSchool = () => {
 
 const Wrapper = styled.article`
   position: relative;
-  z-index: 999;
+  z-index: 10;
   width: 100%;
   color: ${props => props.theme.primaryColor};
   .school-header {
-    z-index: 999;
-    & * {
-      z-index: 999;
-    }
+    z-index: 10;
     position: sticky;
     top: 0;
     padding: 4px 34px 8px 1rem;
@@ -54,22 +51,22 @@ const Wrapper = styled.article`
       props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176) 0 0 4px, rgb(29, 211, 176) 0 0 4px inset" : "none"};
     border: 2px solid ${props => (props.theme.siteBg === "#29222a" ? "rgb(29, 211, 176)" : "#555")};
     border-radius: ${props => (props.theme.siteBg === "#29222a" ? "0" : "3px")};
-    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
+    background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#333")};
+    color: ${props => props.theme.jobInfoTextColor};
     .school-title {
       position: relative;
-      z-index: 999;
-      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
+      z-index: 10;
+      color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.jobInfoTextColor : "#eee")};
       font-size: 1.5rem;
       line-height: 1.5rem;
     }
     .school-name {
       position: relative;
-      z-index: 999;
-      background-color: ${props => (props.theme.siteBg === "#29222a" ? "#393850ef" : "#eee")};
+      z-index: 10;
       line-height: 10px;
       a {
         text-decoration: none;
-        color: ${props => props.theme.primaryColor};
+        color: ${props => (props.theme.siteBg === "#29222a" ? props.theme.primaryColor : "#ccc")};
         font-size: 0.6rem;
         letter-spacing: -0.02rem;
         white-space: nowrap;
@@ -78,7 +75,7 @@ const Wrapper = styled.article`
   }
 
   .courses {
-    margin-top: 3rem;
+    margin: 3rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +85,7 @@ const Wrapper = styled.article`
       box-shadow: 3px 3px 8px black;
       border-radius: 3px;
       padding: 1rem;
-      max-width: 400px;
+      /* max-width: 400px; */
       .course {
         text-align: center;
         font-size: 1rem;
@@ -100,32 +97,25 @@ const Wrapper = styled.article`
       }
     }
   }
-  .line {
-    width: 90%;
-  }
-
-  @media (min-width: 480px) {
-    .school-header {
-      h3 {
-        font-size: 1.9rem;
-        line-height: 1.8rem;
-      }
-    }
-  }
 
   @media (min-width: 768px) {
-    margin-bottom: 5rem;
     border-right: none;
     .school-header {
-      padding: 1.1rem;
+      top: 55px;
+      padding: 1rem 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
+      .school-title {
+        height: auto;
+        margin-bottom: 8px;
+      }
       h3 {
         font-size: 2.4rem;
         line-height: 2rem;
       }
+    }
+    .courses {
+      padding: 0 5vw;
     }
   }
 
@@ -134,11 +124,19 @@ const Wrapper = styled.article`
       h3 {
         font-size: 2.5rem;
       }
+      .school-title {
+        font-size: 2.2rem;
+      }
     }
+    .courses {
+      padding: 4rem 10vw;
+    }
+  }
+  @media (min-width: 1200px) {
     .courses {
       display: grid;
       grid-template-columns: calc(50% - 12px) calc(50% - 12px);
-      grid-gap: 24px;
+      grid-gap: 36px;
       align-items: unset;
       .certificate-wrapper {
         margin: 0;

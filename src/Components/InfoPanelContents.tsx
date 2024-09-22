@@ -100,6 +100,7 @@ const Wrapper = styled.section`
       top: 0;
       display: flex;
       justify-content: flex-end;
+      z-index: 100;
       button {
         height: 40px;
         width: 40px;

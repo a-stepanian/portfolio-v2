@@ -34,7 +34,8 @@ export const App = () => {
           btnClicked === "contact"
             ? "url('/portfolio-v2/images/contact-bg-sm.jpg') top left / cover"
             : btnClicked === "background"
-            ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') top left / cover"
+            ? // ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') top left / cover"
+              "#333"
             : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
       }
       // Select primary color
@@ -137,7 +138,8 @@ export const App = () => {
         btnClicked === "contact"
           ? "url('/portfolio-v2/images/contact-bg-sm.jpg') center center / cover"
           : btnClicked === "background"
-          ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+          ? // ? "url('/portfolio-v2/images/portfolio-blue-bg-lg.png') center center / cover"
+            "#333"
           : "url('/portfolio-v2/images/gray-bg-sm.jpg') top left / cover";
       updateColorScheme({
         ...colorScheme,

@@ -105,6 +105,11 @@ const Wrapper = styled.nav`
     overflow: hidden;
     padding: 4px 0;
     animation: scaleIn 0.3s forwards linear 1.2s;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 1;
+    }
     .scrolling-window {
       padding: 16px;
       overflow-y: auto;
